@@ -203,6 +203,20 @@
               },
               "blocks": {}
             },
+            "swatches_rWmfUH": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            },
             "group_7VTJcC": {
               "type": "_product-card-group",
               "name": "t:names.group",
@@ -249,7 +263,7 @@
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "rte",
+                    "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
@@ -325,7 +339,7 @@
                         "show_sale_price_first": true,
                         "show_installments": false,
                         "show_tax_info": false,
-                        "type_preset": "h6",
+                        "type_preset": "h5",
                         "width": "100%",
                         "alignment": "left",
                         "font": "var(--font-body--family)",
@@ -352,26 +366,12 @@
                 "product_title_VNbVkz",
                 "product_card_group_B8GYRd"
               ]
-            },
-            "swatches_rWmfUH": {
-              "type": "swatches",
-              "name": "t:names.swatches",
-              "settings": {
-                "product_swatches_alignment": "flex-start",
-                "product_swatches_alignment_mobile": "flex-start",
-                "hide_padding": false,
-                "product_swatches_padding_top": 4,
-                "product_swatches_padding_bottom": 0,
-                "product_swatches_padding_left": 0,
-                "product_swatches_padding_right": 0
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "product_card_gallery_JgqDGj",
-            "group_7VTJcC",
-            "swatches_rWmfUH"
+            "swatches_rWmfUH",
+            "group_7VTJcC"
           ]
         }
       },
