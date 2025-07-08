@@ -149,23 +149,23 @@
     {
       "name": "t:names.product_card",
       "category": "t:categories.product",
-      "blocks": [
-        { "type": "button" },
-        { "type": "_product-card-gallery" },
-        {
+      "blocks": {
+        "product-card-gallery": { "type": "_product-card-gallery" },
+        "group": {
           "type": "_product-card-group",
           "settings": { "content_direction": "column" },
-          "blocks": [
-            {
+          "blocks": {
+            "product_title": {
               "type": "product-title",
               "settings": { "width": "100%", "type_preset": "h5" }
             },
-            { "type": "price" }
-          ],
-          "block_order": ["product-title", "price"]
-        }
-      ],
-      "block_order": ["button", "_product-card-gallery", "_product-card-group"]
+            "price": { "type": "price" }
+          },
+          "block_order": ["product_title", "price"]
+        },
+        "button": { "type": "button" }
+      },
+      "block_order": ["button", "product-card-gallery", "group"]
     }
   ]
 }
