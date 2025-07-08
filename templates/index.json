@@ -460,7 +460,7 @@
               "settings": {
                 "text": "<h6>By signing up to the Atonal newsletter you are agreeing to allow us to email you. We will not share your email with any third parties.</h6>",
                 "width": "fit-content",
-                "max_width": "none",
+                "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
