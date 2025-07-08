@@ -1865,6 +1865,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   --min-height-unitless: 15.9999; /* want to avoid division by 0 */
   --min-height: 16px;
   --min-width: 16px;
+  --width: 60px; 
 
   /* mobile values */
   --scaling-factor: 0.5;
