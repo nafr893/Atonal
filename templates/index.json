@@ -174,7 +174,7 @@
           "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 8,
+            "product_card_gap": 10,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "border": "none",
