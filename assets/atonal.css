@@ -1,0 +1,18 @@
+
+  
+  
+/* desktop styles */
+  @media (min-width: 480px) {
+
+    /* email sign up image height*/ 
+  div.image-block.image-block--Adk04WStwUkw4a05xM__image_q3iqH3.image-block--height-fit.spacing-style.size-style {
+    height: 70%; 
+  }
+}
+
+
+/* mobile styles */
+    @media (max-width: 480px) {
+
+
+    }
