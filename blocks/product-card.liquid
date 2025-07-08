@@ -14,37 +14,16 @@
 {
   "name": "t:names.product_card",
   "blocks": [
-     {
-      "type": "button"
-    },
-    {
-      "type": "_product-card-group"
-    },
-    {
-      "type": "text"
-    },
-    {
-      "type": "image"
-    },
-    {
-      "type": "price"
-    },
-    {
-      "type": "review"
-    },
-    {
-      "type": "swatches"
-    },
-    {
-      "type": "_product-card-gallery"
-    },
-    {
-      "type": "product-title"
-    },
-    {
-      "type": "@app"
-    }
-   
+    { "type": "button" },
+    { "type": "_product-card-group" },
+    { "type": "text" },
+    { "type": "image" },
+    { "type": "price" },
+    { "type": "review" },
+    { "type": "swatches" },
+    { "type": "_product-card-gallery" },
+    { "type": "product-title" },
+    { "type": "@app" }
   ],
   "tag": null,
   "settings": [
@@ -85,14 +64,8 @@
       "id": "border",
       "label": "t:settings.style",
       "options": [
-        {
-          "value": "none",
-          "label": "t:options.none"
-        },
-        {
-          "value": "solid",
-          "label": "t:options.solid"
-        }
+        { "value": "none", "label": "t:options.none" },
+        { "value": "solid", "label": "t:options.solid" }
       ],
       "default": "none"
     },
@@ -177,32 +150,20 @@
       "name": "t:names.product_card",
       "category": "t:categories.product",
       "blocks": {
-        "product-card-gallery": {
-          "type": "_product-card-gallery"
-        },
+        "product-card-gallery": { "type": "_product-card-gallery" },
         "group": {
           "type": "_product-card-group",
-          "settings": {
-            "content_direction": "column"
-          },
+          "settings": { "content_direction": "column" },
           "blocks": {
             "product_title": {
               "type": "product-title",
-              "settings": {
-                "width": "100%",
-                "type_preset": "h5"
-              }
+              "settings": { "width": "100%", "type_preset": "h5" }
             },
-            "price": {
-              "type": "price"
-},
-            
+            "price": { "type": "price" }
           },
           "block_order": ["product_title", "price"]
         },
-            "button": {
-              "type": "button",
-            },
+        "button": { "type": "button" }
       },
       "block_order": ["product-card-gallery", "group", "button"]
     }
