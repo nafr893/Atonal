@@ -290,7 +290,7 @@
                   },
                   "blocks": {}
                 },
-                "swatches_k9YMgz": {
+                "swatches_6XhLzX": {
                   "type": "swatches",
                   "name": "t:names.swatches",
                   "settings": {
@@ -308,7 +308,7 @@
               "block_order": [
                 "product_title_dMgTDL",
                 "price_h6P4AF",
-                "swatches_k9YMgz"
+                "swatches_6XhLzX"
               ]
             }
           },
@@ -323,7 +323,7 @@
         "collection": "all",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 8,
+        "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
         "columns_gap": 12,
