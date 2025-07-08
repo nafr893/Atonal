@@ -203,6 +203,20 @@
               },
               "blocks": {}
             },
+            "swatches_rWmfUH": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            },
             "group_7VTJcC": {
               "type": "_product-card-group",
               "name": "t:names.group",
@@ -267,6 +281,18 @@
                   },
                   "blocks": {}
                 },
+                "review_gmF7mC": {
+                  "type": "review",
+                  "name": "t:names.product_review_stars",
+                  "settings": {
+                    "stars_style": "shaded",
+                    "show_number": true,
+                    "rating_color": "primary",
+                    "type_preset": "paragraph",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
                 "price_h6P4AF": {
                   "type": "price",
                   "name": "t:names.product_price",
@@ -289,31 +315,18 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "swatches_k9YMgz": {
-                  "type": "swatches",
-                  "name": "t:names.swatches",
-                  "settings": {
-                    "product_swatches_alignment": "flex-start",
-                    "product_swatches_alignment_mobile": "flex-start",
-                    "hide_padding": false,
-                    "product_swatches_padding_top": 4,
-                    "product_swatches_padding_bottom": 0,
-                    "product_swatches_padding_left": 0,
-                    "product_swatches_padding_right": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "product_title_dMgTDL",
-                "price_h6P4AF",
-                "swatches_k9YMgz"
+                "review_gmF7mC",
+                "price_h6P4AF"
               ]
             }
           },
           "block_order": [
             "product_card_gallery_JgqDGj",
+            "swatches_rWmfUH",
             "group_7VTJcC"
           ]
         }
@@ -323,7 +336,7 @@
         "collection": "all",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 8,
+        "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
         "columns_gap": 12,
