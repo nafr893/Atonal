@@ -1961,6 +1961,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
   @media screen and (min-width: 750px) {
     /* desktop values */
+    /* variant swatch sizes */
     --max-swatch-size: 60px;
     --max-pill-size: 16px;
     --max-filter-size: 28px;
