@@ -488,13 +488,13 @@
             "text_NPKiBX"
           ]
         },
-        "image_8MMnTT": {
+        "image_q3iqH3": {
           "type": "image",
           "settings": {
             "link": "",
-            "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 60,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -512,7 +512,7 @@
       },
       "block_order": [
         "group_MbaEcr",
-        "image_8MMnTT"
+        "image_q3iqH3"
       ],
       "name": "t:names.image_with_text",
       "settings": {
