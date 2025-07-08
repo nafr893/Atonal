@@ -492,9 +492,9 @@
           "type": "image",
           "settings": {
             "link": "",
-            "image_ratio": "landscape",
-            "width": "fill",
-            "custom_width": 100,
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 70,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
