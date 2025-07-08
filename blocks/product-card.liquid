@@ -14,8 +14,9 @@
 {
   "name": "t:names.product_card",
   "blocks": [
-    { "type": "button" },
+
     { "type": "_product-card-group" },
+        { "type": "button" },
     { "type": "text" },
     { "type": "image" },
     { "type": "price" },
@@ -150,11 +151,13 @@
       "name": "t:names.product_card",
       "category": "t:categories.product",
       "blocks": {
+
         "product-card-gallery": { "type": "_product-card-gallery" },
         "group": {
           "type": "_product-card-group",
           "settings": { "content_direction": "column" },
           "blocks": {
+"button": { "type": "button"},
             "product_title": {
               "type": "product-title",
               "settings": { "width": "100%", "type_preset": "h5" }
@@ -163,7 +166,7 @@
           },
           "block_order": ["product_title", "price"]
         },
-        "button": { "type": "button" }
+        
       },
       "block_order": ["button", "product-card-gallery", "group"]
     }
