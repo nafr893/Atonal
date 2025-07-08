@@ -347,6 +347,18 @@
                     "price_WXHny6"
                   ]
                 },
+                "divider_EjjNCr": {
+                  "type": "_divider",
+                  "name": "t:names.divider",
+                  "settings": {
+                    "thickness": 2,
+                    "corner_radius": "square",
+                    "width_percent": 100,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0
+                  },
+                  "blocks": {}
+                },
                 "swatches_LgGApQ": {
                   "type": "swatches",
                   "name": "t:names.swatches",
@@ -380,6 +392,7 @@
               "block_order": [
                 "product_title_VNbVkz",
                 "product_card_group_B8GYRd",
+                "divider_EjjNCr",
                 "swatches_LgGApQ",
                 "button_yhACmX"
               ]
