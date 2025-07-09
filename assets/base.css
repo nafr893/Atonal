@@ -2482,7 +2482,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 }
 
 .cart-bubble__text {
+  /* old font size 
   font-size: var(--font-size--2xs);
+  */
+  font-size: 0.5rem; 
   z-index: var(--layer-flat);
   line-height: 1;
   display: flex;
