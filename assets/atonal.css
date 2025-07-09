@@ -58,27 +58,7 @@ a#account-icon.header-actions__action.action__account {
         
     }
 
-/* account icon mobile */ 
-a#account-icon.header-actions__action.action__account {
-    span.svg-wrapper {
-svg#Layer_1 
- { 
-    align-self: center;
-    margin-bottom: 2px; 
-    margin-left: 4px; 
-    width: 17.5px; 
-    overflow: visible; 
 
-    path {
-        width: 17.5px;
-           stroke: #ffffff;
-    stroke-width: 4px;
-   
-    }
-
-}
-    }
-}
 
 
 
@@ -127,6 +107,8 @@ svg#Layer_1
     align-self: center;
     margin-bottom: 2px; 
     margin-left: 4px; 
+    width: 17.5px; 
+    overflow: visible;
 
     path {
         width: 17.5px;
