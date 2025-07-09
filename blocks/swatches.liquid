@@ -26,7 +26,7 @@
     "
     {{ block.shopify_attributes }}
   >
-    {% render 'variant-swatches', product_resource: closest.product %}
+    {% render 'variant-swatches', product_resource: closest.product, force_variant_image: true %}
   </product-swatches>
 {% endif %}
 
