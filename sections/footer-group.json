@@ -141,7 +141,7 @@
           "settings": {
             "link": "",
             "open_in_new_tab": false,
-            "content_direction": "row",
+            "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "space-between",
             "vertical_alignment": "flex-end",
@@ -217,37 +217,11 @@
                   "type": "text",
                   "name": "Heading",
                   "settings": {
-                    "text": "<h2>Join the club</h2>",
+                    "text": "<h4>STAY IN THE LOOP</h4>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-primary--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_eC4rXd": {
-                  "type": "text",
-                  "name": "Text",
-                  "settings": {
-                    "text": "<p>Get exclusive deals and early access to new products. </p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "rte",
+                    "type_preset": "h4",
                     "font": "var(--font-primary--family)",
                     "font_size": "",
                     "line_height": "normal",
@@ -267,8 +241,7 @@
                 }
               },
               "block_order": [
-                "text_3L9Fjq",
-                "text_eC4rXd"
+                "text_3L9Fjq"
               ]
             },
             "email_signup_NcLwNb": {
@@ -278,15 +251,15 @@
                 "width": "custom",
                 "custom_width": 50,
                 "inherit_color_scheme": true,
-                "color_scheme": "scheme-1",
+                "color_scheme": "scheme-5",
                 "border_style": "all",
                 "border_width": 1,
-                "border_radius": 39,
+                "border_radius": 0,
                 "input_type_preset": "paragraph",
                 "style_class": "button-unstyled",
                 "display_type": "arrow",
                 "label": "Sign up",
-                "integrated_button": true,
+                "integrated_button": false,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -294,11 +267,91 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "group_QAarAx": {
+              "type": "group",
+              "name": "t:names.group",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 20,
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon_7CwBRG": {
+                  "type": "icon",
+                  "name": "t:names.icon",
+                  "settings": {
+                    "icon": "instagram",
+                    "width": 24,
+                    "link": "",
+                    "open_in_new_tab": false
+                  },
+                  "blocks": {}
+                },
+                "icon_8MDfcA": {
+                  "type": "icon",
+                  "name": "t:names.icon",
+                  "settings": {
+                    "icon": "facebook",
+                    "width": 24,
+                    "link": "",
+                    "open_in_new_tab": false
+                  },
+                  "blocks": {}
+                },
+                "icon_tcqh8P": {
+                  "type": "icon",
+                  "name": "t:names.icon",
+                  "settings": {
+                    "icon": "tiktok",
+                    "width": 24,
+                    "link": "",
+                    "open_in_new_tab": false
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "icon_7CwBRG",
+                "icon_8MDfcA",
+                "icon_tcqh8P"
+              ]
             }
           },
           "block_order": [
             "group_4aCyy7",
-            "email_signup_NcLwNb"
+            "email_signup_NcLwNb",
+            "group_QAarAx"
           ]
         },
         "footer_utilities_KRaGcH": {
@@ -405,7 +458,7 @@
         "gap": 48,
         "section_width": "page-width",
         "section_height": "",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-5",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",

@@ -566,8 +566,8 @@
               "settings": {
                 "width": "custom",
                 "custom_width": 75,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
                 "border_style": "all",
                 "border_width": 3,
                 "border_radius": 0,
