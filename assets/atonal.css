@@ -38,3 +38,14 @@ padding-left: 2.5rem;
             height: 2.75rem; 
         }
     }
+
+
+
+    /* collection page css */
+
+    /* filtering styles css */
+div.facets-block-wrapper.facets-block-wrapper--vertical {
+    span.facets__label {
+font-size: 14px; 
+    }
+}
