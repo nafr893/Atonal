@@ -462,7 +462,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 48,
+        "gap": 20,
         "section_width": "full-width",
         "section_height": "",
         "color_scheme": "scheme-5",
