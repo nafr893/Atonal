@@ -81,7 +81,7 @@ color: #1E00A5;
 }
 
 /* account icon */ 
-a#header-actions__action.action__account {
+a#account-icon.header-actions__action.action__account {
     span.svg-wrapper {
 svg#Layer_1 
  { 
