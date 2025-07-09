@@ -55,9 +55,9 @@ button.button.header-actions__action.button-unstyled {
     grid-area: rightC !important; 
 }
     .header__columns.header-actions {
-        header-actions {
-        grid-area: rightC;
-        }
+    
+        grid-area: rightB;
+        
 
 
     }
