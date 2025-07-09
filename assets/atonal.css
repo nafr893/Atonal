@@ -50,7 +50,7 @@ padding-left: 2.5rem;
 a#account-icon.header-actions__action.action__account {
     grid-area: rightB !important; 
 }
-cart-drawer-component.cart-drawer {
+button.button.header-actions__action.button-unstyled {
     grid-area: rightC !important; 
 }
 
