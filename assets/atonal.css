@@ -85,9 +85,13 @@ a#account-icon.header-actions__action.action__account {
     span.svg-wrapper {
 svg#Layer_1 
  { 
-    width: 17.5px;
     align-self: center;
     margin-bottom: 2px;
+
+    path {
+        width: 17.5px;
+    }
+
 }
     }
 }
