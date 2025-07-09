@@ -45,7 +45,7 @@ padding-left: 2.5rem;
         grid-area: leftB !important;
     }
     .header__columns:not(:has(.account-actions)) .search-action {
-        grid-area: rightC !important; 
+        grid-area: rightA !important; 
         margin-right: .5rem;
     }
 a#account-icon.header-actions__action.action__account {
