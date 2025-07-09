@@ -1,3 +1,5 @@
+
+
 <script
   type="module"
   src="{{ 'cart-icon.js' | asset_url }}"
@@ -10,6 +12,20 @@
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
   {% endif %}
+
+
+  <!-- custom header account icon -->
+<a
+href="/pages/ws-account-create"
+class="header-actions__action action__account"
+aria-label="Accounts"
+>
+<span class="svg-wrapper">
+{{ 'icon-account.svg' | inline_asset_content }}
+</span>
+</a>
+<!-- end custom header account icon -->
+
 
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     {% render 'cart-drawer' %}
@@ -24,17 +40,7 @@
   {% endif %}
 
 
-<!-- custom header account icon -->
-<a
-href="/pages/ws-account-create"
-class="header-actions__action action__account"
-aria-label="Accounts"
->
-<span class="svg-wrapper">
-{{ 'icon-account.svg' | inline_asset_content }}
-</span>
-</a>
-<!-- end custom header account icon -->
+
 
 
 
