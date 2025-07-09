@@ -249,7 +249,7 @@
               "name": "t:names.email_signup",
               "settings": {
                 "width": "custom",
-                "custom_width": 30,
+                "custom_width": 25,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-5",
                 "border_style": "all",
