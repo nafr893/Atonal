@@ -350,7 +350,7 @@
             "thickness": 1,
             "corner_radius": "square",
             "width_percent": 100,
-            "padding-block-start": 0,
+            "padding-block-start": 45,
             "padding-block-end": 0
           },
           "blocks": {}
@@ -361,7 +361,7 @@
           "settings": {
             "divider_thickness": 0,
             "padding-block-start": 0,
-            "padding-block-end": 10
+            "padding-block-end": 0
           },
           "blocks": {
             "copyright": {
@@ -449,7 +449,7 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 50,
+        "gap": 0,
         "section_width": "full-width",
         "section_height": "",
         "color_scheme": "scheme-5",
@@ -457,7 +457,7 @@
         "video_position": "cover",
         "background_image_position": "cover",
         "padding-block-start": 60,
-        "padding-block-end": 20
+        "padding-block-end": 0
       }
     }
   },
