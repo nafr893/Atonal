@@ -249,7 +249,7 @@
               "name": "Email input",
               "settings": {
                 "width": "custom",
-                "custom_width": 50,
+                "custom_width": 30,
                 "inherit_color_scheme": true,
                 "color_scheme": "scheme-5",
                 "border_style": "all",
