@@ -61,6 +61,10 @@ header#shopify-section-sections--19068398567582__header_section {
 .header-logo__image {
     object-fit: cover; 
 }
+
+a.size-style.spacing-style.header-logo {
+    width: 5rem; 
+}
     }
 
     }
