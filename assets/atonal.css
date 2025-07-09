@@ -70,3 +70,10 @@ footer#shopify-section-sections--19068398534814__footer {
         width: 25% !important; 
     }
 }
+
+
+header#shopify-section-sections--19068398567582__header_section {
+span.menu-list__link-title:hover { 
+color: #1E00A5; 
+}
+}
