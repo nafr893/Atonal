@@ -79,3 +79,10 @@ span.menu-list__link-title:hover {
 color: #1E00A5; 
 }
 }
+
+/* account icon */ 
+.account-icon { 
+    width: 17.5px;
+    align-self: center;
+    margin-bottom: 2px;
+}
