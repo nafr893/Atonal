@@ -14,18 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "divider_hFm3am": {
-          "type": "_divider",
-          "name": "t:names.divider",
-          "settings": {
-            "thickness": 1,
-            "corner_radius": "square",
-            "width_percent": 100,
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
-        },
         "group_EbHdkc": {
           "type": "group",
           "name": "t:names.group",
@@ -362,7 +350,7 @@
             "thickness": 1,
             "corner_radius": "square",
             "width_percent": 100,
-            "padding-block-start": 0,
+            "padding-block-start": 50,
             "padding-block-end": 0
           },
           "blocks": {}
@@ -372,8 +360,8 @@
           "name": "t:names.footer_utilities",
           "settings": {
             "divider_thickness": 0,
-            "padding-block-start": 10,
-            "padding-block-end": 10
+            "padding-block-start": 20,
+            "padding-block-end": 20
           },
           "blocks": {
             "copyright": {
@@ -402,7 +390,7 @@
                 "inverse": true,
                 "font": "heading",
                 "unit": "percent",
-                "percent_width": 20,
+                "percent_width": 15,
                 "pixel_height": 48,
                 "custom_mobile_size": true,
                 "unit_mobile": "percent",
@@ -448,7 +436,6 @@
         }
       },
       "block_order": [
-        "divider_hFm3am",
         "group_EbHdkc",
         "divider_w66hNb",
         "footer_utilities_T4ygrW"
@@ -462,15 +449,15 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 48,
+        "gap": 0,
         "section_width": "full-width",
         "section_height": "",
         "color_scheme": "scheme-5",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
-        "padding-block-start": 0,
-        "padding-block-end": 48
+        "padding-block-start": 60,
+        "padding-block-end": 0
       }
     }
   },
