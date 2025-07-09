@@ -10,28 +10,18 @@
     height: 70%; 
   }
 
-
-
-
-
-
+div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
+padding-left: 2.5rem; 
+}
+}
+    
   /* footer styles */ 
   /* footer menu width */ 
 footer#shopify-section-sections--19068398534814__footer {
     .menu {
         width: 25% !important; 
     }
-}
-
-
-
-
-div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
-padding-left: 2.5rem; 
-}
-}
-    
-  
+}  
 
 
 
