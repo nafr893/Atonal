@@ -109,7 +109,7 @@
             "enable_filtering": true,
             "filter_style": "vertical",
             "filter_width": "centered",
-            "text_label_case": "uppercase",
+            "text_label_case": "default",
             "show_swatch_label": false,
             "show_filter_label": false,
             "enable_sorting": true,
