@@ -359,9 +359,9 @@
           "type": "footer-utilities",
           "name": "t:names.footer_utilities",
           "settings": {
-            "divider_thickness": 0,
-            "padding-block-start": 20,
-            "padding-block-end": 20
+            "divider_thickness": 1,
+            "padding-block-start": 10,
+            "padding-block-end": 10
           },
           "blocks": {
             "copyright": {
