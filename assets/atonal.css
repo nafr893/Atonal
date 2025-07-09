@@ -71,7 +71,7 @@ a.size-style.spacing-style.header-logo {
 /* mobile header divider settings */ 
 .mobile-header-divider {
     width: 1px; 
-    height: 80%; 
+    height: 50%; 
     background: #d9d9d9;
     grid-area: leftB !important; 
     align-content: center; 
