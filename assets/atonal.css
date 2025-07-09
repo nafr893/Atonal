@@ -72,7 +72,7 @@ a.size-style.spacing-style.header-logo {
     width: 1px; 
     height: 90%; 
     background: black;
-    grid-area: leftA !important; 
+    grid-area: leftB !important; 
     align-content: center; 
 }  
 
