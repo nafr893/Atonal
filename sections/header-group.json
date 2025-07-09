@@ -26,10 +26,24 @@
             "case": "uppercase"
           },
           "blocks": {}
+        },
+        "announcement_KHVcdD": {
+          "type": "_announcement",
+          "settings": {
+            "text": "<strong>FREE STANDARD SHIPPING USA ON ORDERS OVER $200</strong>",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "uppercase"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "announcement_JCqamL"
+        "announcement_JCqamL",
+        "announcement_KHVcdD"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
