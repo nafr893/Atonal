@@ -69,9 +69,11 @@ a.size-style.spacing-style.header-logo {
     width: 5rem; 
 }
 .mobile-header-divider {
-    width: 2px; 
-    height: 100%; 
+    width: 1px; 
+    height: 90%; 
     background: black;
+    grid-area: rightA; 
+    align-content: center; 
 }  
 
 }
