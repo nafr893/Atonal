@@ -51,8 +51,8 @@
         "section_width": "page-width",
         "color_scheme": "scheme-4",
         "divider_width": 0,
-        "padding-block-start": 10,
-        "padding-block-end": 12
+        "padding-block-start": 14,
+        "padding-block-end": 14
       }
     },
     "header_section": {
