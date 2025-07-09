@@ -244,23 +244,23 @@
                 "text_3L9Fjq"
               ]
             },
-            "email_signup_NcLwNb": {
+            "email_signup_43kbzK": {
               "type": "email-signup",
-              "name": "Email input",
+              "name": "t:names.email_signup",
               "settings": {
                 "width": "custom",
                 "custom_width": 30,
-                "inherit_color_scheme": true,
+                "inherit_color_scheme": false,
                 "color_scheme": "scheme-5",
                 "border_style": "all",
-                "border_width": 1,
+                "border_width": 3,
                 "border_radius": 0,
                 "input_type_preset": "paragraph",
-                "style_class": "button-unstyled",
+                "style_class": "button",
                 "display_type": "arrow",
-                "label": "Sign up",
+                "label": "SUBSCRIBE",
                 "integrated_button": false,
-                "button_type_preset": "paragraph",
+                "button_type_preset": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -350,7 +350,7 @@
           },
           "block_order": [
             "group_4aCyy7",
-            "email_signup_NcLwNb",
+            "email_signup_43kbzK",
             "group_QAarAx"
           ]
         },
