@@ -20,7 +20,7 @@
 
 footer#shopify-section-sections--19068398534814__footer {
     .menu {
-        width: 25%; 
+        width: 25% !important; 
     }
 }
 
