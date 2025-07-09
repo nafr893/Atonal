@@ -274,15 +274,15 @@
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
                     "vertical_alignment_flex_direction_column": "center",
-                    "gap": 20,
+                    "gap": 15,
                     "width": "fit-content",
                     "custom_width": 100,
                     "width_mobile": "fill",
                     "custom_width_mobile": 100,
                     "height": "fit",
                     "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
+                    "inherit_color_scheme": false,
+                    "color_scheme": "scheme-6",
                     "background_media": "none",
                     "video_position": "cover",
                     "background_image_position": "cover",
@@ -355,13 +355,13 @@
             "group_KiGzVy"
           ]
         },
-        "footer_utilities_KRaGcH": {
+        "footer_utilities_T4ygrW": {
           "type": "footer-utilities",
           "name": "t:names.footer_utilities",
           "settings": {
             "divider_thickness": 0,
-            "padding-block-start": 12,
-            "padding-block-end": 0
+            "padding-block-start": 20,
+            "padding-block-end": 20
           },
           "blocks": {
             "copyright": {
@@ -375,6 +375,7 @@
             },
             "policy_list": {
               "type": "_footer-policy-list",
+              "disabled": true,
               "static": true,
               "settings": {
                 "font_size": "0.75rem",
@@ -387,55 +388,7 @@
               "disabled": true,
               "static": true,
               "settings": {},
-              "blocks": {
-                "social_link_JnLXB6": {
-                  "type": "_social-link",
-                  "name": "Facebook",
-                  "settings": {
-                    "link": "https://www.facebook.com/shopify"
-                  },
-                  "blocks": {}
-                },
-                "social_link_9i9EqD": {
-                  "type": "_social-link",
-                  "name": "Instagram ",
-                  "settings": {
-                    "link": "https://www.instagram.com/shopify/#"
-                  },
-                  "blocks": {}
-                },
-                "social_link_kd8UUt": {
-                  "type": "_social-link",
-                  "name": "TikTok",
-                  "settings": {
-                    "link": "https://www.tiktok.com/@shopify"
-                  },
-                  "blocks": {}
-                },
-                "social_link_Qw9AXL": {
-                  "type": "_social-link",
-                  "name": "X / Twitter",
-                  "settings": {
-                    "link": "https://x.com/shopify"
-                  },
-                  "blocks": {}
-                },
-                "social_link_aAH768": {
-                  "type": "_social-link",
-                  "name": "YouTube",
-                  "settings": {
-                    "link": "https://www.youtube.com/shopify"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "social_link_JnLXB6",
-                "social_link_9i9EqD",
-                "social_link_kd8UUt",
-                "social_link_Qw9AXL",
-                "social_link_aAH768"
-              ]
+              "blocks": {}
             }
           },
           "block_order": []
@@ -444,7 +397,7 @@
       "block_order": [
         "divider_hFm3am",
         "group_EbHdkc",
-        "footer_utilities_KRaGcH"
+        "footer_utilities_T4ygrW"
       ],
       "name": "Footer",
       "settings": {
