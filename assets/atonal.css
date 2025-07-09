@@ -41,6 +41,13 @@ padding-left: 2.5rem;
 /* mobile styles */
     @media (max-width: 480px) {
 
+    .header__columns .header-logo {
+        grid-area: leftB !important;
+    }
+
+
+
+
 
     }
 
