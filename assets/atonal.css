@@ -19,7 +19,7 @@
   /* footer menu width */ 
 
 footer#shopify-section-sections--19068398534814__footer {
-    .menu {
+    accordion-custom.menu {
         width: 25% !important; 
     }
 }
