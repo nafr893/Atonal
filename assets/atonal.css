@@ -68,7 +68,13 @@ header#shopify-section-sections--19068398567582__header_section {
 a.size-style.spacing-style.header-logo {
     width: 5rem; 
 }
-    }
+.mobile-header-divider {
+    width: 2px; 
+    height: 100%; 
+    background: black;
+}  
+
+}
 
     }
 
