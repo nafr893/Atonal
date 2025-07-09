@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "logo": "shopify://shop_images/atonal_headwear_black_logo.png",
+    "logo_inverse": "shopify://shop_images/atonal_headwear_white_logo.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
@@ -245,10 +247,10 @@
           "shadow": "#000000",
           "primary_button_background": "#1e00a5",
           "primary_button_text": "#ffffff",
-          "primary_button_border": "#ffffff00",
+          "primary_button_border": "rgba(0,0,0,0)",
           "primary_button_hover_background": "#1c009c",
           "primary_button_hover_text": "#ffffff",
-          "primary_button_hover_border": "#00000000",
+          "primary_button_hover_border": "rgba(0,0,0,0)",
           "secondary_button_background": "#ffffffb0",
           "secondary_button_text": "#000000",
           "secondary_button_border": "#ffffffb0",
