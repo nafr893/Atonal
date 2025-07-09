@@ -14,18 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "divider_hFm3am": {
-          "type": "_divider",
-          "name": "t:names.divider",
-          "settings": {
-            "thickness": 1,
-            "corner_radius": "square",
-            "width_percent": 100,
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
-        },
         "group_EbHdkc": {
           "type": "group",
           "name": "t:names.group",
@@ -448,7 +436,6 @@
         }
       },
       "block_order": [
-        "divider_hFm3am",
         "group_EbHdkc",
         "divider_w66hNb",
         "footer_utilities_T4ygrW"
