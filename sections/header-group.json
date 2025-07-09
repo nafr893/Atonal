@@ -17,7 +17,7 @@
         "announcement_JCqamL": {
           "type": "_announcement",
           "settings": {
-            "text": "<strong>FREE STANDARD SHIPPING USA ON ORDERS OVER $200</strong>",
+            "text": "<strong>FREE SHIPPING USA ON ORDERS OVER $200</strong>",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "0.75rem",
