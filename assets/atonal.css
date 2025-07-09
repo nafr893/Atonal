@@ -56,9 +56,30 @@ a#account-icon.header-actions__action.action__account {
     
         grid-area: rightB;
         
-
-
     }
+
+/* account icon mobile */ 
+a#account-icon.header-actions__action.action__account {
+    span.svg-wrapper {
+svg#Layer_1 
+ { 
+    align-self: center;
+    margin-bottom: 2px; 
+    margin-left: 4px; 
+
+    path {
+        width: 15px;
+           stroke: #ffffff;
+    stroke-width: 4px;
+   
+    }
+
+}
+    }
+}
+
+
+
 
 /* button height for product cards */
     div#shopify-section-template--19068398928030__product_list_qU3bEB, div#shopify-section-template--19068398862494__main {
