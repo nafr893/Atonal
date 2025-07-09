@@ -7,10 +7,6 @@
   {% render 'variant-swatches', product_resource: product %}
 {%- enddoc -%}
 
-{% liquid
-  assign first_variant_id = product_resource.variants.first.id
-%}
-
 <swatches-variant-picker-component
   data-product-id="{{ product_resource.id }}"
   data-product-url="{{ product_resource.url }}"
@@ -59,7 +55,7 @@
                 {% if product_option_value.variant.id %}
                   data-variant-id="{{ product_option_value.variant.id }}"
                 {% endif %}
-                {% if product_option_value.selected or product_option_value.variant.id == first_variant_id %}
+                {% if product_option_value.selected %}
                   checked
                 {% endif %}
               >
