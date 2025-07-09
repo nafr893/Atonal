@@ -86,13 +86,14 @@ a#account-icon.header-actions__action.action__account {
 svg#Layer_1 
  { 
     align-self: center;
-    margin-bottom: 2px;
+    margin-bottom: 2px; 
+    margin-left: 2px; 
 
     path {
         width: 17.5px;
            stroke: #ffffff;
     stroke-width: 4px;
-    margin-left: 2px; 
+   
     }
 
 }
