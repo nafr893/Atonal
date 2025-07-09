@@ -81,8 +81,11 @@ color: #1E00A5;
 }
 
 /* account icon */ 
-.account-icon { 
+a#header-actions__action.action__account {
+svg#Layer_1 
+ { 
     width: 17.5px;
     align-self: center;
     margin-bottom: 2px;
+}
 }
