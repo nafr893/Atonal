@@ -428,7 +428,7 @@
                     "style_class": "button",
                     "width": "custom",
                     "custom_width": 100,
-                    "width_mobile": "fit-content",
+                    "width_mobile": "custom",
                     "custom_width_mobile": 100
                   },
                   "blocks": {}
@@ -513,11 +513,11 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2><strong>KEEP ME UPDATED</strong></h2>",
+                "text": "<h3><strong>KEEP ME UPDATED</strong></h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h2",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
