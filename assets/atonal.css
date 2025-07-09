@@ -45,15 +45,13 @@ padding-left: 2.5rem;
         grid-area: leftB !important;
     }
     .header__columns:not(:has(.account-actions)) .search-action {
-        grid-area: rightA !important; 
+        grid-area: rightC !important; 
         margin-right: .5rem;
     }
 a#account-icon.header-actions__action.action__account {
     grid-area: rightB !important; 
 }
-button.button.header-actions__action.button-unstyled {
-    grid-area: rightC !important; 
-}
+
     .header__columns.header-actions {
     
         grid-area: rightB;
