@@ -390,7 +390,7 @@
                 "inverse": true,
                 "font": "heading",
                 "unit": "percent",
-                "percent_width": 20,
+                "percent_width": 15,
                 "pixel_height": 48,
                 "custom_mobile_size": true,
                 "unit_mobile": "percent",
