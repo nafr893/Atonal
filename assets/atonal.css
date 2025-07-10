@@ -152,3 +152,43 @@ svg#Layer_1
 }
     }
 }
+}
+
+
+/* breadcrumbs styles css */
+nav.breadcrumbs {
+padding-top: 1%; 
+margin: 0px; 
+height: fit-content; 
+
+
+
+.breadcrumbs__list {
+  display: flex; 
+  align-items: baseline; 
+  margin: 0px; 
+  gap: 3px; 
+}
+
+ @media (max-width: 480px) {
+.breadcrumbs__list {
+padding-left: 10px !important ; 
+padding-top: 3px; 
+padding-bottom: 3px; 
+
+}
+}
+
+
+li#breadcrumb-text, a#breadcrumb-text {
+color: #2c2c2c; 
+font-size: 14px !important ; 
+}
+
+li#breadcrumb-text::marker {
+  display: none  !important ; 
+}
+
+
+
+}

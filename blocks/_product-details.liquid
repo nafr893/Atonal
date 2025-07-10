@@ -706,3 +706,13 @@
   ]
 }
 {% endschema %}
+
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'breadcrumbs' %}
+      {% render 'breadcrumbs', collection: collection %}
+    {% else %}
+      {%- render block.type, block: block -%}
+  {% endcase %}
+{% endfor %}
