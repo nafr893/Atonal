@@ -771,11 +771,11 @@
             "text_VxCCL3": {
               "type": "text",
               "settings": {
-                "text": "<h5>Stay in the loop for product drops, restocks and everything Atonal.</h5>",
+                "text": "<h6>Stay in the loop for product drops, restocks and everything Atonal.</h6>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
+                "type_preset": "h6",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
