@@ -186,7 +186,7 @@
                       "name": "t:names.product_inventory",
                       "settings": {
                         "inventory_threshold": 100,
-                        "show_inventory_quantity": false,
+                        "show_inventory_quantity": true,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
