@@ -13,6 +13,18 @@
     data-view-transition-type="product-details"
   {% endif %}
 >
+
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'breadcrumbs' %}
+      {% render 'breadcrumbs', collection: collection %}
+    {% else %}
+      {%- render block.type, block: block -%}
+  {% endcase %}
+{% endfor %}
+
+
   {% capture children %}
     <div class="view-product-title">
       <a
@@ -63,15 +75,6 @@
     }
   }
 {% endstylesheet %}
-
-{% for block in section.blocks %}
-  {% case block.type %}
-    {% when 'breadcrumbs' %}
-      {% render 'breadcrumbs', collection: collection %}
-    {% else %}
-      {%- render block.type, block: block -%}
-  {% endcase %}
-{% endfor %}
 
 
 
