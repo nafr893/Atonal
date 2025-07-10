@@ -821,7 +821,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h6>By signing up to the Atonal newsletter you are agreeing to allow us to email you. We will not share your email with any third parties.</h6>",
+                "text": "<p>By signing up to the Atonal newsletter you are agreeing to allow us to email you. We will not share your email with any third parties.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
