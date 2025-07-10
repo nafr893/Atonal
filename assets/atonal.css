@@ -182,7 +182,9 @@ padding-left: 10px !important ;
 padding-top: 3px; 
 padding-bottom: 3px; 
 
-
+li::marker {
+    content: '';
+  }
 }
 }
 
