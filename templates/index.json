@@ -772,8 +772,8 @@
               "type": "text",
               "settings": {
                 "text": "<h6>Stay in the loop for product drops, restocks and everything Atonal.</h6>",
-                "width": "fit-content",
-                "max_width": "normal",
+                "width": "100%",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-subheading--family)",
