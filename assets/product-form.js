@@ -4,7 +4,8 @@ import { ThemeEvents, CartAddEvent, CartErrorEvent, VariantUpdateEvent } from '@
 import { cartPerformance } from '@theme/performance';
 import { morph } from '@theme/morph';
 
-export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 2000;
+/* turning off add to cart animation for now */ 
+export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 0;
 
 /**
  * A custom element that manages an add to cart button.
