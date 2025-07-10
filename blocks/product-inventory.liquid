@@ -65,7 +65,7 @@
       aria-label="{{ 'accessibility.inventory_status' | t }}"
     >
       {%- if show_quantity -%}
-        {{ 'content.inventory_low_stock_show_count' | t: count: inventory_quantity }}
+        {{ 'content.inventory_low_stock_show_count' or 'content.inventory_in_stock' | t: count: inventory_quantity }}
       {%- else -%}
         {{- translation_key | t -}}
       {%- endif -%}
