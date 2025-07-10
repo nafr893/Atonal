@@ -181,9 +181,10 @@ height: fit-content;
 padding-left: 10px !important ; 
 padding-top: 3px; 
 padding-bottom: 3px; 
+padding-left: 0px; 
 
 li::marker {
-    content: '';
+    content: '' !important ;
   }
 }
 }
