@@ -200,7 +200,7 @@
                         "show_sale_price_first": true,
                         "show_installments": false,
                         "show_tax_info": false,
-                        "type_preset": "paragraph",
+                        "type_preset": "h5",
                         "width": "fit-content",
                         "alignment": "left",
                         "font": "var(--font-body--family)",
