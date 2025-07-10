@@ -17,8 +17,6 @@
   {% endif %}
 >
 
-{% render 'breadcrumbs', collection: collection %}
-
 {% for block in section.blocks %}
   {% case block.type %}
     {% when 'breadcrumbs' %}
@@ -30,6 +28,9 @@
 
 
   {% capture children %}
+    
+{% render 'breadcrumbs', collection: collection %}
+
     <div class="view-product-title">
       <a
         href="{{ product.selected_or_first_available_variant.url }}"
