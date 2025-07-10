@@ -1,55 +1,6 @@
 {% # import schema from '../schemas/blocks/_product-media-gallery.js' %}
 
-{%- comment -%}
-  Preload variant-specific image galleries from metafields
-{%- endcomment -%}
-<script type="application/json" id="VariantImageGalleries">
-  {
-    {%- for variant in product.variants -%}
-      "{{ variant.id }}": [
-        {%- for image in variant.metafields.custom.variant_gallery.value -%}
-          "{{ image | image_url: 'master' }}"{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]{% unless forloop.last %},{% endunless %}
-    {%- endfor -%}
-  }
-</script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const variantImageData = JSON.parse(
-      document.getElementById("VariantImageGalleries").textContent
-    );
-
-    const galleryContainer = document.querySelector(".product__media-list");
-    const variantSelect = document.querySelector("[name='id']");
-
-    if (!variantSelect || !galleryContainer) return;
-
-    variantSelect.addEventListener("change", function () {
-      const selectedVariantId = this.value;
-      const images = variantImageData[selectedVariantId];
-
-      if (!images || images.length === 0) return;
-
-      // Clear current gallery
-      galleryContainer.innerHTML = "";
-
-      // Inject new images
-      images.forEach((src, index) => {
-        const li = document.createElement("li");
-        li.className = "product__media-item";
-
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = `Variant Image ${index + 1}`;
-
-        li.appendChild(img);
-        galleryContainer.appendChild(li);
-      });
-    });
-  });
-</script>
 
 
 
