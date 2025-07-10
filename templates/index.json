@@ -810,7 +810,7 @@
                 "label": "SUBSCRIBE",
                 "integrated_button": false,
                 "button_type_preset": "",
-                "padding-block-start": 0,
+                "padding-block-start": 15,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
