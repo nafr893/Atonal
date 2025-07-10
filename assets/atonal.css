@@ -172,7 +172,7 @@ height: fit-content;
   padding-left: 0px; 
 
   li::marker {
-    display: none !important; 
+    content: '';
   }
 }
 
