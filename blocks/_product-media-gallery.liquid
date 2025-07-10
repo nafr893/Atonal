@@ -209,7 +209,7 @@
       {% endfor %}
     </div>
   {% else %}
-    {# Fallback to your original product media rendering #}
+   {% comment %} {# Fallback to your original product media rendering #} {% endcomment %}
     {% capture slides %}
       {% for media in sorted_media %}
         {% capture children %}
