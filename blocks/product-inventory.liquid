@@ -66,9 +66,9 @@
     >
       {%- if show_quantity -%}
         {{ 'content.inventory_low_stock_show_count' | t: count: inventory_quantity }}
-      {%- else -%}
+      {%- elseif show_quantity -%}
               {{ 'content.inventory_in_stock_show_count' | t: count: inventory_quantity }}
-       {%- elseif -%}
+       {%- else -%}
         {{- translation_key | t -}}
       {%- endif -%}
     </span>
