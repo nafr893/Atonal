@@ -39,7 +39,7 @@
     {% endfor %}
   </ul>
 {% else %}
-  {# Fallback to your original product media rendering #}
+  {% comment %} {# Fallback to your original product media rendering #} {% endcomment %}
   {% capture slides %}
     {% for media in sorted_media %}
       {% capture children %}
@@ -287,33 +287,58 @@
       class="media-gallery__grid list-unstyled"
       data-testid="media-gallery-grid"
     >
-      {% for media in sorted_media %}
-        <li
-          ref="media[]"
-          class="
-            product-media-container
-            product-media-container--{{ media.media_type }}
-            {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
-            {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
-          "
-          style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
-          {% if settings.transition_to_main_product and forloop.first %}
-            data-view-transition-type="product-image-transition"
-          {% endif %}
-        >
-          {%- if block.settings.zoom and media.media_type == 'image' -%}
-            <button
-              type="button"
-              class="button button-unstyled product-media-container__zoom-button"
-              aria-label="{{ 'actions.zoom' | t }}"
-              on:click="/zoom/{{ forloop.index0 }}"
-            >
-              <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
-            </button>
-          {%- endif -%}
-          {%- render 'product-media', media: media -%}
-        </li>
-      {% endfor %}
+      {% if variant_gallery and variant_gallery.size > 0 %}
+        {% for file in variant_gallery %}
+          <li class="product-media-container product-media-container--{{ file.media_type }}">
+            {% if file.media_type == 'image' %}
+              <img
+                src="{{ file | image_url: width: 800 }}"
+                alt="{{ file.alt | escape }}"
+                class="variant-gallery__image"
+                loading="lazy"
+              >
+            {% elsif file.media_type == 'video' %}
+              <video
+                class="variant-gallery__video"
+                controls
+                preload="metadata"
+                style="max-width:100%;border-radius:8px;"
+              >
+                <source src="{{ file | file_url }}">
+                Your browser does not support the video tag.
+              </video>
+            {% endif %}
+          </li>
+        {% endfor %}
+      {% else %}
+        {% for media in sorted_media %}
+          <li
+            ref="media[]"
+            class="
+              product-media-container
+              product-media-container--{{ media.media_type }}
+              {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
+              {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
+            "
+            style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
+            {% if settings.transition_to_main_product and forloop.first %}
+              data-view-transition-type="product-image-transition"
+            {% endif %}
+          >
+            {%- if block.settings.zoom and media.media_type == 'image' -%}
+              <button
+                type="button"
+                class="button button-unstyled product-media-container__zoom-button"
+                aria-label="{{ 'actions.zoom' | t }}"
+                on:click="/zoom/{{ forloop.index0 }}"
+              >
+                <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
+              </button>
+            {%- endif -%}
+            {%- render 'product-media', media: media -%}
+          </li>
+        {% endfor %}
+      {% endif %}
     </ul>
   {% endif %}
 
