@@ -1,6 +1,6 @@
 {% # import schema from '../schemas/blocks/_product-details' %}
 
-{% render 'breadcrumbs', collection: collection %}
+
 
 
 <div
@@ -17,6 +17,7 @@
   {% endif %}
 >
 
+{% render 'breadcrumbs', collection: collection %}
 
 {% for block in section.blocks %}
   {% case block.type %}
