@@ -1,10 +1,7 @@
 {%- doc -%}
   Renders a swatches variant picker, used within the product-swatches block.
-
   @param {object} product_resource - The product object, which contains variants and options.
-
-  @example
-  {% render 'variant-swatches', product_resource: product %}
+  @param {boolean} [force_variant_image] - If true, always show variant image for swatches.
 {%- enddoc -%}
 
 <swatches-variant-picker-component
@@ -27,14 +24,10 @@
         {%- for product_option_value in product_option.values -%}
           {% liquid
             assign featured_media = product_option_value.variant.featured_media
-
-            # If the variant has no featured media, and we have a combined listing product, then fall back to using the
-            # featured media of the child product that is linked to this option value.
             if featured_media == blank and product_option_value.product_url
               assign featured_media = product_option_value.variant.product.featured_media
             endif
           %}
-
           <li class="variant-option__swatch">
             <label
               data-media-id="{{ featured_media.id }}"
@@ -68,17 +61,14 @@
             </label>
           </li>
         {%- endfor -%}
-        <li
-          slot="more"
-        >
+        <li slot="more">
           <button
             class="hidden-swatches__count"
             aria-label="{{ 'actions.show_all_options' | t }}"
             on:click="/showAllSwatches"
           ></button>
         </li>
-      {% endcapture %}
-
+        {% endcapture %}
         {% render 'overflow-list', children: children, ref: 'overflowList', defer: true %}
       </fieldset>
     {%- endfor -%}
