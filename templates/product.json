@@ -16,23 +16,22 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "product": "{{ closest.product }}",
             "media_presentation": "carousel",
             "media_columns": "two",
-            "image_gap": 2,
-            "large_first_image": true,
+            "image_gap": 4,
+            "large_first_image": false,
             "icons_style": "none",
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "left",
-            "thumbnail_width": 72,
+            "thumbnail_width": 55,
             "aspect_ratio": "1",
             "media_radius": 0,
             "extend_media": false,
             "constrain_to_viewport": false,
             "zoom": true,
             "video_loop": false,
-            "hide_variants": false,
+            "hide_variants": true,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -44,14 +43,16 @@
           "type": "_product-details",
           "static": true,
           "settings": {
-            "gap": 20,
-            "sticky_details_desktop": true,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
             "inherit_color_scheme": true,
-            "color_scheme": "",
+            "color_scheme": "scheme-1",
             "background_media": "none",
             "video_position": "cover",
             "background_image_position": "cover",
@@ -67,6 +68,7 @@
           "blocks": {
             "group_icgrde": {
               "type": "group",
+              "name": "Header",
               "settings": {
                 "link": "",
                 "open_in_new_tab": false,
@@ -103,10 +105,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "text_Bc9tLL": {
+                "text_xrnftG": {
                   "type": "text",
                   "settings": {
-                    "text": "<h1><strong>{{ closest.product.title }}</strong></h1>",
+                    "text": "<h1>{{ closest.product.title }}</h1>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -128,98 +130,22 @@
                   },
                   "blocks": {}
                 },
-                "judge_me_reviews_preview_badge_igGxrN": {
-                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                  "settings": {}
-                },
-                "group_iyt7yq": {
-                  "type": "group",
+                "price_tVjtKg": {
+                  "type": "price",
                   "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "row",
-                    "vertical_on_mobile": false,
-                    "horizontal_alignment": "space-between",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 0,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 5,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "price_9rMHkF": {
-                      "type": "price",
-                      "settings": {
-                        "product": "{{ closest.product }}",
-                        "show_sale_price_first": true,
-                        "show_installments": false,
-                        "show_tax_info": false,
-                        "type_preset": "h4",
-                        "width": "fit-content",
-                        "alignment": "left",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "color": "var(--color-foreground)",
-                        "padding-block-start": 4,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "review_FGfTaK": {
-                      "type": "review",
-                      "disabled": true,
-                      "settings": {
-                        "product": "{{ closest.product }}",
-                        "stars_style": "shaded",
-                        "show_number": true,
-                        "rating_color": "primary",
-                        "type_preset": "paragraph",
-                        "alignment": "left"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "price_9rMHkF",
-                    "review_FGfTaK"
-                  ]
-                },
-                "product_inventory_PNJTKe": {
-                  "type": "product-inventory",
-                  "disabled": true,
-                  "settings": {
-                    "product": "{{ closest.product }}",
-                    "inventory_threshold": 10,
-                    "show_inventory_quantity": false,
-                    "padding-block-start": 0,
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
@@ -228,15 +154,13 @@
                 }
               },
               "block_order": [
-                "text_Bc9tLL",
-                "judge_me_reviews_preview_badge_igGxrN",
-                "group_iyt7yq",
-                "product_inventory_PNJTKe"
+                "text_xrnftG",
+                "price_tVjtKg"
               ]
             },
             "divider_VJhene": {
               "type": "_divider",
-              "disabled": true,
+              "name": "t:names.divider",
               "settings": {
                 "thickness": 1,
                 "corner_radius": "square",
@@ -246,35 +170,9 @@
               },
               "blocks": {}
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
-                "product": "{{ closest.product }}",
                 "variant_style": "buttons",
                 "show_swatches": true,
                 "alignment": "left",
@@ -288,7 +186,6 @@
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
-                "product": "{{ closest.product }}",
                 "stacking": true,
                 "show_pickup_availability": false,
                 "padding-block-start": 0,
@@ -300,27 +197,21 @@
                 "quantity": {
                   "type": "quantity",
                   "static": true,
-                  "settings": {
-                    "product": "{{ closest.product }}"
-                  },
+                  "settings": {},
                   "blocks": {}
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "product": "{{ closest.product }}",
                     "style_class": "button"
                   },
                   "blocks": {}
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
-                  "disabled": true,
                   "static": true,
-                  "settings": {
-                    "product": "{{ closest.product }}"
-                  },
+                  "settings": {},
                   "blocks": {}
                 }
               },
@@ -328,12 +219,13 @@
             },
             "group_JbmQwr": {
               "type": "group",
+              "name": "Policies",
               "settings": {
                 "link": "",
                 "open_in_new_tab": false,
-                "content_direction": "row",
-                "vertical_on_mobile": false,
-                "horizontal_alignment": "space-between",
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
                 "vertical_alignment": "center",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
@@ -366,12 +258,13 @@
               "blocks": {
                 "group_ntP7QE": {
                   "type": "group",
+                  "name": "Shipping policy",
                   "settings": {
                     "link": "",
                     "open_in_new_tab": false,
                     "content_direction": "row",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "center",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
@@ -404,9 +297,10 @@
                   "blocks": {
                     "icon_atCepq": {
                       "type": "icon",
+                      "name": "t:names.icon",
                       "settings": {
-                        "icon": "plant",
-                        "width": 34,
+                        "icon": "truck",
+                        "width": 16,
                         "link": "",
                         "open_in_new_tab": false
                       },
@@ -414,8 +308,9 @@
                     },
                     "text_GYmbzh": {
                       "type": "text",
+                      "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Natural ingredients</p>",
+                        "text": "<p>Reliable shipping</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -443,93 +338,15 @@
                     "text_GYmbzh"
                   ]
                 },
-                "group_cBVnPH": {
-                  "type": "group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "row",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "center",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "icon_F7QgrB": {
-                      "type": "icon",
-                      "settings": {
-                        "icon": "truck",
-                        "width": 34,
-                        "link": "",
-                        "open_in_new_tab": false
-                      },
-                      "blocks": {}
-                    },
-                    "text_KpdqwA": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Reliable shipping</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-primary--family)",
-                        "font_size": "",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "icon_F7QgrB",
-                    "text_KpdqwA"
-                  ]
-                },
                 "group_7xLQDW": {
                   "type": "group",
+                  "name": "Return policy",
                   "settings": {
                     "link": "",
                     "open_in_new_tab": false,
                     "content_direction": "row",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "center",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "flex-start",
@@ -562,9 +379,10 @@
                   "blocks": {
                     "icon_kqeLmr": {
                       "type": "icon",
+                      "name": "t:names.icon",
                       "settings": {
-                        "icon": "box",
-                        "width": 34,
+                        "icon": "return",
+                        "width": 16,
                         "link": "",
                         "open_in_new_tab": false
                       },
@@ -572,8 +390,9 @@
                     },
                     "text_97ypyG": {
                       "type": "text",
+                      "name": "t:names.text",
                       "settings": {
-                        "text": "<p>$50+ Free Shipping</p>",
+                        "text": "<p>Flexible returns</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -604,207 +423,55 @@
               },
               "block_order": [
                 "group_ntP7QE",
-                "group_cBVnPH",
                 "group_7xLQDW"
               ]
             },
-            "accordion_GkgNTg": {
-              "type": "accordion",
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
               "settings": {
-                "icon": "caret",
-                "dividers": true,
-                "type_preset": "h6",
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 15,
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {
-                "accordion_row_Ug76Xw": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "INGREDIENTS",
-                    "open_by_default": false
-                  },
-                  "blocks": {
-                    "text_dE83TU": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p><strong>Beeswax</strong> – Provides a light, natural hold while locking in moisture and protecting your beard from environmental stressors.</p><p><strong>Shea Butter</strong> – Deeply nourishes and softens, making your beard smooth and more manageable.</p><p><strong>Apricot Kernel Oil</strong> – Rich in vitamins and fatty acids to hydrate and condition without clogging pores.</p><p><strong>Virgin Organic Avocado Oil</strong> – Full of vitamins A, D, and E, it strengthens your beard while deeply moisturizing.</p><p><strong>Golden Organic Jojoba Oil</strong> – Mimics natural skin oils, balancing moisture and preventing irritation beneath the beard.</p><p><strong>Virgin Organic Argan Nut Oil</strong> – Known for its restorative properties, it nourishes and protects, adding shine and promoting healthy growth.</p><p><strong>Extra Virgin Organic Pumpkin Seed Oil</strong> – Rich in zinc and omega-3s, it helps to strengthen and condition hair, reducing breakage.</p><p><strong>Virgin Organic Rosehip Oil</strong> – Packed with vitamins A and C, it helps to regenerate skin and adds softness to your beard.</p><p><strong>Vitamin E Oil</strong> – An antioxidant that protects against environmental damage and helps your beard maintain its health and shine.</p><p><strong>Organic Sweet Almond Oil</strong> – Softens and smooths while reducing dryness and irritation.</p><p><strong>Grape Seed Oil</strong> – Lightweight and moisturizing, it nourishes without weighing your beard down.</p><p><strong>Essential Oils for Scent</strong> – A clean, fresh fragrance that leaves your beard smelling as good as it looks.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_dE83TU"
-                  ]
-                },
-                "accordion_row_UY9V9X": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "BENEFITS",
-                    "open_by_default": false
-                  },
-                  "blocks": {
-                    "text_nDwNih": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Softens and conditions even the most unruly beards</p><p>Provides light hold for shaping and styling</p><p>Hydrates and nourishes the beard and skin beneath</p><p>Adds healthy shine without the greasy feel</p><p>Reduces frizz and split ends</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_nDwNih"
-                  ]
-                },
-                "accordion_row_n7UjjA": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "HOW TO USE",
-                    "open_by_default": false
-                  },
-                  "blocks": {
-                    "text_Ab6kzc": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Scoop a small amount of <strong>El Jefe Beard Butter</strong> and rub between your palms until it melts. Apply evenly through a clean, damp beard. Style and shape as desired. Use daily for best results.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_Ab6kzc"
-                  ]
-                }
-              },
-              "block_order": [
-                "accordion_row_Ug76Xw",
-                "accordion_row_UY9V9X",
-                "accordion_row_n7UjjA"
-              ]
+              "blocks": {}
             }
           },
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "text_aEtTtq",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_JbmQwr",
-            "accordion_GkgNTg"
+            "text_aEtTtq"
           ]
         }
       },
       "settings": {
-        "product": "{{ closest.product }}",
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": true,
+        "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
-        "color_scheme": "scheme-2",
+        "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "17484524420c97b703": {
-      "type": "_blocks",
-      "blocks": {
-        "judge_me_reviews_review_widget_JWc8TQ": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_JWc8TQ"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-2",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 70,
-        "padding-block-end": 70
       }
     },
     "product_recommendations_qggXJq": {
@@ -812,8 +479,9 @@
       "blocks": {
         "text_cbcgyb": {
           "type": "text",
+          "name": "t:names.header",
           "settings": {
-            "text": "<h3><strong>RECOMMENDED PRODUCTS</strong></h3>",
+            "text": "<h3>You may also like </h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -836,10 +504,10 @@
           "blocks": {}
         },
         "static-product-card": {
-          "type": "product-card",
+          "type": "_product-card",
+          "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product": "{{ closest.product }}",
             "product_card_gap": 8,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -849,14 +517,14 @@
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "padding-inline-start": 15,
+            "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
             "product_card_gallery_DNizbJ": {
               "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
               "settings": {
-                "product": "{{ closest.product }}",
                 "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
@@ -870,7 +538,7 @@
               "blocks": {}
             },
             "group_zGryyP": {
-              "type": "group",
+              "type": "_product-card-group",
               "settings": {
                 "link": "",
                 "open_in_new_tab": false,
@@ -909,8 +577,8 @@
               "blocks": {
                 "product_title_Dk8awd": {
                   "type": "product-title",
+                  "name": "t:names.product_title",
                   "settings": {
-                    "product": "{{ closest.product }}",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -935,7 +603,6 @@
                 "price_AUnDAd": {
                   "type": "price",
                   "settings": {
-                    "product": "{{ closest.product }}",
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
@@ -957,9 +624,7 @@
                 },
                 "swatches_yPCmba": {
                   "type": "swatches",
-                  "disabled": true,
                   "settings": {
-                    "product": "{{ closest.product }}",
                     "product_swatches_alignment": "flex-start",
                     "product_swatches_alignment_mobile": "flex-start",
                     "hide_padding": false,
@@ -987,11 +652,12 @@
       "block_order": [
         "text_cbcgyb"
       ],
+      "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
         "recommendation_type": "related",
         "layout_type": "grid",
-        "carousel_on_mobile": true,
+        "carousel_on_mobile": false,
         "max_products": 4,
         "columns": 4,
         "mobile_columns": "2",
@@ -1001,7 +667,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -1009,7 +675,6 @@
   },
   "order": [
     "main",
-    "17484524420c97b703",
     "product_recommendations_qggXJq"
   ]
 }
