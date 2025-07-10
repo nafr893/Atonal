@@ -771,7 +771,7 @@
             "text_VxCCL3": {
               "type": "text",
               "settings": {
-                "text": "<h4>Stay in the loop for product drops, restocks and everything Atonal.</h4>",
+                "text": "<h5>Stay in the loop for product drops, restocks and everything Atonal.</h5>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",

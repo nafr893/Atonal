@@ -35,7 +35,7 @@
     "type_font_h4": "subheading",
     "type_size_h4": "24",
     "type_line_height_h4": "display-tight",
-    "type_font_h5": "heading",
+    "type_font_h5": "subheading",
     "type_size_h5": "18",
     "type_line_height_h5": "display-loose",
     "type_case_h5": "none",
