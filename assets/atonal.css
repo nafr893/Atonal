@@ -160,7 +160,7 @@ nav.breadcrumbs {
 padding-top: 1%; 
 margin: 0px; 
 height: fit-content; 
-padding-left: 0px; 
+
 
 
 
@@ -169,6 +169,11 @@ padding-left: 0px;
   align-items: baseline; 
   margin: 0px; 
   gap: 3px; 
+  padding-left: 0px; 
+
+  li::marker {
+    display: none !important; 
+  }
 }
 
  @media (max-width: 480px) {
@@ -176,6 +181,7 @@ padding-left: 0px;
 padding-left: 10px !important ; 
 padding-top: 3px; 
 padding-bottom: 3px; 
+
 
 }
 }
