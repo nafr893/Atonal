@@ -9,69 +9,6 @@
 
 {%- liquid
   assign selected_product = closest.product
-  assign selected_variant = selected_product.selected_or_first_available_variant
-  assign variant_gallery = selected_variant.metafields.custom.variant_gallery.value
--%}
-
-{% if variant_gallery and variant_gallery.size > 0 %}
-  <ul class="media-gallery__grid list-unstyled" data-testid="media-gallery-grid">
-    {% for file in variant_gallery %}
-      <li class="product-media-container product-media-container--{{ file.media_type }}">
-        {% if file.media_type == 'image' %}
-          <img
-            src="{{ file | image_url: width: 800 }}"
-            alt="{{ file.alt | escape }}"
-            class="variant-gallery__image"
-            loading="lazy"
-          >
-        {% elsif file.media_type == 'video' %}
-          <video
-            class="variant-gallery__video"
-            controls
-            preload="metadata"
-            style="max-width:100%;border-radius:8px;"
-          >
-            <source src="{{ file | file_url }}">
-            Your browser does not support the video tag.
-          </video>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <ul class="media-gallery__grid list-unstyled" data-testid="media-gallery-grid">
-    {% for media in sorted_media %}
-      <li
-        ref="media[]"
-        class="
-          product-media-container
-          product-media-container--{{ media.media_type }}
-          {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
-          {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
-        "
-        style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
-        {% if settings.transition_to_main_product and forloop.first %}
-          data-view-transition-type="product-image-transition"
-        {% endif %}
-      >
-        {%- if block.settings.zoom and media.media_type == 'image' -%}
-          <button
-            type="button"
-            class="button button-unstyled product-media-container__zoom-button"
-            aria-label="{{ 'actions.zoom' | t }}"
-            on:click="/zoom/{{ forloop.index0 }}"
-          >
-            <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
-          </button>
-        {%- endif -%}
-        {%- render 'product-media', media: media -%}
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
-
-{%- liquid
-  assign selected_product = closest.product
   assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
@@ -197,48 +134,34 @@
   data-presentation="{{ block.settings.media_presentation }}"
   {{ block.shopify_attributes }}
 >
-  {% if variant_gallery and variant_gallery.size > 0 %}
-    <div class="variant-gallery">
-      {% for image in variant_gallery %}
-        <img
-          src="{{ image | image_url: width: 800 }}"
-          alt="{{ image.alt | escape }}"
-          class="variant-gallery__image"
-          loading="lazy"
-        >
-      {% endfor %}
-    </div>
-  {% else %}
-   {% comment %} {# Fallback to your original product media rendering #} {% endcomment %}
-    {% capture slides %}
-      {% for media in sorted_media %}
-        {% capture children %}
-          {%- render 'product-media', media: media -%}
+  {% capture slides %}
+    {% for media in sorted_media %}
+      {% capture children %}
+        {%- render 'product-media', media: media -%}
+      {% endcapture %}
+      {% capture class %}
+        product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
+      {% endcapture %}
+      {% if block.settings.aspect_ratio == 'adapt' %}
+        {% capture style %}
+          --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
         {% endcapture %}
-        {% capture class %}
-          product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
-        {% endcapture %}
-        {% if block.settings.aspect_ratio == 'adapt' %}
-          {% capture style %}
-            --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
-          {% endcapture %}
-        {% endif %}
-        {% if block.settings.zoom and media.media_type == 'model' %}
-          {%- capture attributes -%}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-        {% elsif block.settings.zoom %}
-          {%- capture attributes -%}on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-        {% endif %}
+      {% endif %}
+      {% if block.settings.zoom and media.media_type == 'model' %}
+        {%- capture attributes -%}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
+      {% elsif block.settings.zoom %}
+        {%- capture attributes -%}on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
+      {% endif %}
 
-        {% render 'slideshow-slide',
-          index: forloop.index,
-          children: children,
-          class: class,
-          style: style,
-          attributes: attributes,
-        %}
-      {% endfor %}
-    {% endcapture %}
-  {% endif %}
+      {% render 'slideshow-slide',
+        index: forloop.index,
+        children: children,
+        class: class,
+        style: style,
+        attributes: attributes,
+      %}
+    {% endfor %}
+  {% endcapture %}
 
   {% if sorted_media.size > 1 %}
     {% capture controls %}
@@ -283,59 +206,37 @@
   %}
 
   {% if block.settings.media_presentation == 'grid' %}
-    <ul class="media-gallery__grid list-unstyled" data-testid="media-gallery-grid">
-      {% if variant_gallery and variant_gallery.size > 0 %}
-        {% for file in variant_gallery %}
-          <li class="product-media-container product-media-container--{{ file.media_type }}">
-            {% if file.media_type == 'image' %}
-              <img
-                src="{{ file | image_url: width: 800 }}"
-                alt="{{ file.alt | escape }}"
-                class="variant-gallery__image"
-                loading="lazy"
-              >
-            {% elsif file.media_type == 'video' %}
-              <video
-                class="variant-gallery__video"
-                controls
-                preload="metadata"
-                style="max-width:100%;border-radius:8px;"
-              >
-                <source src="{{ file | file_url }}">
-                Your browser does not support the video tag.
-              </video>
-            {% endif %}
-          </li>
-        {% endfor %}
-      {% else %}
-        {% for media in sorted_media %}
-          <li
-            ref="media[]"
-            class="
-              product-media-container
-              product-media-container--{{ media.media_type }}
-              {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
-              {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
-            "
-            style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
-            {% if settings.transition_to_main_product and forloop.first %}
-              data-view-transition-type="product-image-transition"
-            {% endif %}
-          >
-            {%- if block.settings.zoom and media.media_type == 'image' -%}
-              <button
-                type="button"
-                class="button button-unstyled product-media-container__zoom-button"
-                aria-label="{{ 'actions.zoom' | t }}"
-                on:click="/zoom/{{ forloop.index0 }}"
-              >
-                <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
-              </button>
-            {%- endif -%}
-            {%- render 'product-media', media: media -%}
-          </li>
-        {% endfor %}
-      {% endif %}
+    <ul
+      class="media-gallery__grid list-unstyled"
+      data-testid="media-gallery-grid"
+    >
+      {% for media in sorted_media %}
+        <li
+          ref="media[]"
+          class="
+            product-media-container
+            product-media-container--{{ media.media_type }}
+            {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
+            {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
+          "
+          style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
+          {% if settings.transition_to_main_product and forloop.first %}
+            data-view-transition-type="product-image-transition"
+          {% endif %}
+        >
+          {%- if block.settings.zoom and media.media_type == 'image' -%}
+            <button
+              type="button"
+              class="button button-unstyled product-media-container__zoom-button"
+              aria-label="{{ 'actions.zoom' | t }}"
+              on:click="/zoom/{{ forloop.index0 }}"
+            >
+              <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
+            </button>
+          {%- endif -%}
+          {%- render 'product-media', media: media -%}
+        </li>
+      {% endfor %}
     </ul>
   {% endif %}
 
@@ -588,7 +489,7 @@
   }
 
   .dialog-zoomed-gallery .product-media-container--video deferred-media,
-  .dialog-zoomed-gallery .product-media_container--external_video deferred-media {
+  .dialog-zoomed-gallery .product-media-container--external_video deferred-media {
     height: auto;
     aspect-ratio: var(--ratio);
   }
