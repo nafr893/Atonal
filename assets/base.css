@@ -2641,6 +2641,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 }
 
 /* Fly to cart animation */
+/* fly to cart currently disabled 
 fly-to-cart {
   position: fixed;
   width: 40px;
@@ -2660,6 +2661,8 @@ fly-to-cart {
   background-color: var(--color-foreground);
   transform: translate(var(--x, 0), var(--y, 0)) scale(var(--scale, 1));
 }
+
+*/
 
 /* ------------------------------------------------------------------------------ */
 

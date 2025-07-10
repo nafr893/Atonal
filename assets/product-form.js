@@ -72,7 +72,7 @@ export class AddToCartComponent extends Component {
   /**
    * Animates the fly to cart animation.
    */
-  /*
+
   #animateFlyToCart() {
     const { addToCartButton } = this.refs;
     const cartIcon = document.querySelector('.header-actions__cart-icon');
@@ -81,7 +81,7 @@ export class AddToCartComponent extends Component {
 
     if (!cartIcon || !addToCartButton || !image) return;
 
-    const flyToCartElement = /** @type {FlyToCart}  (document.createElement('fly-to-cart'));
+    const flyToCartElement = /** @type {FlyToCart} */ (document.createElement('fly-to-cart'));
 
     flyToCartElement.style.setProperty('background-image', `url(${image})`);
     flyToCartElement.source = addToCartButton;
@@ -90,7 +90,6 @@ export class AddToCartComponent extends Component {
     document.body.appendChild(flyToCartElement);
   }
 
-turn off fly to cart 
 
   /**
    * Animates the add to cart button.
