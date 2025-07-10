@@ -283,10 +283,7 @@
   %}
 
   {% if block.settings.media_presentation == 'grid' %}
-    <ul
-      class="media-gallery__grid list-unstyled"
-      data-testid="media-gallery-grid"
-    >
+    <ul class="media-gallery__grid list-unstyled" data-testid="media-gallery-grid">
       {% if variant_gallery and variant_gallery.size > 0 %}
         {% for file in variant_gallery %}
           <li class="product-media-container product-media-container--{{ file.media_type }}">
