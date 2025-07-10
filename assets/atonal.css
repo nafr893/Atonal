@@ -160,6 +160,7 @@ nav.breadcrumbs {
 padding-top: 1%; 
 margin: 0px; 
 height: fit-content; 
+padding-left: 0px; 
 
 
 
@@ -185,7 +186,7 @@ color: #2c2c2c;
 font-size: 14px !important ; 
 }
 
-li#breadcrumb-text::marker {
+li::marker {
   display: none  !important ; 
 }
 
