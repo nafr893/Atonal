@@ -130,6 +130,18 @@
                   },
                   "blocks": {}
                 },
+                "review_dEByki": {
+                  "type": "review",
+                  "name": "t:names.product_review_stars",
+                  "settings": {
+                    "stars_style": "shaded",
+                    "show_number": true,
+                    "rating_color": "primary",
+                    "type_preset": "paragraph",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
                 "group_K4L9fL": {
                   "type": "group",
                   "name": "t:names.group",
@@ -213,6 +225,7 @@
               },
               "block_order": [
                 "text_xrnftG",
+                "review_dEByki",
                 "group_K4L9fL"
               ]
             },
