@@ -64,13 +64,19 @@
       role="status"
       aria-label="{{ 'accessibility.inventory_status' | t }}"
     >
-      {%- if show_quantity and inventory_quantity <= 50 -%}
-        {{ 'content.inventory_low_stock_show_count' | t: count: inventory_quantity }}
-      {%- elsif show_quantity -%}
-              {{ 'content.inventory_in_stock_show_count' | t: count: inventory_quantity }}
-       {%- else -%}
-        {{- translation_key | t -}}
-      {%- endif -%}
+
+
+ {%- if inventory_quantity > 0 -%}
+  {%- if inventory_quantity <= 50 -%}
+    {{ 'content.inventory_low_stock_show_count' | t: count: inventory_quantity }}
+  {%- else -%}
+    {{ 'content.inventory_in_stock_show_count' | t: count: inventory_quantity }}
+  {%- endif -%}
+{%- else -%}
+  {{ translation_key | t }}
+{%- endif -%}
+
+
     </span>
   </span>
 </product-inventory>
