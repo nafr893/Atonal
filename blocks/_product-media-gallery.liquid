@@ -9,6 +9,12 @@
 
 {%- liquid
   assign selected_product = closest.product
+  assign selected_variant = selected_product.selected_or_first_available_variant
+  assign variant_gallery = selected_variant.metafields.custom.variant_gallery.value
+-%}
+
+{%- liquid
+  assign selected_product = closest.product
   assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
@@ -134,34 +140,48 @@
   data-presentation="{{ block.settings.media_presentation }}"
   {{ block.shopify_attributes }}
 >
-  {% capture slides %}
-    {% for media in sorted_media %}
-      {% capture children %}
-        {%- render 'product-media', media: media -%}
-      {% endcapture %}
-      {% capture class %}
-        product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
-      {% endcapture %}
-      {% if block.settings.aspect_ratio == 'adapt' %}
-        {% capture style %}
-          --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
+  {% if variant_gallery and variant_gallery.size > 0 %}
+    <div class="variant-gallery">
+      {% for image in variant_gallery %}
+        <img
+          src="{{ image | image_url: width: 800 }}"
+          alt="{{ image.alt | escape }}"
+          class="variant-gallery__image"
+          loading="lazy"
+        >
+      {% endfor %}
+    </div>
+  {% else %}
+    {# Fallback to your original product media rendering #}
+    {% capture slides %}
+      {% for media in sorted_media %}
+        {% capture children %}
+          {%- render 'product-media', media: media -%}
         {% endcapture %}
-      {% endif %}
-      {% if block.settings.zoom and media.media_type == 'model' %}
-        {%- capture attributes -%}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-      {% elsif block.settings.zoom %}
-        {%- capture attributes -%}on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-      {% endif %}
+        {% capture class %}
+          product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
+        {% endcapture %}
+        {% if block.settings.aspect_ratio == 'adapt' %}
+          {% capture style %}
+            --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
+          {% endcapture %}
+        {% endif %}
+        {% if block.settings.zoom and media.media_type == 'model' %}
+          {%- capture attributes -%}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
+        {% elsif block.settings.zoom %}
+          {%- capture attributes -%}on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
+        {% endif %}
 
-      {% render 'slideshow-slide',
-        index: forloop.index,
-        children: children,
-        class: class,
-        style: style,
-        attributes: attributes,
-      %}
-    {% endfor %}
-  {% endcapture %}
+        {% render 'slideshow-slide',
+          index: forloop.index,
+          children: children,
+          class: class,
+          style: style,
+          attributes: attributes,
+        %}
+      {% endfor %}
+    {% endcapture %}
+  {% endif %}
 
   {% if sorted_media.size > 1 %}
     {% capture controls %}
@@ -489,7 +509,7 @@
   }
 
   .dialog-zoomed-gallery .product-media-container--video deferred-media,
-  .dialog-zoomed-gallery .product-media-container--external_video deferred-media {
+  .dialog-zoomed-gallery .product-media_container--external_video deferred-media {
     height: auto;
     aspect-ratio: var(--ratio);
   }
