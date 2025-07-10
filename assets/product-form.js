@@ -4,8 +4,8 @@ import { ThemeEvents, CartAddEvent, CartErrorEvent, VariantUpdateEvent } from '@
 import { cartPerformance } from '@theme/performance';
 import { morph } from '@theme/morph';
 
-/* turning off add to cart animation for now */ 
-export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 0;
+
+export const ADD_TO_CART_TEXT_ANIMATION_DURATION = 2000;
 
 /**
  * A custom element that manages an add to cart button.
@@ -72,6 +72,7 @@ export class AddToCartComponent extends Component {
   /**
    * Animates the fly to cart animation.
    */
+  /*
   #animateFlyToCart() {
     const { addToCartButton } = this.refs;
     const cartIcon = document.querySelector('.header-actions__cart-icon');
@@ -80,7 +81,7 @@ export class AddToCartComponent extends Component {
 
     if (!cartIcon || !addToCartButton || !image) return;
 
-    const flyToCartElement = /** @type {FlyToCart} */ (document.createElement('fly-to-cart'));
+    const flyToCartElement = /** @type {FlyToCart}  (document.createElement('fly-to-cart'));
 
     flyToCartElement.style.setProperty('background-image', `url(${image})`);
     flyToCartElement.source = addToCartButton;
@@ -88,6 +89,8 @@ export class AddToCartComponent extends Component {
 
     document.body.appendChild(flyToCartElement);
   }
+
+turn off fly to cart 
 
   /**
    * Animates the add to cart button.
