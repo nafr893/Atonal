@@ -1,9 +1,11 @@
 {% # import schema from '../schemas/sections/product-information' %}
 
+
 <div class="mobile-breadcrumbs-title hidden--desktop">
   {% render 'breadcrumbs', collection: collection %}
   <h1 class="mobile-product-title">{{ product.title }}</h1>
 </div>
+
 
 {% liquid
   if section.settings.desktop_media_position == 'left'
