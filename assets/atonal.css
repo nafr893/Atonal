@@ -92,11 +92,11 @@ border-top: var(--style-border-width) solid var(--color-border);
 
 /* product page styles css */ 
 div.mobile-breadcrumbs-title.hidden--desktop {
-    padding-top: 1rem; 
-    padding-bottom: 1rem; 
+    padding-top: .5rem; 
+    padding-bottom: .5rem; 
     padding-left: 1rem; 
     padding-right: 1rem; 
-    font-size: 12px; 
+    font-size: 10px; 
     color: #656565
 }
 
