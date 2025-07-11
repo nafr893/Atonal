@@ -96,13 +96,11 @@ div.mobile-breadcrumbs-title.hidden--desktop {
     padding-bottom: 1rem; 
     padding-left: 1rem; 
     padding-right: 1rem; 
+    font-size: 12px; 
+    color: #656565
 }
 
-.mobile-product-title {
-    font-size: 24px; 
-    margin-top: 0px; 
-    
-}
+
 
 
 
