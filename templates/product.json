@@ -130,21 +130,9 @@
                   },
                   "blocks": {}
                 },
-                "review_dEByki": {
-                  "type": "review",
-                  "name": "t:names.product_review_stars",
-                  "settings": {
-                    "stars_style": "shaded",
-                    "show_number": true,
-                    "rating_color": "primary",
-                    "type_preset": "paragraph",
-                    "alignment": "left"
-                  },
-                  "blocks": {}
-                },
                 "group_K4L9fL": {
                   "type": "group",
-                  "name": "t:names.group",
+                  "name": "Price Desktop",
                   "settings": {
                     "link": "",
                     "open_in_new_tab": false,
@@ -181,19 +169,6 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "product_inventory_Uf9zcD": {
-                      "type": "product-inventory",
-                      "name": "t:names.product_inventory",
-                      "settings": {
-                        "inventory_threshold": 100,
-                        "show_inventory_quantity": true,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
                     "price_jWmkn7": {
                       "type": "price",
                       "settings": {
@@ -215,19 +190,43 @@
                         "padding-inline-end": 0
                       },
                       "blocks": {}
+                    },
+                    "review_y9HTyN": {
+                      "type": "review",
+                      "name": "t:names.product_review_stars",
+                      "settings": {
+                        "stars_style": "shaded",
+                        "show_number": true,
+                        "rating_color": "primary",
+                        "type_preset": "paragraph",
+                        "alignment": "left"
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
-                    "product_inventory_Uf9zcD",
-                    "price_jWmkn7"
+                    "price_jWmkn7",
+                    "review_y9HTyN"
                   ]
                 }
               },
               "block_order": [
                 "text_xrnftG",
-                "review_dEByki",
                 "group_K4L9fL"
               ]
+            },
+            "product_inventory_KCqyMp": {
+              "type": "product-inventory",
+              "name": "t:names.product_inventory",
+              "settings": {
+                "inventory_threshold": 100,
+                "show_inventory_quantity": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             },
             "text_xFCBbq": {
               "type": "text",
@@ -515,6 +514,7 @@
           },
           "block_order": [
             "group_icgrde",
+            "product_inventory_KCqyMp",
             "text_xFCBbq",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
