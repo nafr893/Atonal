@@ -100,10 +100,10 @@ div.mobile-breadcrumbs-title.hidden--desktop {
 
 nav.breadcrumbs li#breadcrumb-text, nav.breadcrumbs a#breadcrumb-text {
     color: #656565 !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
 }
 
-.product-title {
+h1.product-title {
     font-size: 24px !important; 
 }
 
