@@ -376,6 +376,16 @@
       window.ProductModel.loadShopifyXR();
     </script>
   {%- endif -%}
+
+  <!-- Liquid: Render the image for the selected variant -->
+  <div id="custom-variant-image">
+    {% assign selected_variant = product.selected_or_first_available_variant %}
+    {% if selected_variant.metafields.custom.variant_image %}
+      {% for file in selected_variant.metafields.custom.variant_image %}
+        <img src="{{ file | file_url }}" alt="Variant Image" />
+      {% endfor %}
+    {% endif %}
+  </div>
 </media-gallery>
 
 {% stylesheet %}
