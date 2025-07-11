@@ -302,6 +302,32 @@
               },
               "block_order": []
             },
+            "text_eJRLYj": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>For bulk orders, <a href=\"/pages/wholesale-registration-form\" title=\"Wholesale Registration Form\"><strong>register</strong></a> for a wholesale account or <a href=\"/pages/ws-account-login\" title=\"Wholesale Login\"><strong>login.</strong></a></p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": true,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 3,
+                "padding-block-end": 3,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "group_JbmQwr": {
               "type": "group",
               "name": "Policies",
@@ -518,6 +544,7 @@
             "text_xFCBbq",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "text_eJRLYj",
             "group_JbmQwr"
           ]
         }
