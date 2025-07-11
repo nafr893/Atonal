@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
             variant &&
             variant.metafields &&
             variant.metafields.custom &&
-            Array.isArray(variant.metafields.custom.variant_image)
+            Array.isArray(variant.metafields.custom.custom_variant_image)
           ) {
-            imageContainer.innerHTML = variant.metafields.custom.variant_image
+            imageContainer.innerHTML = variant.metafields.custom.custom_variant_image
               .map(url => `<img src="${url}" alt="Variant Image" />`)
               .join('');
           }
