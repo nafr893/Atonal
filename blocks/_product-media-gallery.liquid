@@ -382,7 +382,7 @@
     {% assign selected_variant = product.selected_or_first_available_variant %}
     {% if selected_variant.metafields.custom.variant_image %}
       {% for file in selected_variant.metafields.custom.variant_image %}
-        <img src="{{ file | file_url }}" alt="Variant Image" />
+        <img src="{{ file | file_url }}" alt="Variant Image" width="200" height="200" />
       {% endfor %}
     {% endif %}
   </div>
