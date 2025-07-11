@@ -200,6 +200,7 @@ height: fit-content;
 
   li::marker {
     content: '';
+    display: none !important ;
   }
 }
 
