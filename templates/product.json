@@ -671,7 +671,7 @@
                 "icon": "caret",
                 "dividers": true,
                 "type_preset": "h6",
-                "inherit_color_scheme": false,
+                "inherit_color_scheme": true,
                 "color_scheme": "scheme-1",
                 "border": "none",
                 "border_width": 1,
