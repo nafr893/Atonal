@@ -686,7 +686,7 @@
                 "accordion_row_VLQKrD": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Return policy",
+                    "heading": "DETAILS",
                     "open_by_default": true,
                     "icon": "none",
                     "width": 20
@@ -725,7 +725,7 @@
                 "accordion_row_tUbtMA": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping",
+                    "heading": "SHIPPING & RETURNS",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -734,7 +734,7 @@
                     "text_XEfQiB": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "<p>{{ closest.product.metafields.custom.shipping_and_return | metafield_tag }}</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -760,51 +760,11 @@
                   "block_order": [
                     "text_XEfQiB"
                   ]
-                },
-                "accordion_row_P7V9Bp": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Manufacturing",
-                    "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
-                  },
-                  "blocks": {
-                    "text_XxUCAf": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_XxUCAf"
-                  ]
                 }
               },
               "block_order": [
                 "accordion_row_VLQKrD",
-                "accordion_row_tUbtMA",
-                "accordion_row_P7V9Bp"
+                "accordion_row_tUbtMA"
               ]
             }
           },
