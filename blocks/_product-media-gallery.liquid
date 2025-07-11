@@ -376,16 +376,6 @@
       window.ProductModel.loadShopifyXR();
     </script>
   {%- endif -%}
-
-  <!-- Liquid: Render the image for the selected variant -->
-  <div id="custom-variant-image">
-    {% assign selected_variant = selected_product.selected_or_first_available_variant %}
-    {% if selected_variant.metafields.custom.custom_variant_image %}
-      {% for file in selected_variant.metafields.custom.custom_variant_image %}
-        <img src="{{ file | file_url }}" alt="Variant Image" width="200" height="200" />
-      {% endfor %}
-    {% endif %}
-  </div>
 </media-gallery>
 
 {% stylesheet %}
@@ -505,7 +495,7 @@
   }
 
   .dialog-zoomed-gallery .product-media-container--video deferred-media,
-  .dialog-zoomed-gallery .product-media_container--external_video deferred-media {
+  .dialog-zoomed-gallery .product-media-container--external_video deferred-media {
     height: auto;
     aspect-ratio: var(--ratio);
   }
