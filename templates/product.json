@@ -454,7 +454,7 @@
                       "type": "icon",
                       "name": "t:names.icon",
                       "settings": {
-                        "icon": "truck",
+                        "icon": "cotton",
                         "width": 16,
                         "link": "",
                         "open_in_new_tab": false
