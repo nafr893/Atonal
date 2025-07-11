@@ -107,6 +107,9 @@ div.product-information__grid.product-information--media-left.product-informatio
 h1 {
     font-size: 24px !important; 
 }
+product.price.text-block.text-left h5.spacing-style {
+    width: fit-content; 
+}
 
 }
 
