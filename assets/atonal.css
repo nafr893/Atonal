@@ -239,3 +239,11 @@ li::marker {
 
 
 }
+
+summary.details__header {
+    .accordion.details__header {
+font-size: 14px !important; 
+
+
+    }
+}
