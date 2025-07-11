@@ -103,11 +103,12 @@ nav.breadcrumbs li#breadcrumb-text, nav.breadcrumbs a#breadcrumb-text {
     font-size: 11px !important;
 }
 
-h1.product-title {
+div.product-information__grid.product-information--media-left.product-information__grid--half {
+h1 {
     font-size: 24px !important; 
 }
 
-
+}
 
 
 }
