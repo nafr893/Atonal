@@ -465,7 +465,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Reliable shipping</p>",
+                        "text": "<p>100% Cotton</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -547,7 +547,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Flexible returns</p>",
+                        "text": "<p>Multi Colors</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -629,7 +629,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Flexible returns</p>",
+                        "text": "<p>Adjustable</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
