@@ -1380,7 +1380,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>{{ closest.product.title }} Reviews</h3>",
+            "text": "<h4><strong>{{ closest.product.title }}</strong><strong> Reviews</strong></h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
