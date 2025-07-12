@@ -597,7 +597,7 @@
                           "name": "t:names.icon",
                           "settings": {
                             "icon": "cotton",
-                            "width": 40,
+                            "width": 30,
                             "link": "",
                             "open_in_new_tab": false
                           },
@@ -680,7 +680,7 @@
                           "settings": {
                             "icon": "cotton",
                             "image_upload": "shopify://shop_images/Screenshot_2025-07-12_at_9.09.27_AM.svg",
-                            "width": 40,
+                            "width": 30,
                             "link": "",
                             "open_in_new_tab": false
                           },
@@ -807,7 +807,7 @@
                           "name": "t:names.icon",
                           "settings": {
                             "icon": "measure",
-                            "width": 40,
+                            "width": 30,
                             "link": "",
                             "open_in_new_tab": false
                           },
@@ -889,7 +889,7 @@
                           "name": "t:names.icon",
                           "settings": {
                             "icon": "colors",
-                            "width": 40,
+                            "width": 30,
                             "link": "",
                             "open_in_new_tab": false
                           },
