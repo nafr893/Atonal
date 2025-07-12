@@ -105,6 +105,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "okendo_star_rating_PVn83n": {
+                  "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+                  "settings": {
+                    "product": "{{closest.product}}"
+                  }
+                },
                 "text_xrnftG": {
                   "type": "text",
                   "settings": {
@@ -191,36 +197,30 @@
                       },
                       "blocks": {}
                     },
-                    "okendo_star_rating_TAULqh": {
-                      "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+                    "product_inventory_6ABnwj": {
+                      "type": "product-inventory",
+                      "name": "t:names.product_inventory",
                       "settings": {
-                        "product": "{{closest.product}}"
-                      }
+                        "inventory_threshold": 100,
+                        "show_inventory_quantity": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "price_iAFr9q",
-                    "okendo_star_rating_TAULqh"
+                    "product_inventory_6ABnwj"
                   ]
-                },
-                "product_inventory_m9XEMc": {
-                  "type": "product-inventory",
-                  "name": "t:names.product_inventory",
-                  "settings": {
-                    "inventory_threshold": 100,
-                    "show_inventory_quantity": true,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
+                "okendo_star_rating_PVn83n",
                 "text_xrnftG",
-                "group_K4L9fL",
-                "product_inventory_m9XEMc"
+                "group_K4L9fL"
               ]
             },
             "text_VxYjiR": {
