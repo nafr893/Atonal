@@ -184,7 +184,7 @@
                         "type_preset": "custom",
                         "width": "fit-content",
                         "alignment": "left",
-                        "font": "var(--font-body--family)",
+                        "font": "var(--font-subheading--family)",
                         "font_size": "1.25rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
