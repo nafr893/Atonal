@@ -80,6 +80,15 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "content_for_index": [],
+    "blocks": {
+      "733389323033596483": {
+        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -87,7 +96,7 @@
           "foreground_heading": "#000000",
           "foreground": "#000000",
           "primary": "#000000",
-          "primary_hover": "#1e00a5",
+          "primary_hover": "#101010",
           "border": "#d9d9d9",
           "shadow": "#000000",
           "primary_button_background": "#1e00a5",
@@ -127,7 +136,7 @@
           "foreground": "#000000cf",
           "primary": "#000000cf",
           "primary_hover": "#000000",
-          "border": "#9e9e9e",
+          "border": "#d9d9d9",
           "shadow": "#000000",
           "primary_button_background": "#181818",
           "primary_button_text": "#ffffff",
@@ -161,7 +170,7 @@
       },
       "scheme-3": {
         "settings": {
-          "background": "#eef1ea",
+          "background": "#f9f9f9",
           "foreground_heading": "#000000",
           "foreground": "#000000cf",
           "primary": "#000000cf",
