@@ -234,7 +234,7 @@
               "settings": {
                 "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-primary--family)",
@@ -247,8 +247,8 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 15,
-                "padding-block-end": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 15,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
