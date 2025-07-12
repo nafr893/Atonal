@@ -130,12 +130,6 @@
                   },
                   "blocks": {}
                 },
-                "okendo_star_rating_YC8jPN": {
-                  "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-                  "settings": {
-                    "product": "{{closest.product}}"
-                  }
-                },
                 "group_K4L9fL": {
                   "type": "group",
                   "name": "Price Desktop",
@@ -175,27 +169,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "price_jWmkn7": {
-                      "type": "price",
+                    "okendo_star_rating_TAULqh": {
+                      "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
                       "settings": {
-                        "show_sale_price_first": true,
-                        "show_installments": false,
-                        "show_tax_info": false,
-                        "type_preset": "h5",
-                        "width": "fit-content",
-                        "alignment": "left",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "color": "var(--color-foreground)",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
+                        "product": "{{closest.product}}"
+                      }
                     },
                     "product_inventory_dK9Pkn": {
                       "type": "product-inventory",
@@ -212,15 +190,37 @@
                     }
                   },
                   "block_order": [
-                    "price_jWmkn7",
+                    "okendo_star_rating_TAULqh",
                     "product_inventory_dK9Pkn"
                   ]
+                },
+                "price_LBGzVP": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "h5",
+                    "width": "fit-content",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_xrnftG",
-                "okendo_star_rating_YC8jPN",
-                "group_K4L9fL"
+                "group_K4L9fL",
+                "price_LBGzVP"
               ]
             },
             "text_VxYjiR": {
