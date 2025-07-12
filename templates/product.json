@@ -130,32 +130,6 @@
                   },
                   "blocks": {}
                 },
-                "text_qwDkxz": {
-                  "type": "text",
-                  "name": "Product description",
-                  "settings": {
-                    "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-primary--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "group_K4L9fL": {
                   "type": "group",
                   "name": "Price Desktop",
@@ -238,7 +212,6 @@
               },
               "block_order": [
                 "text_xrnftG",
-                "text_qwDkxz",
                 "group_K4L9fL"
               ]
             },
@@ -248,6 +221,32 @@
               "settings": {
                 "inventory_threshold": 100,
                 "show_inventory_quantity": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_VxYjiR": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -944,6 +943,7 @@
           "block_order": [
             "group_icgrde",
             "product_inventory_KCqyMp",
+            "text_VxYjiR",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_PXHhWP",
