@@ -405,7 +405,7 @@
                       "settings": {
                         "text": "<p>{{ closest.product.metafields.custom.product_specs | metafield_tag }}</p>",
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
@@ -444,7 +444,7 @@
                       "settings": {
                         "text": "<p>{{ closest.product.metafields.custom.shipping_and_return | metafield_tag }}</p>",
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
