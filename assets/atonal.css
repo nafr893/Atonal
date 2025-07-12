@@ -254,6 +254,6 @@ font-size: 14px !important;
 
 /* product page styles no device css. */
 div.shopify-block-AYlVBclg3OWlBV0RQa__okendo_reviews_widget_QHUTpe {
-    width: 100% ;
-    
+    width: 100% !important;
+
 }
