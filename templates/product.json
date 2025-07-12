@@ -1376,6 +1376,32 @@
     "17523331806f87659f": {
       "type": "_blocks",
       "blocks": {
+        "text_Y8ec4R": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>{{ closest.product.title }}</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "okendo_reviews_widget_QHUTpe": {
           "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
@@ -1385,6 +1411,7 @@
         }
       },
       "block_order": [
+        "text_Y8ec4R",
         "okendo_reviews_widget_QHUTpe"
       ],
       "name": "Reviews Section",
