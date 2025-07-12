@@ -202,11 +202,25 @@
                     "price_iAFr9q",
                     "okendo_star_rating_TAULqh"
                   ]
+                },
+                "product_inventory_m9XEMc": {
+                  "type": "product-inventory",
+                  "name": "t:names.product_inventory",
+                  "settings": {
+                    "inventory_threshold": 100,
+                    "show_inventory_quantity": true,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_xrnftG",
-                "group_K4L9fL"
+                "group_K4L9fL",
+                "product_inventory_m9XEMc"
               ]
             },
             "text_VxYjiR": {
@@ -228,19 +242,6 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_inventory_WTtUy8": {
-              "type": "product-inventory",
-              "name": "t:names.product_inventory",
-              "settings": {
-                "inventory_threshold": 100,
-                "show_inventory_quantity": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -937,7 +938,6 @@
           "block_order": [
             "group_icgrde",
             "text_VxYjiR",
-            "product_inventory_WTtUy8",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
             "group_PXHhWP",
