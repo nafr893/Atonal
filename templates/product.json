@@ -1380,7 +1380,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>{{ closest.product.title }}</p>",
+            "text": "<h3>{{ closest.product.title }} Reviews</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1416,7 +1416,7 @@
       ],
       "name": "Reviews Section",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "center",
         "vertical_alignment": "center",
