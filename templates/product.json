@@ -902,7 +902,7 @@
               "settings": {
                 "text": "<p>We keep it simple with a one size fits all design that adjusts for every day comfort.</p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
