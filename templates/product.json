@@ -1139,7 +1139,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Earth_Friendly.webp",
+                "image": "{{ closest.product.metafields.custom.earth_friendly.value }}",
                 "link": "",
                 "image_ratio": "portrait",
                 "width": "fill",
@@ -1260,7 +1260,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Okeo_Tex_Certified.webp",
+                "image": "{{ closest.product.metafields.custom.okeo_tex_certified.value }}",
                 "link": "",
                 "image_ratio": "portrait",
                 "width": "fill",
