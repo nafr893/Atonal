@@ -1023,7 +1023,7 @@
               "settings": {
                 "text": "<p>We keep things clean by using recycled materials in all of our hats.</p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -1144,7 +1144,7 @@
               "settings": {
                 "text": "<p>Our hats are Oeko-Tex certified, ensuring they’re free from harmful substances and safe to wear.</p>",
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
