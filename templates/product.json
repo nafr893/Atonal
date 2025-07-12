@@ -226,6 +226,7 @@
             "text_VxYjiR": {
               "type": "text",
               "name": "Product description",
+              "disabled": true,
               "settings": {
                 "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
                 "width": "100%",
