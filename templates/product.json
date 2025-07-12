@@ -817,7 +817,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Adjustable</p>",
+                            "text": "<p>Adjustable Fit</p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
