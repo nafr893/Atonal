@@ -232,7 +232,7 @@
               "type": "text",
               "name": "Product description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
