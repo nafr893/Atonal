@@ -130,6 +130,12 @@
                   },
                   "blocks": {}
                 },
+                "okendo_star_rating_PVn83n": {
+                  "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+                  "settings": {
+                    "product": "{{closest.product}}"
+                  }
+                },
                 "group_K4L9fL": {
                   "type": "group",
                   "name": "Price Desktop",
@@ -209,18 +215,12 @@
                     "price_iAFr9q",
                     "product_inventory_6ABnwj"
                   ]
-                },
-                "okendo_star_rating_PVn83n": {
-                  "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-                  "settings": {
-                    "product": "{{closest.product}}"
-                  }
                 }
               },
               "block_order": [
                 "text_xrnftG",
-                "group_K4L9fL",
-                "okendo_star_rating_PVn83n"
+                "okendo_star_rating_PVn83n",
+                "group_K4L9fL"
               ]
             },
             "text_VxYjiR": {
