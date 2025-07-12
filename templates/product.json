@@ -130,6 +130,12 @@
                   },
                   "blocks": {}
                 },
+                "okendo_star_rating_YC8jPN": {
+                  "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+                  "settings": {
+                    "product": "{{closest.product}}"
+                  }
+                },
                 "group_K4L9fL": {
                   "type": "group",
                   "name": "Price Desktop",
@@ -191,36 +197,31 @@
                       },
                       "blocks": {}
                     },
-                    "okendo_star_rating_kWpEXp": {
-                      "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+                    "product_inventory_dK9Pkn": {
+                      "type": "product-inventory",
+                      "name": "t:names.product_inventory",
                       "settings": {
-                        "product": "{{closest.product}}"
-                      }
+                        "inventory_threshold": 100,
+                        "show_inventory_quantity": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
                     "price_jWmkn7",
-                    "okendo_star_rating_kWpEXp"
+                    "product_inventory_dK9Pkn"
                   ]
                 }
               },
               "block_order": [
                 "text_xrnftG",
+                "okendo_star_rating_YC8jPN",
                 "group_K4L9fL"
               ]
-            },
-            "product_inventory_KCqyMp": {
-              "type": "product-inventory",
-              "name": "t:names.product_inventory",
-              "settings": {
-                "inventory_threshold": 100,
-                "show_inventory_quantity": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             },
             "text_VxYjiR": {
               "type": "text",
@@ -936,7 +937,6 @@
           },
           "block_order": [
             "group_icgrde",
-            "product_inventory_KCqyMp",
             "text_VxYjiR",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
