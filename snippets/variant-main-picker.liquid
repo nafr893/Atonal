@@ -87,8 +87,8 @@
                 >
                 {% if variant_style == 'swatch' %}
                   {% liquid
-                    assign featured_media = selected_variant.metafields.custom.custom_variant_image
-
+                    assign featured_media = product_option_value.variant.featured_media
+                        # the line above will show the variant media for the color swatch. change to something else if you want to see color swatch itself.
                     # If the variant has no featured media, and we have a combined listing product, then fall back to
                     # using the featured media of the child product that is linked to this option value.
                     if featured_media == blank and product_option_value.product_url
