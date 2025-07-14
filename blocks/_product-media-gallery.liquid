@@ -15,7 +15,7 @@
 
 {%- liquid
   assign selected_product = closest.product
-  assign selected_variant_media = selected_variant.metafields.custom.custom_variant_image
+  assign selected_variant_media = selected_product.metafields.custom.custom_variant_image
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
   if block.settings.hide_variants
