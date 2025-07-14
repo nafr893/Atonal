@@ -263,8 +263,5 @@ div.okeReviews.oke-w {
 
 
 div.okeReviews.oke-sr {
-    div {
-        display: flex !important; 
-        flex-direction: row; 
-    }
+    width: 8rem; 
 }
