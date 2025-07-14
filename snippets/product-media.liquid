@@ -123,6 +123,16 @@
         -%}
     {% endcase %}
   {% endunless %}
+
+  {% assign variant_image_metafield = media.metafields.custom.custom_variant_image %}
+
+  {% if variant_image_metafield %}
+    {% for file in variant_image_metafield %}
+      <img src="{{ file | file_url }}" alt="Variant Image" class="product-media__image" />
+    {% endfor %}
+  {% elsif media.featured_media %}
+    <img src="{{ media.featured_media | image_url: width: 800 }}" alt="{{ media.title }}" class="product-media__image" />
+  {% endif %}
 </div>
 
 {% stylesheet %}
