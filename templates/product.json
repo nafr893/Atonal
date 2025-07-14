@@ -174,10 +174,33 @@
                       "settings": {
                         "product": "{{closest.product}}"
                       }
+                    },
+                    "price_BJfXbq": {
+                      "type": "price",
+                      "settings": {
+                        "show_sale_price_first": true,
+                        "show_installments": false,
+                        "show_tax_info": false,
+                        "type_preset": "custom",
+                        "width": "100%",
+                        "alignment": "right",
+                        "font": "var(--font-subheading--family)",
+                        "font_size": "1.25rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "color": "var(--color-foreground)",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
-                    "okendo_star_rating_EYa6Aj"
+                    "okendo_star_rating_EYa6Aj",
+                    "price_BJfXbq"
                   ]
                 },
                 "product_inventory_AbDJet": {
@@ -199,28 +222,6 @@
                 "group_K4L9fL",
                 "product_inventory_AbDJet"
               ]
-            },
-            "price_7dxXDQ": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "custom",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-subheading--family)",
-                "font_size": "1.25rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             },
             "text_VxYjiR": {
               "type": "text",
@@ -937,7 +938,6 @@
           },
           "block_order": [
             "group_icgrde",
-            "price_7dxXDQ",
             "text_VxYjiR",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
