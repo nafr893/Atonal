@@ -265,3 +265,7 @@ div.okeReviews.oke-w {
 span.oke-sr-label-text {
     display: none !important
 }
+
+div.okeReviews.oke-sr {
+    width: 8rem; 
+}
