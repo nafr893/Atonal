@@ -1018,7 +1018,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/adjustable_snapback.webp",
+                "image": "{{ closest.product.metafields.custom.flexible_sizing.value }}",
                 "link": "",
                 "image_ratio": "portrait",
                 "width": "fill",
@@ -1139,7 +1139,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Earth_Friendly.webp",
+                "image": "{{ closest.product.metafields.custom.earth_friendly.value }}",
                 "link": "",
                 "image_ratio": "portrait",
                 "width": "fill",
@@ -1260,7 +1260,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Okeo_Tex_Certified.webp",
+                "image": "{{ closest.product.metafields.custom.okeo_tex_certified.value }}",
                 "link": "",
                 "image_ratio": "portrait",
                 "width": "fill",
@@ -1380,7 +1380,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>{{ closest.product.title }} Reviews</h3>",
+            "text": "<h3><strong>{{ closest.product.title }}</strong><strong> Reviews</strong></h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1439,7 +1439,7 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 50,
+        "padding-block-start": 100,
         "padding-block-end": 50
       }
     },
