@@ -475,13 +475,3 @@
     justify-content: right;
   }
 {% endstylesheet %}
-
-{% assign variant_image_metafield = selected_variant.metafields.custom.custom_variant_image %}
-
-{% if variant_image_metafield %}
-  {% for file in variant_image_metafield %}
-    <img src="{{ file | file_url }}" alt="Variant Image" class="product-media__image" />
-  {% endfor %}
-{% elsif selected_variant.featured_media %}
-  <img src="{{ selected_variant.featured_media | image_url: width: 800 }}" alt="{{ selected_variant.title }}" class="product-media__image" />
-{% endif %}
