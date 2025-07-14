@@ -8,14 +8,14 @@
 
 {%- if block.settings.zoom -%}
   <script
-    src="{{ 'zoom-dialog.js' | asdispaset_url }}"
+    src="{{ 'zoom-dialog.js' | asset_url }}"
     type="module"
   ></script>
 {%- endif -%}
 
 {%- liquid
   assign selected_product = closest.product
-  assign selected_variant_media = selected_product.metafields.custom.custom_variant_image
+  assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
   if block.settings.hide_variants
