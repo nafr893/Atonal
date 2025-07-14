@@ -15,17 +15,95 @@
 
 {%- liquid
   assign selected_product = closest.product
-  assign variant_images = selected_product.selected_or_first_available_variant.metafields.custom.custom_variant_image
+  assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
+  assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
+  if block.settings.hide_variants
+    assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
+  endif
+
+  if block.settings.slideshow_controls_style == 'thumbnails'
+    assign controls_on_media = false
+  else
+    assign controls_on_media = true
+  endif
+
+  assign render_slideshow_controls = false
+
+  if block.settings.media_presentation == 'carousel' or block.settings.slideshow_controls_style == block.settings.slideshow_mobile_controls_style
+    assign render_slideshow_controls = true
+  endif
+
+  assign render_mobile_slideshow_controls = false
+
+  if block.settings.slideshow_controls_style != block.settings.slideshow_mobile_controls_style
+    assign slideshow_controls_class = 'mobile:hidden'
+
+    if block.settings.slideshow_mobile_controls_style != 'hint'
+      assign render_mobile_slideshow_controls = true
+    endif
+  endif
+
+  assign slideshow_controls_style = block.settings.slideshow_controls_style
+  # Use a counter instead of dots when there are many images to avoid cropping/overflow.
+  if slideshow_controls_style == 'dots' and selected_product.media.size > 15
+    assign slideshow_controls_style = 'counter'
+  endif
+
+  assign render_slideshow_arrows = false
+
+  if selected_product.media.size <= 1
+    assign slideshow_class = 'product-media-gallery__slideshow--single-media slideshow--single-media'
+  else
+    assign slideshow_class = ''
+
+    if block.settings.media_presentation == 'carousel'
+      assign render_slideshow_arrows = true
+    endif
+  endif
+
+  if slideshow_controls_style == 'thumbnails'
+    assign pagination_position = block.settings.thumbnail_position
+  else
+    assign pagination_position = 'center'
+  endif
+
+  # correct discrepancy between position settings for thumbnails and other controls
+  if pagination_position == 'bottom'
+    assign pagination_position = 'center'
+  endif
+
+  assign icons_position = 'center'
+
+  # Put the icons on the opposite side of the pagination controls
+  if block.settings.slideshow_controls_position == 'on_media'
+    if pagination_position == 'left'
+      assign icons_position = 'right'
+    elsif pagination_position == 'right'
+      assign icons_position = 'left'
+    endif
+  endif
+-%}
+
+{%- liquid
   assign sorted_media = '' | split: ','
+  if selected_variant_media
+    assign sorted_media = sorted_media | concat: selected_product.media | where: 'id', selected_variant_media.id
 
-  if variant_images and variant_images.size > 0
-    assign sorted_media = variant_images
+    for media in selected_product.media
+      if block.settings.hide_variants and variant_images contains media.src and sorted_media.size > 0
+        continue
+      endif
+
+      if media.id != selected_variant_media.id
+        assign found_media = selected_product.media | where: 'id', media.id
+        assign sorted_media = sorted_media | concat: found_media
+      endif
+    endfor
   else
     assign sorted_media = selected_product.media
   endif
-
-  assign has_image_drop = sorted_media | where: 'media_type', 'image'
+  assign has_image_drop = sorted_media | has: 'media_type', 'image'
 -%}
 {%- if has_image_drop -%}
   <script
