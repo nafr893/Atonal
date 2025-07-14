@@ -263,8 +263,8 @@ div.okeReviews.oke-w {
 
 
 div.data-oke-reviews-version {
-    div {
+    
         display: flex !important; 
         flex-direction: row; 
-    }
+    
 }
