@@ -264,6 +264,6 @@ div.okeReviews.oke-w {
 
 div.okeReviews.oke-sr {
     width: 8rem; 
-    animation: none !important; 
-    transition: none !important; 
+    display: flex; 
+    
 }
