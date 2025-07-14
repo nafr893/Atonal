@@ -262,9 +262,6 @@ div.okeReviews.oke-w {
 }
 
 
-div.okeReviews.oke-sr {
-    div {
-    
-     
-    }
+div.oke-sr-label-text {
+    display: none !important
 }
