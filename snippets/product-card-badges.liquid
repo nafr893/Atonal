@@ -30,18 +30,12 @@
         {% endif %}
       "
     >
-  {%- assign tags_string = product.tags | join: ',' | downcase -%}
-      {%- if product.available == false -%}
-        {{ 'content.product_badge_sold_out' | t }}
-      {%- elsif product.compare_at_price > product.price -%}
-        {{ 'content.product_badge_seller' | t }}
-  
-      {%- endif -%}
+
     </div>
   {%- endif -%}
   {%- if product.metafields.custom.is_best_seller == true or product.metafields.custom.is_best_seller == 'true' -%}
     <div class="product-badges__badge product-badges__badge--rectangle color-{{ settings.badge_seller_color_scheme }}">
-      {{ 'content.product_badge_seller' | t }}
+      {{ 'content.product_badge_best_seller' | t }}
     </div>
   {%- endif -%}
 </div>
