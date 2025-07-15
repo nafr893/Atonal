@@ -22,7 +22,8 @@
     <div
       class="
         product-badges__badge product-badges__badge--rectangle
-        {%- if product.tags contains 'seller' -%}
+{%- assign tags_string = product.tags | join: ',' | downcase -%}
+{%- if tags_string contains 'best seller' or tags_string contains 'best-seller' or tags_string contains 'seller' -%}
           color-{{ settings.badge_seller_color_scheme }}
         {% elsif product.available == false %}
           color-{{ settings.badge_sold_out_color_scheme }}
@@ -32,7 +33,8 @@
         {% endif %}
       "
     >
-     {%- if product.tags contains 'seller' -%}
+  {%- assign tags_string = product.tags | join: ',' | downcase -%}
+{%- if tags_string contains 'best seller' or tags_string contains 'best-seller' or tags_string contains 'seller' -%}
         {{ 'content.product_badge_seller' | t }}
       {%- elsif product.available == false -%}
         {{ 'content.product_badge_sold_out' | t }}
@@ -89,3 +91,4 @@
     padding-inline: var(--badge-rectangle-padding-inline);
   }
 {% endstylesheet %}
+
