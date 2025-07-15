@@ -1,4 +1,5 @@
 
+
 {% if product.variants.size > 1 %}
   <script id="AllVariantGalleriesJSON" type="application/json">
     {
@@ -9,23 +10,83 @@
   </script>
 {% endif %}
 
-  <style>
-    .hidden {
-      display: none !important;
-      opacity: 0;
-    }
-    [data-media-id], .media-item, .thumbnail, .product-media-container, .slideshow-slide, .media-gallery__grid li, .slideshow-controls__dots li {
-      opacity: 1;
-    }
-    .media-gallery[data-variant-images-initialized="true"] .slideshow-slide,
-    .media-gallery[data-variant-images-initialized="true"] .slideshow-controls__dots li,
-    .media-gallery[data-variant-images-initialized="true"] .thumbnail,
-    .media-gallery[data-variant-images-initialized="true"] .dialog-thumbnails-list__thumbnail {
-      display: block;
-    }
-  </style>
-
   <script>
+    (function() {
+      function getSelectedVariantId() {
+        const variantIdInput = document.querySelector('input[name="id"]:checked, select[name="id"] option[selected]');
+        if (variantIdInput) {
+          return variantIdInput.value || variantIdInput.getAttribute('value');
+        }
+        const productForm = document.querySelector('form[action*="/cart/add"]');
+        if (productForm) {
+          const idInput = productForm.querySelector('input[name="id"]');
+          if (idInput) return idInput.value;
+        }
+        return null;
+      }
+
+      function updateVariantImages(selectedColor, mediaGallery, variantGalleryImages) {
+        if (!mediaGallery) return;
+        mediaGallery.innerHTML = '';
+        if (!variantGalleryImages || variantGalleryImages.length === 0) {
+          return;
+        }
+        variantGalleryImages.forEach((imageObj, index) => {
+          const imageUrl = typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj;
+          const imageAlt = selectedColor ? selectedColor : `Variant Image ${index + 1}`;
+          const wrapper = document.createElement('div');
+          wrapper.className = 'product__media-item';
+          wrapper.style.display = 'block';
+          const img = document.createElement('img');
+          img.src = imageUrl;
+          img.alt = imageAlt;
+          img.loading = 'lazy';
+          wrapper.appendChild(img);
+          mediaGallery.appendChild(wrapper);
+        });
+        mediaGallery.setAttribute('data-variant-images-initialized', 'true');
+      }
+
+      function initVariantImages() {
+        const allVariantGalleriesJSON = document.getElementById('AllVariantGalleriesJSON');
+        const allVariantGalleries = allVariantGalleriesJSON ? JSON.parse(allVariantGalleriesJSON.textContent) : {};
+        const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
+        const productSection = document.querySelector('[data-product-id], .product-variant-id, .product-form, .product__form, [data-product-form], .product__info-container');
+        if (!mediaGallery || !productSection) return;
+        let selectedColor = null;
+        const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
+        if (variantSelects) {
+          const currentValues = Array.from(
+            variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
+          ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
+          selectedColor = currentValues.find(value => typeof value === 'string');
+        }
+        const selectedVariantId = getSelectedVariantId();
+        const variantGalleryImages = allVariantGalleries[selectedVariantId] || [];
+        updateVariantImages(selectedColor, mediaGallery, variantGalleryImages);
+      }
+
+      // Listen for Shopify section load (after AJAX variant change)
+      document.addEventListener('shopify:section:load', function(e) {
+        // Only run if this section is loaded
+        if (e.target && e.target.querySelector && e.target.querySelector('#AllVariantGalleriesJSON')) {
+          setTimeout(initVariantImages, 0);
+        }
+      });
+
+      // Listen for variant change events
+      document.addEventListener('variant:change', initVariantImages);
+      document.addEventListener('shopify:variant:change', initVariantImages);
+      document.addEventListener('product:variant-updated', initVariantImages);
+
+      // Initial run
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initVariantImages();
+      } else {
+        document.addEventListener('DOMContentLoaded', initVariantImages);
+      }
+    })();
+  </script>
     (function() {
       let lastSelectedColor = null;
       const allVariantGalleriesJSON = document.getElementById('AllVariantGalleriesJSON');
