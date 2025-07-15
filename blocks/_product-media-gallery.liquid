@@ -20,7 +20,7 @@
   endif
 
   assign selected_product = closest.product
-  assign selected_variant_media = selected_product.selected_or_first_available_variant.custom.custom_variant_image.value[1]
+  assign selected_variant_media = selected_product.selected_or_first_available_variant.custom.custom_variant_image[1]
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
   if block.settings.hide_variants
