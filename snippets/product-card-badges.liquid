@@ -44,6 +44,11 @@
       {%- endif -%}
     </div>
   {%- endif -%}
+  {%- if product.metafields.custom.is_best_seller == true or product.metafields.custom.is_best_seller == 'true' -%}
+    <div class="product-badges__badge product-badges__badge--rectangle color-{{ settings.badge_seller_color_scheme }}">
+      {{ 'content.product_badge_seller' | t }}
+    </div>
+  {%- endif -%}
 </div>
 
 <!-- product tags: {{ product.tags | join: ', ' }} -->
