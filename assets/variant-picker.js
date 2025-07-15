@@ -54,15 +54,24 @@ export default class VariantPicker extends Component {
       history.replaceState({}, '', url.toString());
     }
 
-    // 🔄 Custom hook to handle metafield media updates after variant change
+    // Custom hook to handle metafield media updates after variant change
     const metafieldScript = document.getElementById('VariantMediaMetafields');
     if (metafieldScript) {
       const metafieldMediaMap = JSON.parse(metafieldScript.textContent);
       if (variantId && metafieldMediaMap[variantId]) {
         const gallery = document.querySelector('[data-media-gallery]');
         if (gallery) {
-          // Inject logic to update media here
-          console.log(`Swap media for variant ${variantId}`);
+          const variantMediaIds = metafieldMediaMap[variantId];
+          const allGalleryItems = gallery.querySelectorAll('[data-media-id]');
+
+          allGalleryItems.forEach((item) => {
+            const mediaId = item.getAttribute('data-media-id');
+            if (variantMediaIds.includes(mediaId)) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
         }
       }
     }
