@@ -2,6 +2,10 @@
   {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
   {% if variant_gallery %}
 
+    <script id="VariantGalleryJSON" type="application/json">
+      {{ variant_gallery | json }}
+    </script>
+  {% endif %}
 
   <style>
     .hidden {
@@ -19,11 +23,11 @@
     }
   </style>
 
-    <script>
-      (function() {
-        let lastSelectedColor = null;
-        const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
-        const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
+  <script>
+    (function() {
+      let lastSelectedColor = null;
+      const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
+      const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
 
       function updateVariantImages(selectedColor, mediaGallery) {
         if (!mediaGallery) return;
@@ -111,10 +115,4 @@
       observer.observe(observerTarget, { childList: true, subtree: true });
     })();
   </script>
-
-
-    
-  {% endif %}
-
-
 {% endif %}
