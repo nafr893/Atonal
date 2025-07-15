@@ -742,6 +742,7 @@
               "name": "t:names.product_card",
               "settings": {
                 "product": "a500c",
+                "content_direction": "column",
                 "product_card_gap": 16,
                 "inherit_color_scheme": true,
                 "color_scheme": "",
@@ -1828,6 +1829,7 @@
               "name": "t:names.product_card",
               "settings": {
                 "product": "a500c",
+                "content_direction": "row",
                 "product_card_gap": 16,
                 "inherit_color_scheme": true,
                 "color_scheme": "",
