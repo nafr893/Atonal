@@ -22,10 +22,7 @@
     <div
       class="
         product-badges__badge product-badges__badge--rectangle
-{%- assign tags_string = product.tags | join: ',' | downcase -%}
-{%- if tags_string contains 'best seller' or tags_string contains 'best-seller' or tags_string contains 'seller' -%}
-          color-{{ settings.badge_seller_color_scheme }}
-        {% elsif product.available == false %}
+        {% if product.available == false %}
           color-{{ settings.badge_sold_out_color_scheme }}
         {% elsif product.compare_at_price > product.price %}
           color-{{ settings.badge_seller_color_scheme }}
@@ -34,9 +31,7 @@
       "
     >
   {%- assign tags_string = product.tags | join: ',' | downcase -%}
-{%- if tags_string contains 'best seller' or tags_string contains 'best-seller' or tags_string contains 'seller' -%}
-        {{ 'content.product_badge_seller' | t }}
-      {%- elsif product.available == false -%}
+      {%- if product.available == false -%}
         {{ 'content.product_badge_sold_out' | t }}
       {%- elsif product.compare_at_price > product.price -%}
         {{ 'content.product_badge_seller' | t }}
