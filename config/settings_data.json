@@ -44,7 +44,7 @@
     "type_line_height_h6": "display-loose",
     "page_width": "normal",
     "card_hover_effect": "none",
-    "badge_position": "top-right",
+    "badge_position": "top-left",
     "badge_corner_radius": 100,
     "badge_sale_color_scheme": "scheme-1",
     "badge_sold_out_color_scheme": "scheme-3",
