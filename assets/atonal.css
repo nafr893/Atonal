@@ -122,8 +122,13 @@ rte-formatter.spacing-style.text-block.text-block--AOElEaEJXMjFuMUdlM__text_cwd6
     }
 }
 
+/* hide review stars on mobile */
 
-
+product-card {
+div.okeReviews.oke-sr { 
+  display: none;   
+}
+}
 /* end mobile styles */
 }
     
@@ -268,7 +273,7 @@ span.oke-sr-label-text {
 
 div.okeReviews.oke-sr {
     width: 8rem; 
-    display: none; 
+    
 }
 
 rte-formatter.spacing-style.text-block.text-block--AOWJsT0U3ODB1MEtyR__text_qX9XbB.rte.rte  {
