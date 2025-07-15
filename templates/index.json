@@ -1933,7 +1933,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h5>A500C - Corduroy Snapback Hat</h5>",
+                    "text": "<h5><strong>A500C - Corduroy Snapback Hat</strong></h5>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
