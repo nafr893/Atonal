@@ -17,7 +17,7 @@
     --badge-text-transform: {{ settings.badge_text_transform }};
   "
 >
-  {%- if product.available == false or product.compare_at_price > product.price and product.available or product.tags contains 'best seller' -%}
+  {%- if product.available == false or product.compare_at_price > product.price and product.available or product.tags contains 'best-seller' -%}
     <!-- test best seller badge -->
     <div
       class="
@@ -26,7 +26,7 @@
           color-{{ settings.badge_sold_out_color_scheme }}
         {% elsif product.compare_at_price > product.price %}
           color-{{ settings.badge_sale_color_scheme }}
-        {% elsif product.tags contains 'best seller' %}
+        {% elsif product.tags contains 'best-seller' %}
           color-{{ settings.badge_best_seller_color_scheme }}
         {% endif %}
       "
@@ -35,7 +35,7 @@
         {{ 'content.product_badge_sold_out' | t }}
       {%- elsif product.compare_at_price > product.price -%}
         {{ 'content.product_badge_sale' | t }}
-      {%- elsif product.tags contains 'best seller' -%}
+      {%- elsif product.tags contains 'best-seller' -%}
         {{ 'content.product_badge_best_seller' | t }}
       {%- endif -%}
     </div>
