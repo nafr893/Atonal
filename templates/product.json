@@ -1714,7 +1714,7 @@
               "name": "t:names.text",
               "settings": {
                 "text": "<h4><strong>SIGN UP FOR EMAIL UPDATES</strong></h4>",
-                "width": "fit-content",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
