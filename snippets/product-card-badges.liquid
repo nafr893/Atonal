@@ -22,7 +22,7 @@
     <div
       class="
         product-badges__badge product-badges__badge--rectangle
-        {% if product.tags contains 'seller' %}
+        {%- if product.tags contains 'seller' -%}
           color-{{ settings.badge_seller_color_scheme }}
         {% elsif product.available == false %}
           color-{{ settings.badge_sold_out_color_scheme }}
