@@ -11,9 +11,16 @@
       display: none !important;
       opacity: 0;
     }
+    
+    /* Hide original media gallery when variant gallery is active */
+    media-gallery[data-variant-gallery-active="true"] .slideshow-slide:not([data-variant-image="true"]) {
+      display: none !important;
+    }
+    
     [data-media-id], .media-item, .thumbnail, .product-media-container, .slideshow-slide, .media-gallery__grid li, .slideshow-controls__dots li {
       opacity: 1;
     }
+    
     .media-gallery[data-variant-images-initialized="true"] .slideshow-slide,
     .media-gallery[data-variant-images-initialized="true"] .slideshow-controls__dots li,
     .media-gallery[data-variant-images-initialized="true"] .thumbnail,
@@ -24,94 +31,154 @@
 
   <script>
     (function() {
-      let lastSelectedColor = null;
       const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
       const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
-
-      function updateVariantImages(selectedColor, mediaGallery) {
-        if (!mediaGallery) return;
-        mediaGallery.innerHTML = '';
-
-        if (!variantGalleryImages || variantGalleryImages.length === 0) {
-          console.warn('No variant metafield images found.');
+      
+      function updateVariantImages(variant) {
+        console.log('Updating variant images for variant:', variant);
+        
+        if (!variant) {
+          console.log('No variant provided');
           return;
         }
-
-        variantGalleryImages.forEach((imageObj, index) => {
-          const imageUrl = typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj;
-          const imageAlt = selectedColor ? selectedColor : `Variant Image ${index + 1}`;
-
-          const wrapper = document.createElement('div');
-          wrapper.className = 'product__media-item';
-          wrapper.style.display = 'block';
-
-          const img = document.createElement('img');
-          img.src = imageUrl;
-          img.alt = imageAlt;
-          img.loading = 'lazy';
-
-          wrapper.appendChild(img);
-          mediaGallery.appendChild(wrapper);
-        });
-
-        mediaGallery.setAttribute('data-variant-images-initialized', 'true');
-      }
-
-      function initVariantImages() {
-        const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
-        const productSection = document.querySelector('[data-product-id], .product-variant-id, .product-form, .product__form, [data-product-form], .product__info-container');
-
-        if (!mediaGallery || !productSection) {
-          console.error('Selected Variant Image: Required elements not found.');
-          return;
-        }
-
-        const showVariantImage = () => {
-          let selectedColor = null;
-          const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
-
-          if (variantSelects) {
-            const currentValues = Array.from(
-              variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
-            ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
-
-            selectedColor = currentValues.find(value => typeof value === 'string');
+        
+        // Check if this variant has the custom variant gallery metafield
+        const variantGalleryMetafield = variant.metafields?.custom?.variant_gallery;
+        if (!variantGalleryMetafield || !variantGalleryMetafield.value) {
+          console.log('No variant gallery metafield found for variant:', variant.id);
+          // Show original media gallery if no variant gallery
+          const mediaGallery = document.querySelector('media-gallery');
+          if (mediaGallery) {
+            mediaGallery.removeAttribute('data-variant-gallery-active');
           }
-
-          if (selectedColor === lastSelectedColor) return;
-          lastSelectedColor = selectedColor;
-
-          updateVariantImages(selectedColor, mediaGallery);
-        };
-
-        showVariantImage();
-
-        productSection.addEventListener('change', showVariantImage);
-        productSection.addEventListener('variant:change', showVariantImage);
-        productSection.addEventListener('shopify:variant:change', showVariantImage);
-        productSection.addEventListener('product:variant-updated', showVariantImage);
+          return;
+        }
+        
+        const mediaGallery = document.querySelector('media-gallery');
+        const slideshow = mediaGallery?.querySelector('slideshow-component');
+        
+        if (!slideshow) {
+          console.log('No slideshow component found');
+          return;
+        }
+        
+        const variantImages = variantGalleryMetafield.value;
+        console.log('Found variant images:', variantImages);
+        
+        // Mark media gallery as having variant gallery active
+        mediaGallery.setAttribute('data-variant-gallery-active', 'true');
+        
+        // Clear existing slides
+        const slideshowContainer = slideshow.querySelector('slideshow-container');
+        if (slideshowContainer) {
+          slideshowContainer.innerHTML = '';
+          
+          // Create new slides for variant images
+          variantImages.forEach((imageObj, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'slideshow-slide product-media-container product-media-container--image';
+            slide.setAttribute('data-media-id', imageObj.id || index);
+            slide.setAttribute('data-slide-index', index);
+            slide.setAttribute('data-variant-image', 'true');
+            
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'product-media';
+            mediaDiv.style.setProperty('--ratio', '1');
+            mediaDiv.setAttribute('data-media-id', imageObj.id || index);
+            
+            const img = document.createElement('img');
+            img.src = imageObj.src || imageObj;
+            img.alt = imageObj.alt || '';
+            img.className = 'product-media__image';
+            img.loading = index === 0 ? 'eager' : 'lazy';
+            
+            mediaDiv.appendChild(img);
+            slide.appendChild(mediaDiv);
+            slideshowContainer.appendChild(slide);
+          });
+          
+          // Update slideshow controls if they exist
+          const controls = slideshow.querySelector('slideshow-controls');
+          if (controls) {
+            const dotsContainer = controls.querySelector('.slideshow-controls__dots');
+            if (dotsContainer) {
+              dotsContainer.innerHTML = '';
+              
+              variantImages.forEach((_, index) => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.className = 'slideshow-controls__dot';
+                button.setAttribute('data-slide-index', index);
+                button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                if (index === 0) button.classList.add('slideshow-controls__dot--active');
+                
+                li.appendChild(button);
+                dotsContainer.appendChild(li);
+              });
+            }
+          }
+          
+          // Reset slideshow to first slide
+          if (slideshow.select) {
+            slideshow.select(0);
+          }
+          
+          console.log('Successfully updated variant images');
+        }
       }
 
-      if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        initVariantImages();
-      } else {
-        document.addEventListener('DOMContentLoaded', initVariantImages);
+      // Intercept variant update events to prevent media gallery replacement
+      function interceptVariantUpdate(event) {
+        console.log('Intercepting variant update event:', event.detail);
+        const variant = event.detail?.resource;
+        
+        // Check if variant has gallery metafield
+        if (variant?.metafields?.custom?.variant_gallery?.value) {
+          console.log('Variant has custom gallery, preventing media gallery replacement');
+          // Stop the event from reaching the media gallery
+          event.stopImmediatePropagation();
+          // Update our custom variant images
+          updateVariantImages(variant);
+        }
       }
 
-      const observerTarget = document.querySelector('[data-product-id]') || document.body;
-      const observer = new MutationObserver((mutationsList) => {
-        for (const mutation of mutationsList) {
-          if (mutation.type === 'childList') {
-            const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
-            if (mediaGallery && !mediaGallery.hasAttribute('data-variant-images-initialized')) {
-              mediaGallery.setAttribute('data-variant-images-initialized', 'true');
-              initVariantImages();
-              break;
+      // Listen for variant update events with high priority (capture phase)
+      document.addEventListener('variant:update', interceptVariantUpdate, true);
+      
+      // Also listen on the product section specifically
+      const productSection = document.querySelector('.product-information, [data-product-id], .shopify-section');
+      if (productSection) {
+        productSection.addEventListener('variant:update', interceptVariantUpdate, true);
+      }
+      
+      // Initialize on page load
+      function initVariantGallery() {
+        // Try to get the initial variant from the page
+        const variantPicker = document.querySelector('variant-picker');
+        if (variantPicker) {
+          const selectedVariantId = variantPicker.selectedOptionId;
+          if (selectedVariantId) {
+            // Find the variant data in the script tags
+            const variantScript = document.querySelector('variant-picker script[type="application/json"]');
+            if (variantScript) {
+              try {
+                const variantData = JSON.parse(variantScript.textContent);
+                if (variantData && variantData.metafields?.custom?.variant_gallery?.value) {
+                  updateVariantImages(variantData);
+                }
+              } catch (e) {
+                console.error('Error parsing variant data:', e);
+              }
             }
           }
         }
-      });
-      observer.observe(observerTarget, { childList: true, subtree: true });
+      }
+      
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initVariantGallery();
+      } else {
+        document.addEventListener('DOMContentLoaded', initVariantGallery);
+      }
     })();
   </script>
 {% endif %}
