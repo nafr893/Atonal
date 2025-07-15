@@ -28,27 +28,18 @@
       const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
       const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
 
-      function updateVariantImages(variantOrColor, mediaGallery) {
+      function updateVariantImages(selectedColor, mediaGallery) {
         if (!mediaGallery) return;
+        mediaGallery.innerHTML = '';
 
-        let imagesToUse = [];
-
-        // If variantOrColor is an array (variant images), use them directly
-        if (Array.isArray(variantOrColor)) {
-          imagesToUse = variantOrColor;
-        } else if (variantGalleryImages && variantGalleryImages.length > 0) {
-          // Use the metafield images from the initial load
-          imagesToUse = variantGalleryImages;
-        } else {
+        if (!variantGalleryImages || variantGalleryImages.length === 0) {
           console.warn('No variant metafield images found.');
           return;
         }
 
-        mediaGallery.innerHTML = '';
-
-        imagesToUse.forEach((imageObj, index) => {
-          const imageUrl = typeof imageObj === 'object' && imageObj.src ? imageObj.src : (typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj);
-          const imageAlt = (typeof imageObj === 'object' && imageObj.alt) ? imageObj.alt : (variantOrColor ? variantOrColor : `Variant Image ${index + 1}`);
+        variantGalleryImages.forEach((imageObj, index) => {
+          const imageUrl = typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj;
+          const imageAlt = selectedColor ? selectedColor : `Variant Image ${index + 1}`;
 
           const wrapper = document.createElement('div');
           wrapper.className = 'product__media-item';
@@ -75,40 +66,22 @@
           return;
         }
 
-        const showVariantImage = (event) => {
-          let selectedVariant = null;
-          
-          // If this is a variant:update event, get the variant from the event detail
-          if (event && event.detail && event.detail.resource) {
-            selectedVariant = event.detail.resource;
-          } else {
-            // Otherwise, try to find the selected variant the old way
-            let selectedColor = null;
-            const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
+        const showVariantImage = () => {
+          let selectedColor = null;
+          const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
 
-            if (variantSelects) {
-              const currentValues = Array.from(
-                variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
-              ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
+          if (variantSelects) {
+            const currentValues = Array.from(
+              variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
+            ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
 
-              selectedColor = currentValues.find(value => typeof value === 'string');
-            }
-
-            if (selectedColor === lastSelectedColor) return;
-            lastSelectedColor = selectedColor;
+            selectedColor = currentValues.find(value => typeof value === 'string');
           }
 
-          // If we have a variant object, check for its metafield
-          if (selectedVariant && selectedVariant.metafields && selectedVariant.metafields.custom && selectedVariant.metafields.custom.variant_gallery) {
-            const variantImages = selectedVariant.metafields.custom.variant_gallery.value;
-            if (variantImages && variantImages.length > 0) {
-              updateVariantImages(variantImages, mediaGallery);
-              return;
-            }
-          }
+          if (selectedColor === lastSelectedColor) return;
+          lastSelectedColor = selectedColor;
 
-          // Fallback to the original color-based logic
-          updateVariantImages(selectedColor || selectedVariant, mediaGallery);
+          updateVariantImages(selectedColor, mediaGallery);
         };
 
         showVariantImage();
@@ -117,7 +90,6 @@
         productSection.addEventListener('variant:change', showVariantImage);
         productSection.addEventListener('shopify:variant:change', showVariantImage);
         productSection.addEventListener('product:variant-updated', showVariantImage);
-        productSection.addEventListener('variant:update', showVariantImage);
       }
 
       if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -125,17 +97,6 @@
       } else {
         document.addEventListener('DOMContentLoaded', initVariantImages);
       }
-
-      // Also listen for variant updates globally
-      document.addEventListener('variant:update', function(event) {
-        const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
-        if (mediaGallery && event.detail && event.detail.resource && event.detail.resource.metafields && event.detail.resource.metafields.custom && event.detail.resource.metafields.custom.variant_gallery) {
-          const variantImages = event.detail.resource.metafields.custom.variant_gallery.value;
-          if (variantImages && variantImages.length > 0) {
-            updateVariantImages(variantImages, mediaGallery);
-          }
-        }
-      });
 
       const observerTarget = document.querySelector('[data-product-id]') || document.body;
       const observer = new MutationObserver((mutationsList) => {
