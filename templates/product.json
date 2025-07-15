@@ -16,7 +16,7 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "carousel",
+            "media_presentation": "grid",
             "media_columns": "one",
             "image_gap": 4,
             "large_first_image": false,
@@ -31,7 +31,7 @@
             "constrain_to_viewport": true,
             "zoom": true,
             "video_loop": false,
-            "hide_variants": false,
+            "hide_variants": true,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
