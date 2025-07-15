@@ -1,4 +1,3 @@
-
 {%- doc -%}
   Renders a product media component.
 
@@ -13,45 +12,21 @@
   @param {boolean} [first_3d_model] - Indicates if this is the first 3D model.
 
   @example
-{% render 'product-media',
-  media: gallery,
-  is_metafield_image: true,
-  loading: 'lazy',
-  sizes: sizes
-%}
-
-
-
-  {%- enddoc -%}
+  {% render 'product-media', media: media, preview_image_only: false, loading: 'lazy' %}
+{%- enddoc -%}
 
 {% liquid
   assign widths = widths | default: '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000, 5000'
-  assign is_metafield_image = is_metafield_image | default: false
 %}
-
 
 <div
   class="product-media"
   style="--ratio: {{ media.aspect_ratio }}"
   data-media-id="{{ media.id }}"
 >
-
-{%- liquid
-  assign high_res_url = media.preview_image | image_url: width: 3840
--%}
-
-{% if is_metafield_image %}
-  {{
-    media
-    | image_url: width: 1946
-    | image_tag:
-      widths: widths,
-      alt: media.alt,
-      sizes: sizes,
-      loading: loading,
-      class: 'product-media__image'
-  }}
-{% else %}
+  {% liquid
+    assign high_res_url = media.preview_image | image_url: width: 3840
+  %}
   {{
     media.preview_image
     | image_url: width: 1946
@@ -64,8 +39,6 @@
       transitionToProduct: settings.transition_to_main_product,
       data_max_resolution: high_res_url
   }}
-{% endif %}
-
 
   {% unless preview_image_only %}
     {%- case media.media_type -%}
@@ -152,10 +125,7 @@
   {% endunless %}
 </div>
 
-
-
 {% stylesheet %}
-
   .product-media {
     aspect-ratio: var(--gallery-aspect-ratio, var(--ratio));
     min-height: 0;
@@ -230,4 +200,3 @@
     animation-duration: 0ms;
   }
 {% endstylesheet %}
- 
