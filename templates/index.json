@@ -925,6 +925,7 @@
                 "text_L3R9hy": {
                   "type": "text",
                   "name": "t:names.text",
+                  "disabled": true,
                   "settings": {
                     "text": "<p>{{ closest.product.metafields.custom.product_preview_description | metafield_tag }}</p>",
                     "width": "100%",
@@ -945,6 +946,20 @@
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "swatches_tiGByg": {
+                  "type": "swatches",
+                  "name": "t:names.swatches",
+                  "settings": {
+                    "product_swatches_alignment": "flex-start",
+                    "product_swatches_alignment_mobile": "flex-start",
+                    "hide_padding": false,
+                    "product_swatches_padding_top": 4,
+                    "product_swatches_padding_bottom": 0,
+                    "product_swatches_padding_left": 0,
+                    "product_swatches_padding_right": 0
                   },
                   "blocks": {}
                 },
@@ -970,6 +985,7 @@
                 "divider_9mQAA6",
                 "product_card_group_7HMgyp",
                 "text_L3R9hy",
+                "swatches_tiGByg",
                 "button_D6wNnC"
               ]
             }
