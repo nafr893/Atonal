@@ -1,7 +1,6 @@
 {% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
   {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
   {% if variant_gallery %}
-
     <script id="VariantGalleryJSON" type="application/json">
       {{ variant_gallery | json }}
     </script>
