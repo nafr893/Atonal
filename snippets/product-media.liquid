@@ -27,19 +27,18 @@
   {% liquid
     assign high_res_url = media.preview_image | image_url: width: 3840
   %}
-  <img
-    src="{{ media.preview_image | image_url: width: 1946 }}"
-    data-src="{{ media.preview_image | image_url: width: 1946 }}"
-    data-media-id="{{ media.id }}"
-    loading="{{ loading }}"
-    alt="{{ media.alt }}"
-    sizes="{{ sizes }}"
-    class="product-media__image"
-    transitionToProduct="{{ settings.transition_to_main_product }}"
-    data-max-resolution="{{ high_res_url }}"
-    width="{{ media.preview_image.width }}"
-    height="{{ media.preview_image.height }}"
-  >
+  {{
+    media.preview_image
+    | image_url: width: 1946
+    | image_tag:
+      widths: widths,
+      alt: media.alt,
+      sizes: sizes,
+      loading: loading,
+      class: 'product-media__image',
+      transitionToProduct: settings.transition_to_main_product,
+      data_max_resolution: high_res_url
+  }}
 
   {% unless preview_image_only %}
     {%- case media.media_type -%}
@@ -79,6 +78,7 @@
           </button>
 
           <template>
+            {% # Should I be using media_tag here instead like on Dawn? 🤔 %}
             {{ media | model_viewer_tag }}
           </template>
         </product-model>
