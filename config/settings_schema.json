@@ -1445,8 +1445,8 @@
       },
         {
         "type": "color_scheme",
-        "id": "badge_seller_color_scheme",
-        "label": "t:settings.badge_seller_color_scheme",
+        "id": "badge_best_seller_color_scheme",
+        "label": "t:settings.badge_best_seller_color_scheme",
         "default": "scheme-3"
       },
       {
