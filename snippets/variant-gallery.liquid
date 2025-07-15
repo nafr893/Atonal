@@ -1,18 +1,8 @@
 {% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
-  {% comment %} Create a JSON object with all variant metafield images {% endcomment %}
-  {% capture all_variant_galleries %}
-  {
-    {% for variant in product.variants %}
-      {% if variant.metafields.custom.variant_gallery.value %}
-        "{{ variant.id }}": {{ variant.metafields.custom.variant_gallery.value | json }}{% unless forloop.last %},{% endunless %}
-      {% endif %}
-    {% endfor %}
-  }
-  {% endcapture %}
-  
-  {% if all_variant_galleries contains ':' %}
-    <script id="AllVariantGalleriesJSON" type="application/json">
-      {{ all_variant_galleries }}
+  {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
+  {% if variant_gallery %}
+    <script id="VariantGalleryJSON" type="application/json">
+      {{ variant_gallery | json }}
     </script>
   {% endif %}
 
@@ -35,19 +25,15 @@
   <script>
     (function() {
       let lastSelectedColor = null;
-      const allVariantGalleriesJSON = document.getElementById('AllVariantGalleriesJSON');
-      const allVariantGalleries = allVariantGalleriesJSON ? JSON.parse(allVariantGalleriesJSON.textContent) : {};
+      const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
+      const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
 
       function updateVariantImages(selectedColor, mediaGallery) {
         if (!mediaGallery) return;
         mediaGallery.innerHTML = '';
 
-        // Get the currently selected variant ID
-        const selectedVariantId = getSelectedVariantId();
-        const variantGalleryImages = selectedVariantId && allVariantGalleries[selectedVariantId] ? allVariantGalleries[selectedVariantId] : null;
-
         if (!variantGalleryImages || variantGalleryImages.length === 0) {
-          console.warn('No variant metafield images found for selected variant:', selectedVariantId);
+          console.warn('No variant metafield images found.');
           return;
         }
 
@@ -69,25 +55,6 @@
         });
 
         mediaGallery.setAttribute('data-variant-images-initialized', 'true');
-      }
-
-      function getSelectedVariantId() {
-        // Try to get selected variant ID from variant form input
-        const variantIdInput = document.querySelector('input[name="id"], input[name="variant_id"], select[name="id"]');
-        if (variantIdInput && variantIdInput.value) {
-          return variantIdInput.value;
-        }
-        
-        // Try to get from URL params
-        const urlParams = new URLSearchParams(window.location.search);
-        const variantFromUrl = urlParams.get('variant');
-        if (variantFromUrl) {
-          return variantFromUrl;
-        }
-        
-        // Fallback to first available variant in our data
-        const firstVariantId = Object.keys(allVariantGalleries)[0];
-        return firstVariantId;
       }
 
       function initVariantImages() {
