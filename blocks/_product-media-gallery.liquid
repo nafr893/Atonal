@@ -14,7 +14,7 @@
   endif
 
   if has_variant
-    assign media_count = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value.count
+    assign media_count = product.selected_or_first_available_variant.metafields.custom.custom_variant_image.value.count
   else
     assign media_count = product.media.size
   endif
