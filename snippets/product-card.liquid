@@ -99,6 +99,7 @@
       {% if block.settings.padding-inline-end > 0 %}--zoom-out-padding-inline-end: min(var(--padding-xs), {{ block.settings.padding-inline-end | times: 0.7}}px);{% endif %}
       {% if block.settings.padding-block-start > 0 %}--zoom-out-padding-block-start: min(var(--padding-xs), {{ block.settings.padding-block-start | times: 0.7}}px);{% endif %}
       {% if block.settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block.settings.padding-block-end | times: 0.7}}px);{% endif %}
+      {% render 'layout-panel-style', settings: settings %}
     "
   >
     {{ children }}
