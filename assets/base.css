@@ -1970,7 +1970,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
      @media (max-width: 480px) {
     /* Mobile values */
     /* variant swatch sizes */
-    --max-swatch-size: 52px;
+    --max-swatch-size: 51px;
     --max-pill-size: 16px;
     --max-filter-size: 28px;
     --scaling-factor: 0.65;
