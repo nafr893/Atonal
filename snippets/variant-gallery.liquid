@@ -1,6 +1,26 @@
 {% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
   {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
   {% if variant_gallery %}
+    <script id="VariantGalleryJSON" type="application/json">
+      {{ variant_gallery | json }}
+    </script>
+  {% endif %}
+
+  <style>
+    .hidden {
+      display: none !important;
+      opacity: 0;
+    }
+    [data-media-id], .media-item, .thumbnail, .product-media-container, .slideshow-slide, .media-gallery__grid li, .slideshow-controls__dots li {
+      opacity: 1;
+    }
+    .media-gallery[data-variant-images-initialized="true"] .slideshow-slide,
+    .media-gallery[data-variant-images-initialized="true"] .slideshow-controls__dots li,
+    .media-gallery[data-variant-images-initialized="true"] .thumbnail,
+    .media-gallery[data-variant-images-initialized="true"] .dialog-thumbnails-list__thumbnail {
+      display: block;
+    }
+  </style>
 
   <script>
     (function() {
@@ -94,26 +114,4 @@
       observer.observe(observerTarget, { childList: true, subtree: true });
     })();
   </script>
-
-
-<style>
-    .hidden {
-      display: none !important;
-      opacity: 0;
-    }
-    [data-media-id], .media-item, .thumbnail, .product-media-container, .slideshow-slide, .media-gallery__grid li, .slideshow-controls__dots li {
-      opacity: 1;
-    }
-    .media-gallery[data-variant-images-initialized="true"] .slideshow-slide,
-    .media-gallery[data-variant-images-initialized="true"] .slideshow-controls__dots li,
-    .media-gallery[data-variant-images-initialized="true"] .thumbnail,
-    .media-gallery[data-variant-images-initialized="true"] .dialog-thumbnails-list__thumbnail {
-      display: block;
-    }
-  </style>
-
-    
-  {% endif %}
-
-  
 {% endif %}
