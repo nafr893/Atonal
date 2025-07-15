@@ -702,7 +702,7 @@
           "type": "group",
           "name": "t:names.group",
           "settings": {
-            "link": "",
+            "link": "shopify://products/a500c",
             "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -741,7 +741,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "link": "",
+                "link": "shopify://products/a500c",
                 "image_ratio": "adapt",
                 "width": "fill",
                 "custom_width": 100,
@@ -1477,8 +1477,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 50,
+        "padding-block-end": 50
       }
     },
     "section_37aQ4V": {
