@@ -1443,6 +1443,12 @@
         "label": "t:settings.badge_sale_color_scheme",
         "default": "scheme-4"
       },
+        {
+        "type": "color_scheme",
+        "id": "badge_best_seller_color_scheme",
+        "label": "t:settings.badge_best_seller_color_scheme",
+        "default": "scheme-3"
+      },
       {
         "type": "color_scheme",
         "id": "badge_sold_out_color_scheme",
