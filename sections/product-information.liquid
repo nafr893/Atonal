@@ -1,4 +1,19 @@
+{%- comment -%}
+Variant Gallery Initialization Script
+- Loads images from metafield "variant_gallery" for each variant
+- Injects JSON into <script> for dynamic access
+- Listens to Shopify variant change events and updates media dynamically
+{%- endcomment -%}
+
 {% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
+  <script id="VariantGalleryJSON" type="application/json">
+    {
+      {% for variant in product.variants %}
+        "{{ variant.id }}": {{ variant.metafields.custom.variant_gallery.value | json }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    }
+  </script>
+
   <style>
     .hidden {
       display: none !important;
@@ -16,35 +31,21 @@
   </style>
 
   <script>
-    (function () {
-      let lastVariantId = null;
+    (function() {
+      const variantGalleryJSON = document.getElementById('VariantGalleryJSON');
+      const variantGalleryMap = variantGalleryJSON ? JSON.parse(variantGalleryJSON.textContent) : {};
 
-      function fetchVariantMetafields(variantId) {
-        return fetch(`/variants/${variantId}.js`)
-          .then(res => res.ok ? res.json() : Promise.reject(res.status))
-          .then(data => {
-            // Shopify does not include metafields by default, so we assume they're passed via Liquid elsewhere
-            if (data?.featured_media) {
-              return {
-                media: data.featured_media.preview_image?.src || null,
-                id: data.id
-              };
-            }
-            return null;
-          });
-      }
+      function updateVariantImages(variantId) {
+        const images = variantGalleryMap[variantId];
+        const mediaGallery = document.querySelector('[data-product-media-gallery], .product__media, .product-media');
 
-      function renderVariantGallery(images = [], mediaGallery) {
-        if (!mediaGallery) return;
+        if (!images || !mediaGallery) return;
+
         mediaGallery.innerHTML = '';
 
-        if (!images.length) {
-          console.warn('No variant metafield images found');
-          return;
-        }
-
         images.forEach((imageObj, index) => {
-          const imageUrl = typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj;
+          const imageUrl = typeof imageObj === 'object' ? imageObj.image : imageObj;
+
           const wrapper = document.createElement('div');
           wrapper.className = 'product__media-item';
           wrapper.style.display = 'block';
@@ -61,67 +62,23 @@
         mediaGallery.setAttribute('data-variant-images-initialized', 'true');
       }
 
-      function getCurrentVariantId() {
-        const variantInput = document.querySelector('[name="id"]');
-        return variantInput ? variantInput.value : null;
-      }
-
-      function getMetafieldImagesFromDOM(variantId) {
-        const metafieldScript = document.querySelector(`script[data-variant-metafield="${variantId}"]`);
-        if (!metafieldScript) return [];
-
-        try {
-          return JSON.parse(metafieldScript.textContent || '[]');
-        } catch (err) {
-          console.warn('Failed to parse metafield JSON for variant:', variantId);
-          return [];
+      document.addEventListener('variant:change', function(e) {
+        const variant = e.detail?.variant;
+        if (variant && variant.id) {
+          updateVariantImages(variant.id.toString());
         }
-      }
+      });
 
-      function initVariantImages() {
-        const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
-        const productSection = document.querySelector('[data-product-id], .product-form, .product__form');
-
-        if (!mediaGallery || !productSection) {
-          console.error('Media or product section not found.');
-          return;
+      document.addEventListener('DOMContentLoaded', () => {
+        const firstVariantId = Object.keys(variantGalleryMap)[0];
+        if (firstVariantId) {
+          updateVariantImages(firstVariantId);
         }
-
-        const onVariantChange = () => {
-          const currentVariantId = getCurrentVariantId();
-          if (!currentVariantId || currentVariantId === lastVariantId) return;
-
-          lastVariantId = currentVariantId;
-
-          const metafieldImages = getMetafieldImagesFromDOM(currentVariantId);
-          renderVariantGallery(metafieldImages, mediaGallery);
-        };
-
-        // Initial load
-        onVariantChange();
-
-        // Add listeners
-        ['change', 'variant:change', 'shopify:variant:change', 'product:variant-updated'].forEach(evt => {
-          productSection.addEventListener(evt, onVariantChange);
-        });
-      }
-
-      if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        initVariantImages();
-      } else {
-        document.addEventListener('DOMContentLoaded', initVariantImages);
-      }
+      });
     })();
   </script>
-
-  {% for variant in product.variants %}
-    {% if variant.metafields.custom.variant_gallery.value %}
-      <script type="application/json" data-variant-metafield="{{ variant.id }}">
-        {{ variant.metafields.custom.variant_gallery.value | json }}
-      </script>
-    {% endif %}
-  {% endfor %}
 {% endif %}
+
 
 
 {% # import schema from '../schemas/sections/product-information' %}
