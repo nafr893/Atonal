@@ -802,7 +802,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>New arrivals</h2>",
+                    "text": "<h4>New arrivals</h4>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
