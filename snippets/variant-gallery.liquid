@@ -90,6 +90,9 @@
         productSection.addEventListener('variant:change', showVariantImage);
         productSection.addEventListener('shopify:variant:change', showVariantImage);
         productSection.addEventListener('product:variant-updated', showVariantImage);
+        
+        // Listen for the theme's variant update event
+        productSection.addEventListener('variant:update', showVariantImage);
       }
 
       if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -112,6 +115,13 @@
         }
       });
       observer.observe(observerTarget, { childList: true, subtree: true });
+      
+      // Also listen globally for variant updates since the media gallery gets replaced
+      document.addEventListener('variant:update', (event) => {
+        setTimeout(() => {
+          initVariantImages();
+        }, 100);
+      });
     })();
   </script>
 {% endif %}
