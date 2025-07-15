@@ -30,6 +30,11 @@ padding-left: 2.5rem;
 }
 }
 
+/* hide product showcase on desktop */ 
+div#shopify-section-template--19068398928030__section_kcRhCb {
+    display: none; 
+}
+
 
 /* end desktop styles */ 
 }
@@ -129,6 +134,14 @@ div.okeReviews.oke-sr {
   display: none;   
 }
 }
+
+/* hide product showcase mobile */ 
+div#shopify-section-template--19068398928030__section_7Bj7ET {
+    display: none; 
+}
+
+
+
 /* end mobile styles */
 }
     
