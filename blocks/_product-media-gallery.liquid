@@ -20,7 +20,7 @@
   endif
 
   assign selected_product = closest.product
-  assign selected_variant_media = selected_product.selected_or_first_available_variant.custom.custom_variant_image.value[1]
+  assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
   if block.settings.hide_variants
@@ -57,7 +57,7 @@
 
   assign render_slideshow_arrows = false
 
-  if media_count <= 1
+  if selected_product.media.size <= 1
     assign slideshow_class = 'product-media-gallery__slideshow--single-media slideshow--single-media'
   else
     assign slideshow_class = ''
