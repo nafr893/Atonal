@@ -1,18 +1,10 @@
-{%- comment -%}
-Variant Gallery Initialization Script
-- Loads images from metafield "variant_gallery" for each variant
-- Injects JSON into <script> for dynamic access
-- Listens to Shopify variant change events and updates media dynamically
-{%- endcomment -%}
-
 {% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
-  <script id="VariantGalleryJSON" type="application/json">
-    {
-      {% for variant in product.variants %}
-        "{{ variant.id }}": {{ variant.metafields.custom.variant_gallery.value | json }}{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    }
-  </script>
+  {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
+  {% if variant_gallery %}
+    <script id="VariantGalleryJSON" type="application/json">
+      {{ variant_gallery | json }}
+    </script>
+  {% endif %}
 
   <style>
     .hidden {
@@ -32,19 +24,22 @@ Variant Gallery Initialization Script
 
   <script>
     (function() {
-      const variantGalleryJSON = document.getElementById('VariantGalleryJSON');
-      const variantGalleryMap = variantGalleryJSON ? JSON.parse(variantGalleryJSON.textContent) : {};
+      let lastSelectedColor = null;
+      const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
+      const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
 
-      function updateVariantImages(variantId) {
-        const images = variantGalleryMap[variantId];
-        const mediaGallery = document.querySelector('[data-product-media-gallery], .product__media, .product-media');
-
-        if (!images || !mediaGallery) return;
-
+      function updateVariantImages(selectedColor, mediaGallery) {
+        if (!mediaGallery) return;
         mediaGallery.innerHTML = '';
 
-        images.forEach((imageObj, index) => {
-          const imageUrl = typeof imageObj === 'object' ? imageObj.image : imageObj;
+        if (!variantGalleryImages || variantGalleryImages.length === 0) {
+          console.warn('No variant metafield images found.');
+          return;
+        }
+
+        variantGalleryImages.forEach((imageObj, index) => {
+          const imageUrl = typeof imageObj === 'object' && imageObj.image ? imageObj.image : imageObj;
+          const imageAlt = selectedColor ? selectedColor : Variant Image ${index + 1};
 
           const wrapper = document.createElement('div');
           wrapper.className = 'product__media-item';
@@ -52,7 +47,7 @@ Variant Gallery Initialization Script
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          img.alt = `Variant Image ${index + 1}`;
+          img.alt = imageAlt;
           img.loading = 'lazy';
 
           wrapper.appendChild(img);
@@ -62,24 +57,64 @@ Variant Gallery Initialization Script
         mediaGallery.setAttribute('data-variant-images-initialized', 'true');
       }
 
-      document.addEventListener('variant:change', function(e) {
-        const variant = e.detail?.variant;
-        if (variant && variant.id) {
-          updateVariantImages(variant.id.toString());
-        }
-      });
+      function initVariantImages() {
+        const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
+        const productSection = document.querySelector('[data-product-id], .product-variant-id, .product-form, .product__form, [data-product-form], .product__info-container');
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const firstVariantId = Object.keys(variantGalleryMap)[0];
-        if (firstVariantId) {
-          updateVariantImages(firstVariantId);
+        if (!mediaGallery || !productSection) {
+          console.error('Selected Variant Image: Required elements not found.');
+          return;
+        }
+
+        const showVariantImage = () => {
+          let selectedColor = null;
+          const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
+
+          if (variantSelects) {
+            const currentValues = Array.from(
+              variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
+            ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
+
+            selectedColor = currentValues.find(value => typeof value === 'string');
+          }
+
+          if (selectedColor === lastSelectedColor) return;
+          lastSelectedColor = selectedColor;
+
+          updateVariantImages(selectedColor, mediaGallery);
+        };
+
+        showVariantImage();
+
+        productSection.addEventListener('change', showVariantImage);
+        productSection.addEventListener('variant:change', showVariantImage);
+        productSection.addEventListener('shopify:variant:change', showVariantImage);
+        productSection.addEventListener('product:variant-updated', showVariantImage);
+      }
+
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        initVariantImages();
+      } else {
+        document.addEventListener('DOMContentLoaded', initVariantImages);
+      }
+
+      const observerTarget = document.querySelector('[data-product-id]') || document.body;
+      const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'childList') {
+            const mediaGallery = document.querySelector('[data-product-media-gallery], media-gallery, .product__media, .product-media, .media-container, [data-product-media]');
+            if (mediaGallery && !mediaGallery.hasAttribute('data-variant-images-initialized')) {
+              mediaGallery.setAttribute('data-variant-images-initialized', 'true');
+              initVariantImages();
+              break;
+            }
+          }
         }
       });
+      observer.observe(observerTarget, { childList: true, subtree: true });
     })();
   </script>
 {% endif %}
-
-
 
 {% # import schema from '../schemas/sections/product-information' %}
 
