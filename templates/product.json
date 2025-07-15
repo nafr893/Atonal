@@ -1713,7 +1713,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h6>Sign up for email updates</h6>",
+                "text": "<h5>Sign up for email updates</h5>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
