@@ -21,10 +21,9 @@
 <script>
 (function() {
   let productDataCache = null;
-  let lastSelectedColor = null;
+  let lastSelectedVariantId = null;
 
-  function updateVariantImages(selectedColor, mediaItems, thumbnailButtons, sliders, gridItems, dotItems, mediaGallery) {
-    const normalizedSelectedColor = selectedColor ? selectedColor.toLowerCase().replace(/\s+/g, '') : null;
+  function updateVariantImages(selectedVariantId, mediaItems, thumbnailButtons, sliders, gridItems, dotItems, mediaGallery) {
     let foundMatchingImages = false;
 
     // Hide all images, thumbnails, grid items, and pagination dots
@@ -37,74 +36,84 @@
     gridItems.forEach(gridItem => gridItem.classList.add('hidden'));
     dotItems.forEach(dot => dot.classList.add('hidden'));
 
-    if (normalizedSelectedColor) {
-      // Show only images, thumbnails, grid items, and dots matching the selected color
-      mediaItems.forEach((mediaItem, index) => {
-        const img = mediaItem.tagName === 'IMG' ? mediaItem : mediaItem.querySelector('img');
-        if (img?.alt) {
-          const altText = img.alt.toLowerCase().replace(/\s+/g, '');
-          if (altText.includes(normalizedSelectedColor)) {
+    if (selectedVariantId && productDataCache?.variants) {
+      // Find the selected variant
+      const selectedVariant = productDataCache.variants.find(v => v.id == selectedVariantId);
+      
+      if (selectedVariant && selectedVariant.metafields && selectedVariant.metafields.custom && selectedVariant.metafields.custom.variant_gallery) {
+        const variantGallery = selectedVariant.metafields.custom.variant_gallery;
+        const variantMediaIds = Array.isArray(variantGallery) ? variantGallery : [variantGallery];
+        
+        console.log('Selected Variant Gallery:', variantMediaIds);
+        
+        // Show only images, thumbnails, grid items, and dots matching the variant gallery
+        mediaItems.forEach((mediaItem, index) => {
+          const mediaId = mediaItem.getAttribute('data-media-id') || 
+                          mediaItem.closest('[data-media-id]')?.getAttribute('data-media-id') ||
+                          mediaItem.closest('slideshow-slide')?.getAttribute('slide-id');
+          
+          if (mediaId && variantMediaIds.includes(parseInt(mediaId))) {
             mediaItem.classList.remove('hidden');
             const parentSlide = mediaItem.closest('slideshow-slide');
             if (parentSlide) {
               parentSlide.classList.remove('hidden');
-              parentSlide.style.display = 'block'; // Ensure display is set
+              parentSlide.style.display = 'block';
             }
             if (dotItems[index]) {
               dotItems[index].classList.remove('hidden');
-              dotItems[index].style.display = 'block'; // Ensure display is set
+              dotItems[index].style.display = 'block';
               // Update aria-label to reflect correct slide count
               const visibleDots = dotItems.filter(dot => !dot.classList.contains('hidden')).length;
-              dotItems[index].querySelector('button').setAttribute('aria-label', `Slide ${index + 1} of ${visibleDots}`);
+              dotItems[index].querySelector('button')?.setAttribute('aria-label', `Slide ${index + 1} of ${visibleDots}`);
             }
             foundMatchingImages = true;
           }
-        }
-      });
-      thumbnailButtons.forEach(button => {
-        const img = button.querySelector('img');
-        if (img?.alt) {
-          const altText = img.alt.toLowerCase().replace(/\s+/g, '');
-          if (altText.includes(normalizedSelectedColor)) {
+        });
+        
+        thumbnailButtons.forEach(button => {
+          const mediaId = button.getAttribute('data-media-id') || 
+                          button.closest('[data-media-id]')?.getAttribute('data-media-id');
+          
+          if (mediaId && variantMediaIds.includes(parseInt(mediaId))) {
             button.classList.remove('hidden');
-            button.style.display = 'block'; // Ensure display is set
+            button.style.display = 'block';
           }
-        }
-      });
-      gridItems.forEach(gridItem => {
-        const img = gridItem.querySelector('img');
-        if (img?.alt) {
-          const altText = img.alt.toLowerCase().replace(/\s+/g, '');
-          if (altText.includes(normalizedSelectedColor)) {
+        });
+        
+        gridItems.forEach(gridItem => {
+          const mediaId = gridItem.getAttribute('data-media-id') || 
+                          gridItem.querySelector('[data-media-id]')?.getAttribute('data-media-id');
+          
+          if (mediaId && variantMediaIds.includes(parseInt(mediaId))) {
             gridItem.classList.remove('hidden');
           }
-        }
-      });
+        });
+      }
     }
 
-    // Fallback: Show all if no matching images found or no color selected
-    if (!normalizedSelectedColor || !foundMatchingImages || !productDataCache?.variants?.length > 1) {
-      if (normalizedSelectedColor && !foundMatchingImages) {
-        console.log(`Selected Variant Image: No images found for "${selectedColor}". Showing all images.`);
+    // Fallback: Show all if no matching images found or no variant selected
+    if (!selectedVariantId || !foundMatchingImages || !productDataCache?.variants?.length > 1) {
+      if (selectedVariantId && !foundMatchingImages) {
+        console.log(`Selected Variant Image: No images found for variant ID "${selectedVariantId}". Showing all images.`);
       }
       mediaItems.forEach((mediaItem, index) => {
         mediaItem.classList.remove('hidden');
         const parentSlide = mediaItem.closest('slideshow-slide');
         if (parentSlide) {
           parentSlide.classList.remove('hidden');
-          parentSlide.style.display = 'block'; // Ensure display is set
+          parentSlide.style.display = 'block';
         }
         if (dotItems[index]) {
           dotItems[index].classList.remove('hidden');
-          dotItems[index].style.display = 'block'; // Ensure display is set
+          dotItems[index].style.display = 'block';
           // Update aria-label for all dots
           const visibleDots = dotItems.length;
-          dotItems[index].querySelector('button').setAttribute('aria-label', `Slide ${index + 1} of ${visibleDots}`);
+          dotItems[index].querySelector('button')?.setAttribute('aria-label', `Slide ${index + 1} of ${visibleDots}`);
         }
       });
       thumbnailButtons.forEach(button => {
         button.classList.remove('hidden');
-        button.style.display = 'block'; // Ensure display is set
+        button.style.display = 'block';
       });
       gridItems.forEach(gridItem => gridItem.classList.remove('hidden'));
     }
@@ -149,30 +158,29 @@
         return;
       }
 
-      let selectedColor = null;
+      let selectedVariantId = null;
       const hasMultipleVariants = productDataCache.variants && productDataCache.variants.length > 1;
       const variantSelects = document.querySelector('[data-variant-selects], variant-selects, .variant-picker, .product-form__variants, .product__variants, [data-product-variants], .product__variant-options');
 
       if (variantSelects && hasMultipleVariants) {
-        const currentValues = Array.from(
-          variantSelects.querySelectorAll('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]')
-        ).map(el => el.value || el.getAttribute('data-variant-option') || el.textContent.trim());
+        // Get the selected variant ID from the variant picker
+        const selectedOption = variantSelects.querySelector('select option[selected], input:checked, [data-variant-option][aria-selected="true"], [data-variant-option].is-selected, [data-variant-option][class*="selected"]');
+        
+        if (selectedOption) {
+          selectedVariantId = selectedOption.dataset.variantId || selectedOption.getAttribute('data-variant-id');
+        }
 
-        selectedColor = currentValues.find(value =>
-          productDataCache.options.some(opt => opt.values.includes(value))
-        );
-
-        if (!selectedColor) {
-          console.warn('Selected Variant Image: No matching option value found for current selection:', currentValues);
+        if (!selectedVariantId) {
+          console.warn('Selected Variant Image: No variant ID found for current selection');
         }
       }
 
-      if (selectedColor === lastSelectedColor) {
+      if (selectedVariantId === lastSelectedVariantId) {
         return; // No change in relevant selection
       }
 
-      lastSelectedColor = selectedColor;
-      updateVariantImages(selectedColor, mediaItems, thumbnailButtons, sliders, gridItems, dotItems, mediaGallery);
+      lastSelectedVariantId = selectedVariantId;
+      updateVariantImages(selectedVariantId, mediaItems, thumbnailButtons, sliders, gridItems, dotItems, mediaGallery);
     };
 
     if (productDataCache) {
@@ -187,6 +195,7 @@
         })
         .then(product => {
           productDataCache = product;
+          console.log('Product data loaded:', product);
           showVariantImage(); // Call after data is fetched
           // Add event listeners after data is available
           productSection.removeEventListener('change', showVariantImage);
