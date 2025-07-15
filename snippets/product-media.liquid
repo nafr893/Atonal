@@ -323,20 +323,7 @@
         {% endunless %}
         {% comment %} variant gallery {% endcomment %}
         {% for gallery in product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
-          <li
-            id="Slide-Thumbnails-thumbnail-{{ section.id }}-{{ forloop.index }}"
-            class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
-            data-target="{{ section.id }}-{{ forloop.index }}"
-            data-media-position="{{ forloop.index | plus: 1 }}"
-          >
-            <button class="thumbnail global-media-settings global-media-settings--no-shadow">
-              {{
-                gallery
-                | image_url: width: 416
-                | image_tag: loading: 'lazy', sizes: sizes, widths: '54, 74, 104, 162, 208, 324, 416', id: thumbnail_id
-              }}
-            </button>
-          </li>
+         
         {%- endfor -%}
       </ul>
       <button
