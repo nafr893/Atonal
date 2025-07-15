@@ -57,7 +57,7 @@
 
   assign render_slideshow_arrows = false
 
-  if media_count <= 1
+  if selected_product.media.size <= 1
     assign slideshow_class = 'product-media-gallery__slideshow--single-media slideshow--single-media'
   else
     assign slideshow_class = ''
