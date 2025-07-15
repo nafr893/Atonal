@@ -8,19 +8,8 @@
 {%- endif -%}
 
 {%- liquid
-  assign has_variant = false
-  if product.has_only_default_variant == false
-    assign has_variant = true
-  endif
-
-  if has_variant
-    assign media_count = product.selected_or_first_available_variant.metafields.custom.custom_variant_image.value.count
-  else
-    assign media_count = product.media.size
-  endif
-
   assign selected_product = closest.product
-  assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
+  assign selected_variant_media = selected_product.selected_or_first_available_variant.metafields.custom.custom_variant_image
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
   if block.settings.hide_variants
