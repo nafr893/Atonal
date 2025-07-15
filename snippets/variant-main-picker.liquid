@@ -87,7 +87,7 @@
                 >
                 {% if variant_style == 'swatch' %}
                   {% liquid
-                    assign featured_media = product_option_value.variant.featured_media
+                      assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value 
 
                     # If the variant has no featured media, and we have a combined listing product, then fall back to
                     # using the featured media of the child product that is linked to this option value.
