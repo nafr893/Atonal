@@ -14,6 +14,21 @@
       >
     {%- endif -%}
 
+
+
+    {% comment %} News Slider Library Start {% endcomment %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    >
+    {{ 'atonal.css' | asset_url | stylesheet_tag }}
+
+    {% comment %} News Slider Library end {% endcomment %}
+
+
     {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
     <link
       rel="expect"
@@ -65,7 +80,7 @@
     {% endif %}
   </body>
 
-  
+
   {% comment %} Custom js {% endcomment %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
