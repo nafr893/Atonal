@@ -3040,9 +3040,9 @@
       "type": "blog-part",
       "name": "Blog Slider",
       "settings": {
-        "blog": "blog-test",
+        "blog": "news",
         "post_limit": 3,
-        "heading": "",
+        "heading": "Test",
         "button_text": "Read Article",
         "padding_top": 40,
         "padding_bottom": 40
