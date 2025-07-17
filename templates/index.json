@@ -3045,7 +3045,8 @@
         "heading": "Test",
         "button_text": "Read Article",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "section_height": 60
       }
     },
     "section_37aQ4V": {
