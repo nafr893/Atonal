@@ -157,7 +157,8 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
     display: flex;
     flex-direction: row;
     width: 100% !important;
-    gap: 10px;
+    gap: 20px;
+    bottom: 0px; 
     justify-content: space-between !important;
   }
 
