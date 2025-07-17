@@ -156,14 +156,14 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
     transform: translateX(-50%);
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 100% !important;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: space-between !important;
   }
 
 .news-blogs .blogs-fade-slider .slick-dots li,
   .news-blogs .blogs-fade-slider .slick-dots li button {
-    width: 100%;
+    width: 100% !important;
     height: 3px;
   }
 
