@@ -10,7 +10,7 @@
     height: 70%; 
   }
 
-div.slick-track {
+div#slick-track {
     height: 60rem !important; 
 }
 
