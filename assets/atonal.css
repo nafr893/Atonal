@@ -146,7 +146,7 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
 .news-blogs .slick-list .slick-slide {
   padding: 100px 50px;
   display: flex; 
-  align-items: end; 
+  align-items: end !important; 
 }
 
 
