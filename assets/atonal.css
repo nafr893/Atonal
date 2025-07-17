@@ -10,6 +10,11 @@
     height: 70%; 
   }
 
+div.slick-track {
+    height: 60vw; 
+}
+
+
 div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
 padding-left: 2.5rem; 
 }
@@ -324,8 +329,12 @@ div.news-blogs.our.container-width {
 .news-blogs .blogs-fade-slider {
   margin: 0px;
 }
+
+
 .news-blogs .slick-list .slick-slide {
   padding: 100px 50px;
+  display: flex; 
+  align-items: center; 
 }
 .news-blogs .slick-list .slick-slide::before {
   content: "";
