@@ -209,7 +209,7 @@ section#shopify-section-template--19068398928030__blog_part_FRQBcj {
 
 /* email signup bottom padding for homepage section */
  div#shopify-section-template--19068398928030__section_37aQ4V { 
-padding-bottom: 90px; 
+padding-bottom: 90px !important; 
  }
 
  /* end email signup bottom padding for homepage section */
