@@ -1,0 +1,212 @@
+{% if product.metafields.custom.selected_variant == true or product.metafields.custom.selected_variant == null %}
+  {% assign variant_gallery = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
+  {% if variant_gallery %}
+    <script id="VariantGalleryJSON" type="application/json">
+      {{ variant_gallery | json }}
+    </script>
+  {% endif %}
+
+  <style>
+    .hidden {
+      display: none !important;
+      opacity: 0;
+    }
+    
+    [data-media-id], .media-item, .thumbnail, .product-media-container, .slideshow-slide, .media-gallery__grid li, .slideshow-controls__dots li {
+      opacity: 1;
+    }
+    
+    .media-gallery[data-variant-images-initialized="true"] .slideshow-slide,
+    .media-gallery[data-variant-images-initialized="true"] .slideshow-controls__dots li,
+    .media-gallery[data-variant-images-initialized="true"] .thumbnail,
+    .media-gallery[data-variant-images-initialized="true"] .dialog-thumbnails-list__thumbnail {
+      display: block;
+    }
+
+    /* Mobile-specific fixes for variant gallery */
+    @media screen and (max-width: 749px) {
+      media-gallery[data-variant-gallery-active] .slideshow-slide {
+        width: 100%;
+        min-width: 100%;
+      }
+      
+      media-gallery[data-variant-gallery-active] .product-media {
+        width: 100%;
+        height: auto;
+      }
+      
+      media-gallery[data-variant-gallery-active] .product-media__image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+      
+      /* Ensure slideshow controls are visible on mobile */
+      media-gallery[data-variant-gallery-active] .slideshow-controls {
+        display: flex !important;
+        visibility: visible !important;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const metafieldGalleryJSON = document.getElementById('VariantGalleryJSON');
+      const variantGalleryImages = metafieldGalleryJSON ? JSON.parse(metafieldGalleryJSON.textContent) : [];
+
+      function updateVariantImages(variant) {
+        // Only proceed if we have variant gallery images for this variant
+        if (!variant?.metafields?.custom?.variant_gallery?.value) {
+          return;
+        }
+
+        const mediaGallery = document.querySelector('media-gallery');
+        const slideshow = mediaGallery?.querySelector('slideshow-component');
+        
+        if (!slideshow) {
+          console.log('No slideshow found');
+          return;
+        }
+
+        const variantImages = variant.metafields.custom.variant_gallery.value;
+        const slideshowContainer = slideshow.querySelector('slideshow-container');
+        
+        if (slideshowContainer) {
+          // Mark media gallery as having variant gallery active
+          mediaGallery.setAttribute('data-variant-gallery-active', 'true');
+          
+          // Clear existing slides
+          slideshowContainer.innerHTML = '';
+          
+          // Add variant images
+          variantImages.forEach((imageObj, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'slideshow-slide product-media-container product-media-container--image';
+            slide.setAttribute('data-media-id', imageObj.id || index);
+            slide.setAttribute('data-slide-index', index);
+            
+            const mediaDiv = document.createElement('div');
+            mediaDiv.className = 'product-media';
+            mediaDiv.style.setProperty('--ratio', '1');
+            mediaDiv.setAttribute('data-media-id', imageObj.id || index);
+            
+            const img = document.createElement('img');
+            img.src = imageObj.src || imageObj;
+            img.alt = imageObj.alt || '';
+            img.className = 'product-media__image';
+            img.loading = index === 0 ? 'eager' : 'lazy';
+            
+            mediaDiv.appendChild(img);
+            slide.appendChild(mediaDiv);
+            slideshowContainer.appendChild(slide);
+          });
+          
+          // Update slideshow controls (dots/thumbnails) - critical for mobile
+          updateSlideshowControls(slideshow, variantImages);
+          
+          // Reset slideshow to first slide with delay for mobile
+          setTimeout(() => {
+            if (slideshow.select) {
+              slideshow.select(0);
+            }
+          }, 100);
+        }
+      }
+
+      function updateSlideshowControls(slideshow, variantImages) {
+        // Update dots controls
+        const dotsContainer = slideshow.querySelector('.slideshow-controls__dots');
+        if (dotsContainer) {
+          dotsContainer.innerHTML = '';
+          
+          variantImages.forEach((_, index) => {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            button.className = 'slideshow-controls__dot';
+            button.setAttribute('data-slide-index', index);
+            button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            if (index === 0) button.classList.add('slideshow-controls__dot--active');
+            
+            li.appendChild(button);
+            dotsContainer.appendChild(li);
+          });
+        }
+
+        // Update thumbnails if they exist
+        const thumbnailsContainer = slideshow.querySelector('.slideshow-controls__thumbnails');
+        if (thumbnailsContainer) {
+          thumbnailsContainer.innerHTML = '';
+          
+          variantImages.forEach((imageObj, index) => {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            button.className = 'slideshow-controls__thumbnail';
+            button.setAttribute('data-slide-index', index);
+            button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            
+            const img = document.createElement('img');
+            img.src = imageObj.src || imageObj;
+            img.alt = imageObj.alt || '';
+            img.className = 'slideshow-controls__thumbnail-image';
+            img.loading = 'lazy';
+            
+            button.appendChild(img);
+            li.appendChild(button);
+            thumbnailsContainer.appendChild(li);
+          });
+        }
+      }
+
+      // Listen for variant update events
+      document.addEventListener('variant:update', (event) => {
+        const variant = event.detail?.resource;
+        if (variant) {
+          // Use requestAnimationFrame for better mobile performance
+          requestAnimationFrame(() => {
+            updateVariantImages(variant);
+          });
+        }
+      });
+
+      // Initialize on page load with mobile-friendly timing
+      function init() {
+        // Wait a bit longer on mobile for DOM to be fully ready
+        const isMobile = window.innerWidth <= 768;
+        const delay = isMobile ? 200 : 0;
+        
+        setTimeout(() => {
+          const variantPicker = document.querySelector('variant-picker');
+          if (variantPicker) {
+            const variantScript = document.querySelector('variant-picker script[type="application/json"]');
+            if (variantScript) {
+              try {
+                const variantData = JSON.parse(variantScript.textContent);
+                updateVariantImages(variantData);
+              } catch (e) {
+                console.error('Error parsing variant data:', e);
+              }
+            }
+          }
+        }, delay);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+      // Add resize listener to reinitialize on orientation change (mobile)
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          // Reinitialize on mobile orientation change
+          if (window.innerWidth <= 768) {
+            init();
+          }
+        }, 250);
+      });
+    })();
+  </script>
+{% endif %}
