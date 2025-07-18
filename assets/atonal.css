@@ -17,6 +17,14 @@ h1 {
     height: 70%; 
   }
 
+
+
+
+div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
+padding-left: 2.5rem; 
+}
+}
+    
 rte-formatter.spacing-style.text-block.text-block--AdHlOZE5zR085QSs1e__text_Gb8w8h.rte.text-block--background.rte   {
 p {
     padding-left: 1rem !important;
@@ -25,11 +33,6 @@ padding-right: 1rem !important;
 }
 
 
-div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
-padding-left: 2.5rem; 
-}
-}
-    
   /* footer styles */ 
   /* footer menu width */ 
 footer#shopify-section-sections--19068398534814__footer {
