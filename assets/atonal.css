@@ -5,12 +5,7 @@ h1 {
 }
 }
 
-rte-formatter.spacing-style.text-block.text-block--AdHlOZE5zR085QSs1e__text_Gb8w8h.rte.text-block--background.rte   {
-p {
-    padding-left: 1rem !important;
-padding-right: 1rem !important; 
-}
-}
+
   
   
 /* desktop styles */
@@ -22,7 +17,12 @@ padding-right: 1rem !important;
     height: 70%; 
   }
 
-
+rte-formatter.spacing-style.text-block.text-block--AdHlOZE5zR085QSs1e__text_Gb8w8h.rte.text-block--background.rte   {
+p {
+    padding-left: 1rem !important;
+padding-right: 1rem !important; 
+}
+}
 
 
 div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
