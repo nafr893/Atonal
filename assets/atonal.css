@@ -188,6 +188,16 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
 }
 /* end mobile email signup settings */
 
+/* collection squares styles css */ 
+div#shopify-section-template--19068398928030__section_rNtbwe {
+    height: fit-content; 
+    
+    div.group-block.group-block--height-fill.group-block--width-fill.border-style.spacing-style.size-style.color-scheme-5, div.group-block.group-block--height-fill.group-block--width-fill.border-style.spacing-style.size-style.color-scheme-5  {
+ aspect-ratio: 1/1 ; 
+    }
+}
+
+
 
 
 /* end mobile styles */
