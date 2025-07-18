@@ -1,4 +1,14 @@
-<div class="news-blogs our container-width" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+<div class="news-blogs our container-width" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background: {{ section.settings.color_scheme }};">
+  <div class="section-background color-{{ section.settings.color_scheme }}"></div>
+  {% assign blog = section.settings.blog %}
+  {% if blog == blank %}
+    {% assign blog = blogs.first %}
+  {% endif %}
+  
+  {% if blog == blank or blog.articles.size == 0 %}
+    <p>{{ 'content.blog_no_articles' | t }}</p>
+    {% return %}
+  {% endif %}
  <div class="blogs-fade-slider" >
     {% for article in section.settings.blog.articles limit: section.settings.post_limit %}
       <div class="news-bg-image" style="background-image: url('{{ article.image | img_url: 'master' }}'); height: {{ section.settings.section_height }}rem;  " >
@@ -57,6 +67,7 @@
       "label": "Button Text",
       "default": "Read Article"
     },
+    
     {
       "type": "range",
       "id": "padding_top",
@@ -86,7 +97,13 @@
       "unit": "px",
       "label": "height",
       "default": 40
-    }
+    },
+     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
   ],
   "presets": [
     {
