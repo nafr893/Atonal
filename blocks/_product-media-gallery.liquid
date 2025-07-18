@@ -23,18 +23,18 @@
   endif
 
   assign render_slideshow_controls = false
-
-  if block.settings.media_presentation == 'carousel' or block.settings.slideshow_controls_style == block.settings.slideshow_mobile_controls_style
-    assign render_slideshow_controls = true
-  endif
-
   assign render_mobile_slideshow_controls = false
 
-  if block.settings.slideshow_controls_style != block.settings.slideshow_mobile_controls_style
-    assign slideshow_controls_class = 'mobile:hidden'
-
-    if block.settings.slideshow_mobile_controls_style != 'hint'
-      assign render_mobile_slideshow_controls = true
+  if block.settings.media_presentation == 'carousel'
+    assign render_slideshow_controls = true
+    
+    # If desktop and mobile controls are different, we need separate controls
+    if block.settings.slideshow_controls_style != block.settings.slideshow_mobile_controls_style
+      assign slideshow_controls_class = 'mobile:hidden'
+      
+      if block.settings.slideshow_mobile_controls_style != 'hint'
+        assign render_mobile_slideshow_controls = true
+      endif
     endif
   endif
 
@@ -78,7 +78,6 @@
     endif
   endif
 -%}
-
 
 {%- liquid
   assign sorted_media = '' | split: ','
