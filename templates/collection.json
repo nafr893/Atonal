@@ -16,7 +16,7 @@
           "type": "text",
           "name": "Collection title",
           "settings": {
-            "text": "<p>BLANK HATS</p>",
+            "text": "<p>{{ closest.collection.title }}</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
