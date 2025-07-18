@@ -82,9 +82,3 @@ export class MediaGallery extends Component {
 if (!customElements.get('media-gallery')) {
   customElements.define('media-gallery', MediaGallery);
 }
-
-
-
-
-
-
