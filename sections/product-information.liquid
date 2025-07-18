@@ -7,7 +7,6 @@
 
 </div>
 
-
 {% liquid
   if section.settings.desktop_media_position == 'left'
     assign render_order = 'media,product-details'
@@ -69,7 +68,6 @@
         class="product-information__media"
         data-testid="product-information-media"
       >
-        {% render 'variant-gallery' %}
         {%- content_for 'block',
           type: '_product-media-gallery',
           id: 'media-gallery',
@@ -263,8 +261,6 @@
     --sticky-header-offset: var(--header-height);
   }
 {% endstylesheet %}
-
-
 
 {% schema %}
 {
