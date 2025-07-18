@@ -1,7 +1,7 @@
 {%- doc -%}
   Renders controls for a slider component
 
-  @param {string} [style] - { 'dots' | 'counter' | 'thumbnails' | 'none' } The display style of the controls
+  @param {string} [controls_style] - { 'dots' | 'counter' | 'thumbnails' | 'none' } The display style of the controls
   @param {boolean} [autoplay] - Whether the controls will display an autoplay option
   @param {number} [item_count] - The total number of slides
   @param {boolean} [show_arrows] - Whether the controls will display arrows
@@ -16,7 +16,7 @@
   @param {boolean} [secondary] - Whether the controls are secondary
 
   @example
-  {%- render 'slideshow-controls', style: 'dots', item_count: 2 -%}
+  {%- render 'slideshow-controls', style: 'dots', item_count: 10 -%}
 {%- enddoc -%}
 
 {%- liquid
@@ -29,7 +29,7 @@
   endif
 
   assign show_arrows_separately = false
-  if style == 'thumbnails' and arrows_on_media == false
+  if controls_style == 'thumbnails' and arrows_on_media == false
     assign show_arrows_separately = true
     # Specific case - we want to show the arrows with the thumbnails if everything is off media and centered.
     if controls_on_media == false and pagination_position == 'center'
@@ -58,7 +58,7 @@
   {% if arrows_on_media or icon_style == 'none' %}
     icons-on-media
   {% endif %}
-  {% if style == 'thumbnails' %}
+  {% if controls_style == 'thumbnails' %}
     thumbnails
   {% endif %}
   {% if class %}
@@ -94,7 +94,7 @@
     </button>
   {% endif %}
 
-  {% case style %}
+  {% case controls_style %}
     {% when 'thumbnails' %}
       <scroll-hint
         ref="thumbnailsContainer"
@@ -141,7 +141,7 @@
         <span ref="current">1</span><span class="slash">/</span>{{ item_count -}}
       </div>
     {% when 'dots' %}
-      <ol class="slideshow-controls__{{ style }}">
+      <ol class="slideshow-controls__{{ controls_style }}">
         {% for i in (1..item_count) %}
           <li>
             <button
