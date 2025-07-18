@@ -201,7 +201,7 @@
 
   {% if render_slideshow_arrows %}
     {% capture slideshow_arrows %}
-      {% render 'slideshow-arrows', class: 'mobile-arrows', icon_style: block.settings.icons_style, icon_shape: settings.icons_shape %}
+      {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block.settings.icons_style, icon_shape: settings.icons_shape %}
     {% endcapture %}
   {% endif %}
 
