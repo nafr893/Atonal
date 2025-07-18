@@ -201,7 +201,11 @@ div#shopify-section-template--19068398928030__section_rNtbwe {
     }
 }
 
-
+/* hide blogpage on mobile */ 
+section#shopify-section-template--19068398928030__blog_part_FRQBcj {
+    display: none; 
+}
+/* end blogpage mobile hidden style */ 
 
 
 /* end mobile styles */
