@@ -450,11 +450,10 @@ div.news-blogs.our.container-width {
   letter-spacing: 0;
   text-transform: uppercase;
   padding: 12px 30px;
-  transition: 0.5s all;
 }
 .news-blogs .slick-list .slick-slide .content-wrapper .read-btn:hover {
-  color: #1e00a5;
-  background-color: #fff !important;
+  color: #fff;
+  background-color: #1C009C !important;
 }
 
 @media screen and (max-width: 767px) {
