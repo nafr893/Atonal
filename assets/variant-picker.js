@@ -27,7 +27,7 @@ export default class VariantPicker extends Component {
    * @param {Event} event - The variant change event.
    */
   variantChanged(event) {
-    if (!(event.target instanceof HTMLElement)) return;
+    // if (!(event.target instanceof HTMLElement)) return;
 
     this.updateSelectedOption(event.target);
     this.dispatchEvent(new VariantSelectedEvent({ id: event.target.dataset.optionValueId ?? '' }));
