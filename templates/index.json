@@ -3654,13 +3654,28 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "spacer_7VCDEi": {
+              "type": "spacer",
+              "name": "t:names.spacer",
+              "settings": {
+                "size": "percent",
+                "percent_size": 100,
+                "pixel_size": 120,
+                "custom_mobile_size": true,
+                "size_mobile": "pixel",
+                "percent_size_mobile": 100,
+                "pixel_size_mobile": 160
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_LFVcQP",
             "text_VxCCL3",
             "email_signup_nF6bnN",
-            "text_NPKiBX"
+            "text_NPKiBX",
+            "spacer_7VCDEi"
           ]
         },
         "image_q3iqH3": {
