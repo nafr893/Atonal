@@ -10,7 +10,11 @@
     height: 70%; 
   }
 
+/* homepage banner header text width limit */ 
+rte-formatter.spacing-style.text-block.text-block--AbXBnL0UrcE5lUXZ3V__text_YLPk4p.rte.rte  {
+max-width: 60%; 
 
+}
 
 div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
 padding-left: 2.5rem; 
