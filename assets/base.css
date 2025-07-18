@@ -1454,7 +1454,11 @@ media-gallery {
   }
 }
 
-
+.product-media-gallery__slideshow--single-media slideshow-container {
+  @media screen and (max-width: 749px) {
+    grid-area: unset;
+  }
+}
 
 :not(.dialog-zoomed-gallery) > .product-media-container {
   display: flex;
