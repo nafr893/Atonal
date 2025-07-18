@@ -881,7 +881,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>PRODUCT SHOWCASE</h2>",
+                "text": "<h2>SHOP THE LOOK</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
