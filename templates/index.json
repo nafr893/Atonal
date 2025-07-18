@@ -881,7 +881,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h5><strong>SHOP THE LOOK</strong></h5>",
+                "text": "<p><strong>SHOP THE LOOK</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
