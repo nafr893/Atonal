@@ -553,3 +553,13 @@ rte-formatter.spacing-style.text-block.text-block--AZGNzL2dsSGhEUkR6S__text_4TEJ
 padding-right: .5rem !important;
     }
 }
+
+
+/* footer styles css */ 
+footer#shopify-section-sections--19068398534814__footer {
+li.menu__item.paragraph {
+a:hover {
+color: red; 
+}
+}
+}
