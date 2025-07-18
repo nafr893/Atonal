@@ -182,9 +182,13 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
 
 /* mobile email signup settings */
  div#shopify-section-template--19068398928030__section_37aQ4V {
+    h2 {
+        font-size: 2rem; 
+    }
   div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
     order: 2; 
   }
+
 }
 /* end mobile email signup settings */
 
