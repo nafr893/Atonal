@@ -40,7 +40,7 @@
 
   assign slideshow_controls_style = block.settings.slideshow_controls_style
   # Use a counter instead of dots when there are many images to avoid cropping/overflow.
-  if slideshow_controls_style == 'dots' and selected_product.media.size > 1
+  if slideshow_controls_style == 'dots' and selected_product.media.size > 15
     assign slideshow_controls_style = 'counter'
   endif
 
