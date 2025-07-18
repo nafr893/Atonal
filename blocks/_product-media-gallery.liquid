@@ -134,11 +134,21 @@
   data-presentation="{{ block.settings.media_presentation }}"
   {{ block.shopify_attributes }}
 >
+  
   {% capture slides %}
-    {% for media in sorted_media %}
-      {% capture children %}
-        {%- render 'product-media', media: media -%}
-      {% endcapture %}
+      {%- assign variant_images = product.selected_or_first_available_variant.metafields.custom.variant_images.value -%}
+      {%- if variant_images != blank -%}
+        {%- assign combined_media = variant_images -%}
+      {%- else -%}
+        {%- assign combined_media = sorted_media -%}
+      {%- endif -%}
+      
+      {% for media_item in combined_media %}
+        {% capture children %}
+          {%- render 'product-media', media: media_item -%}
+        {% endcapture %}
+      
+
       {% capture class %}
         product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
       {% endcapture %}
