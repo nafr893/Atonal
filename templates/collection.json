@@ -85,7 +85,7 @@
         "color_scheme": "scheme-5",
         "background_media": "image",
         "video_position": "cover",
-        "background_image": "shopify://shop_images/Collection_banner_1.3.webp",
+        "background_image": "{{ collection.metafields.custom.collection_banner.value }}",
         "background_image_position": "cover",
         "border": "none",
         "border_width": 1,
