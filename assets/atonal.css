@@ -13,6 +13,7 @@
   }
 
 
+
 div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
 padding-left: 2.5rem; 
 }
@@ -177,6 +178,16 @@ div#shopify-section-template--19068398928030__section_7Bj7ET {
     width: 100% !important;
     height: 3px;
   }
+
+
+/* mobile email signup settings */
+ div#shopify-section-template--19068398928030__section_37aQ4V {
+  div.group-block.group-block--height-fit.group-block--width-custom.border-style.spacing-style.size-style {
+    order: 2; 
+  }
+}
+/* end mobile email signup settings */
+
 
 
 /* end mobile styles */
