@@ -23,9 +23,8 @@ padding-left: 2.5rem;
 
     /* homepage banner header text width limit */ 
 rte-formatter.spacing-style.text-block.text-block--AdHlOZE5zR085QSs1e__text_Gb8w8h.rte.text-block--background.rte  {
-h1 {
-    width: 35dvw !important; 
-}
+ 
+    max-width: 25dvw !important; 
 }
 rte-formatter.spacing-style.text-block.text-block--AdHlOZE5zR085QSs1e__text_Gb8w8h.rte.text-block--background.rte   {
 p {
