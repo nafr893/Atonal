@@ -326,7 +326,7 @@ h4 {
 
 
 
-/* blog slider css */
+/* blog css */
 
 /*Slider design start*/
 .container-width {
@@ -459,7 +459,7 @@ div.news-blogs.our.container-width {
 
 @media screen and (max-width: 767px) {
   .news-blogs .slick-list .slick-slide {
-    padding: 60px 20px 80px;
+    padding: 60px 20px 60px;
     aspect-ratio: 1/1.15;
   }
   .news-blogs .blogs-fade-slider .slick-dots {
