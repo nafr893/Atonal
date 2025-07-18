@@ -3502,7 +3502,6 @@
     },
     "blog_part_FRQBcj": {
       "type": "blog-part",
-      "disabled": true,
       "name": "Blog Slider",
       "settings": {
         "blog": "news",
