@@ -3668,7 +3668,7 @@
           "settings": {
             "image": "shopify://shop_images/The_new_LA_cap_from_Goodpeople_brings_sleek_vibes_made_for_the_sun_made_for_youShop_now_link_in_bio_5.webp",
             "link": "",
-            "image_ratio": "landscape",
+            "image_ratio": "square",
             "width": "custom",
             "custom_width": 100,
             "width_mobile": "fill",
