@@ -1939,7 +1939,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<h3>SHOP BY STYLE</h3>",
+                "text": "<h2><strong>SHOP BY STYLE</strong></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
