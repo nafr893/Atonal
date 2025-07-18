@@ -3162,6 +3162,7 @@
         "group_pp6My4",
         "group_799pPW"
       ],
+      "disabled": true,
       "name": "Product Showcase Mobile",
       "settings": {
         "content_direction": "column",
