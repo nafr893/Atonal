@@ -559,11 +559,11 @@
             "text_WNaaQw": {
               "type": "text",
               "settings": {
-                "text": "<h3><strong>BULK ORDERS</strong></h3>",
+                "text": "<h2><strong>BULK ORDERS</strong></h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "center",
-                "type_preset": "h3",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -657,7 +657,7 @@
             "text_hX8tNq": {
               "type": "text",
               "settings": {
-                "text": "<h3>EVERYDAY WEAR</h3>",
+                "text": "<h2>EVERYDAY WEAR</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "center",
