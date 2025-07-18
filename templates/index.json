@@ -97,7 +97,7 @@
             "label": "SHOP NOW",
             "link": "shopify://products/a501",
             "open_in_new_tab": false,
-            "style_class": "button-secondary",
+            "style_class": "button",
             "width": "custom",
             "custom_width": 20,
             "width_mobile": "custom",
