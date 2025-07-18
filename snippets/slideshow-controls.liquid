@@ -1,7 +1,7 @@
 {%- doc -%}
   Renders controls for a slider component
 
-  @param {string} [controls_style] - { 'dots' | 'counter' | 'thumbnails' | 'none' } The display style of the controls
+  @param {string} [style] - { 'dots' | 'counter' | 'thumbnails' | 'none' } The display style of the controls
   @param {boolean} [autoplay] - Whether the controls will display an autoplay option
   @param {number} [item_count] - The total number of slides
   @param {boolean} [show_arrows] - Whether the controls will display arrows
@@ -29,7 +29,7 @@
   endif
 
   assign show_arrows_separately = false
-  if controls_style == 'thumbnails' and arrows_on_media == false
+  if style == 'thumbnails' and arrows_on_media == false
     assign show_arrows_separately = true
     # Specific case - we want to show the arrows with the thumbnails if everything is off media and centered.
     if controls_on_media == false and pagination_position == 'center'
@@ -58,7 +58,7 @@
   {% if arrows_on_media or icon_style == 'none' %}
     icons-on-media
   {% endif %}
-  {% if controls_style == 'thumbnails' %}
+  {% if style == 'thumbnails' %}
     thumbnails
   {% endif %}
   {% if class %}
@@ -94,7 +94,7 @@
     </button>
   {% endif %}
 
-  {% case controls_style %}
+  {% case style %}
     {% when 'thumbnails' %}
       <scroll-hint
         ref="thumbnailsContainer"
@@ -112,7 +112,16 @@
                 aria-selected="true"
               {% endif %}
             >
-              {{ media.preview_image | image_url: width: 144 | image_tag: loading: 'lazy', alt: media.alt | escape }}
+              {{
+                media.preview_image
+                | image_url: width: 1024
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: 'auto, 110, (min-width: 750px) 160',
+                  widths: '300, 375, 450, 525, 600, 675, 750, 768, 850, 900, 1024',
+                  alt: media.alt
+                | escape
+              }}
 
               {% if media.media_type == 'video' or media.media_type == 'external_video' %}
                 <span class="slideshow-controls__thumbnail-badge">
@@ -141,7 +150,7 @@
         <span ref="current">1</span><span class="slash">/</span>{{ item_count -}}
       </div>
     {% when 'dots' %}
-      <ol class="slideshow-controls__{{ controls_style }}">
+      <ol class="slideshow-controls__{{ style }}">
         {% for i in (1..item_count) %}
           <li>
             <button
