@@ -29,6 +29,7 @@
         },
         "announcement_KHVcdD": {
           "type": "_announcement",
+          "disabled": true,
           "settings": {
             "text": "<strong>FREE SHIPPING USA ON ORDERS OVER $200</strong>",
             "link": "",
