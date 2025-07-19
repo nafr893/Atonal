@@ -54,6 +54,12 @@ div.footer-utilities.spacing-style {
     grid-auto-flow: column;
 grid-auto-columns: 1fr; 
 
+div.details-content {
+    ul.list-unstyled {
+        justify-content: end; 
+    }
+}
+
 }
 
 
