@@ -3614,7 +3614,7 @@
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "border_style": "all",
-                "border_width": 3,
+                "border_width": 1,
                 "border_radius": 0,
                 "input_type_preset": "paragraph",
                 "style_class": "button",
