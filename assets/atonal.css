@@ -27,6 +27,11 @@ rte-formatter.spacing-style.text-block.text-block--AbXBnL0UrcE5lUXZ3V__text_YLPk
 }
 
 /* end homepage styles */
+header#shopify-section-sections--19068398567582__header_section {
+div.header__column.header__column--center {
+    gap: 0px; 
+}
+}
 
   /* footer styles */ 
   /* footer menu width */ 
