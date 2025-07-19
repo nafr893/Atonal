@@ -145,7 +145,7 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -269,7 +269,7 @@
                         "content_direction": "row",
                         "vertical_on_mobile": true,
                         "horizontal_alignment": "space-between",
-                        "vertical_alignment": "center",
+                        "vertical_alignment": "flex-end",
                         "align_baseline": false,
                         "horizontal_alignment_flex_direction_column": "flex-start",
                         "vertical_alignment_flex_direction_column": "center",
@@ -307,7 +307,7 @@
                             "show_installments": false,
                             "show_tax_info": false,
                             "type_preset": "custom",
-                            "width": "100%",
+                            "width": "fit-content",
                             "alignment": "left",
                             "font": "var(--font-subheading--family)",
                             "font_size": "0.875rem",
@@ -399,9 +399,9 @@
       "settings": {
         "layout_type": "grid",
         "product_card_size": "large",
-        "mobile_product_card_size": "small",
+        "mobile_product_card_size": "large",
         "product_grid_width": "centered",
-        "full_width_on_mobile": true,
+        "full_width_on_mobile": false,
         "columns_gap_horizontal": 16,
         "columns_gap_vertical": 16,
         "padding-inline-start": 0,
