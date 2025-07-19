@@ -401,7 +401,7 @@
         "product_card_size": "large",
         "mobile_product_card_size": "large",
         "product_grid_width": "centered",
-        "full_width_on_mobile": true,
+        "full_width_on_mobile": false,
         "columns_gap_horizontal": 16,
         "columns_gap_vertical": 16,
         "padding-inline-start": 0,
