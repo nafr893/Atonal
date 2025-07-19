@@ -144,7 +144,7 @@ rte-formatter.spacing-style.text-block.text-block--AOElEaEJXMjFuMUdlM__text_cwd6
 
 product-card {
 div.okeReviews.oke-sr { 
-  display: inline;    
+  display: inline-block;    
 }
 }
 
