@@ -957,12 +957,13 @@ summary::-webkit-details-marker {
     grid-template-columns: 1fr;
   }
 }
-
+/* old product grid card style
 .product-grid__card .group-block > * {
   @media screen and (max-width: 749px) {
     flex-direction: column;
   }
 }
+  */
 
 ul[product-grid-view='zoom-out'] .product-grid__card > * {
   display: none;
