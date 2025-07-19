@@ -3610,7 +3610,7 @@
               "name": "t:names.email_signup",
               "settings": {
                 "width": "custom",
-                "custom_width": 75,
+                "custom_width": 65,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-1",
                 "border_style": "all",
