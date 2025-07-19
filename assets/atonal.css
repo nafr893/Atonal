@@ -146,6 +146,8 @@ product-card {
 div.okeReviews.oke-sr { 
   display: inline-block;
   scale: 0.8;    
+  width: 100%; 
+  
 }
 }
 
