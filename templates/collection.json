@@ -267,7 +267,7 @@
                         "link": "",
                         "open_in_new_tab": false,
                         "content_direction": "row",
-                        "vertical_on_mobile": true,
+                        "vertical_on_mobile": false,
                         "horizontal_alignment": "space-between",
                         "vertical_alignment": "flex-end",
                         "align_baseline": false,
