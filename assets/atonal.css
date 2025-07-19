@@ -48,6 +48,16 @@ div#shopify-section-template--19068398928030__section_kcRhCb {
     display: none; 
 }
 
+/* footer info styles */ 
+div.footer-utilities.spacing-style {
+    display: grid; 
+    grid-auto-flow: column;
+}
+
+
+/* end footer info styles */ 
+
+
 
 /* end desktop styles */ 
 }
