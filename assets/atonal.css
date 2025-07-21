@@ -619,19 +619,26 @@ display: none;
 }
  }
 
-div.mega-menu-list-v2 {
-  display: block !important;
-  position: absolute !important;
-  top: 107px;
-    left: 0;
+.nav-item-wrapper {
+  position: relative;
+}
+
+.mega-menu-v2 {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
   background: white;
   z-index: 50;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-a.menu-list__link:hover ~ div.mega-menu-list-v2,
-div.mega-menu-list-v2:hover {
+
+.nav-item-wrapper:hover .mega-menu-v2,
+.mega-menu-v2:hover {
   display: block;
 }
+
 
 /* end mega menu styles css */
