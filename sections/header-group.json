@@ -67,6 +67,8 @@
         "show_country": false,
         "country_selector_style": false,
         "show_language": false,
+        "localization_font": "heading",
+        "localization_font_size": "1rem",
         "localization_position": "right",
         "localization_row": "top",
         "section_width": "page-width",
@@ -85,9 +87,23 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "mega_menu_list_v2_PPbdX6": {
+      "type": "mega-menu-list-v2",
+      "name": "Mega Menu List V2",
+      "settings": {
+        "hat_products": [],
+        "left_text": "LATEST DROPS",
+        "left_link": "",
+        "right_image": "shopify://shop_images/trucker_hat_earth_friendly_1.1-min.webp",
+        "right_text": "SHOP NOW",
+        "right_link": "",
+        "product_menu_title": "Shop By Hat"
+      }
     }
   },
   "order": [
-    "header_section"
+    "header_section",
+    "mega_menu_list_v2_PPbdX6"
   ]
 }
