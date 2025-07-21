@@ -182,13 +182,37 @@ box-sizing: border-box;
   flex: 1;
 }
 
+.mega-menu-list-v2__promo {
+  position: relative;
+  overflow: hidden;
+}
 
+.mega-menu-list-v2__promo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(30, 0, 165, 0.7), rgba(255, 255, 255, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mega-menu-list-v2__promo:hover::after {
+  opacity: 1;
+}
 
 .mega-menu-list-v2__promo img {
   width: 20rem;
   height: 100%; 
   display: block;
   object-fit: cover; 
+}
+
+.mega-menu-list-v2__promo img:hover {
+
 }
 
 .mega-menu-list-v2__promo-text {
