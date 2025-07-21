@@ -622,7 +622,8 @@ display: none;
 div.mega-menu-list-v2 {
   display: block !important;
   position: absolute;
-  top: 100%; left: 0;
+  top: 107px;
+    left: 0;
   width: 100%;
   background: white;
   z-index: 50;
