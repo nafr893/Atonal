@@ -661,8 +661,13 @@ div.nav-item.nav-item--shop {
     align-items: middle; 
     position: relative;
     left: 40px; 
-
 }
+
+div.mega-menu-list-v2 {
+top: 46px;     
+}
+
+
 div.nav-item-wrapper.relative {
     align-content: center; 
     font-weight: bold; 
