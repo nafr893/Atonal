@@ -132,10 +132,23 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "mega_menu_list_v2_icGx3w": {
+      "type": "mega-menu-list-v2",
+      "name": "Mega Menu List V2",
+      "settings": {
+        "hat_products": [],
+        "left_text": "LATEST DROPS",
+        "left_link": "",
+        "right_text": "SHOP NOW",
+        "right_link": "",
+        "product_menu_title": "Shop By Hat"
+      }
     }
   },
   "order": [
     "header_announcements_JfbiBR",
-    "header_section"
+    "header_section",
+    "mega_menu_list_v2_icGx3w"
   ]
 }
