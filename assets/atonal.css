@@ -666,7 +666,7 @@ div.nav-item.nav-item--shop {
 
 div.mega-menu-list-v2 {
 
-    background: white; 
+    background-color: white; 
      -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 20px);
   mask-image: linear-gradient(to bottom, transparent 0px, black 20px);
 }
