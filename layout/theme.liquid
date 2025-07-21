@@ -126,27 +126,31 @@
   {% comment %} Custom Js end {% endcomment %}
 
 {% comment %} Custom Javascript for Shop Menu {% endcomment %}
+<script>
+ function positionMegaMenu() {
+  const navItem = document.querySelector('.nav-item--shop');
+  const megaMenu = document.querySelector('#mega-menu-list-v2-container');
+  const header = document.querySelector('#header-group');
+  const banner = document.querySelector('.announcement-bar'); // Adjust selector as needed
 
-  <script>
-  function positionMegaMenu() {
-    const navItem = document.querySelector('.nav-item--shop');
-    const megaMenu = document.querySelector('#mega-menu-list-v2-container');
-    const header = document.querySelector('#header-group');
+  if (!navItem || !megaMenu || !header) return;
 
-    if (!navItem || !megaMenu || !header) return;
+  const navRect = navItem.getBoundingClientRect();
+  const headerRect = header.getBoundingClientRect();
+  const bannerHeight = banner ? banner.offsetHeight : 0;
 
-    const navRect = navItem.getBoundingClientRect();
-    const headerRect = header.getBoundingClientRect();
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    // Calculate positioning relative to the sticky header, not whole page
-    const offsetTop = navRect.bottom - headerRect.top;
+  // Adjust offset to account for sticky header + banner
+  const offsetTop = navRect.bottom + scrollTop - headerRect.top - bannerHeight;
 
-    megaMenu.style.position = 'absolute';
-    megaMenu.style.top = `${offsetTop}px`;
-    megaMenu.style.left = `${navRect.left}px`;
-    megaMenu.style.width = `${navRect.width}px`;
-    megaMenu.style.zIndex = '100';
-  }
+  megaMenu.style.position = 'absolute';
+  megaMenu.style.top = `${offsetTop}px`;
+  megaMenu.style.left = `${navRect.left}px`;
+  megaMenu.style.width = `${navRect.width}px`;
+  megaMenu.style.zIndex = '100';
+}
+
 
   function setupMegaMenuHover() {
     const navItem = document.querySelector('.nav-item--shop');
