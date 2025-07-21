@@ -83,6 +83,25 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "sections": {
+      "mega-menu-list-v2": {
+        "type": "mega-menu-list-v2",
+        "settings": {
+          "hat_products": [
+            "a500",
+            "a500c",
+            "a500p-printed-pattern-material",
+            "a500gb"
+          ],
+          "left_image": "shopify://shop_images/beach_-_female_img_8090.webp",
+          "left_text": "LATEST DROPS",
+          "left_link": "",
+          "right_text": "SHOP NOW",
+          "right_link": "",
+          "product_menu_title": "Shop By Hat"
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "733389323033596483": {
