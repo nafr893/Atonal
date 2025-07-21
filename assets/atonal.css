@@ -661,6 +661,9 @@ div.nav-item-wrapper.relative {
 }
  }
 
-
-
+.nav-item .nav-item--shop
+{
+    margin-bottom: 0px; 
+    align-content: center; 
+}
 /* end mega menu styles css */
