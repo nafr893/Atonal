@@ -612,7 +612,7 @@ color: var(--color-primary-hover) ;
 
 /* header mega menu styles css */
 
-.mega-menu-v2 {
+.mega-menu-list-v2 {
   display: none !important;
   position: absolute;
   top: 100%; left: 0;
@@ -621,8 +621,8 @@ color: var(--color-primary-hover) ;
   z-index: 50;
 }
 
-.nav-item--shop:hover ~ .mega-menu-v2,
-.mega-menu-v2:hover {
+.nav-item--shop:hover ~ .mega-menu-list-v2,
+.mega-menu-list-v2:hover {
   display: block;
 }
 
