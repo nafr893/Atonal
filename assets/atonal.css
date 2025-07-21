@@ -654,6 +654,10 @@ div.nav-item.nav-item--shop {
     align-items: middle; 
 
 }
+div.nav-item-wrapper.relative {
+    align-content: center; 
+}
+
  }
 
 
