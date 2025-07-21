@@ -612,6 +612,13 @@ color: var(--color-primary-hover) ;
 
 /* header mega menu styles css */
 
+ @media (max-width: 480px) {
+div.mega-menu-list-v2 {
+display: none; 
+
+}
+ }
+
 div.mega-menu-list-v2 {
   display: block !important;
   position: relative;
