@@ -53,14 +53,7 @@
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
    
-    <div class="nav-item-wrapper relative">
-  <div class="nav-item nav-item--shop">SHOP</div> <!-- The hover trigger -->
   
-  <div id="mega-menu-list-v2" class="mega-menu-list-v2 hidden">
-    {% section 'mega-menu-list-v2' %}
-  </div>
-</div>  
-
     
     <div id="header-group">
       {% sections 'header-group' %}
@@ -70,6 +63,16 @@
 
 
     </div>
+
+  <div class="nav-item-wrapper relative">
+  <div class="nav-item nav-item--shop">SHOP</div> <!-- The hover trigger -->
+  
+  <div id="mega-menu-list-v2" class="mega-menu-list-v2 hidden">
+    {% section 'mega-menu-list-v2' %}
+  </div>
+</div>  
+
+
 
     <main
       id="MainContent"
@@ -122,29 +125,72 @@
   </script>
   {% comment %} Custom Js end {% endcomment %}
 
-{% comment %} Custom Javascript for Shop Menu 
+{% comment %} Custom Javascript for Shop Menu {% endcomment %}
 
   <script>
   function positionMegaMenu() {
     const navItem = document.querySelector('.nav-item--shop');
     const megaMenu = document.querySelector('#mega-menu-list-v2-container');
+    const header = document.querySelector('#header-group');
+
+    if (!navItem || !megaMenu || !header) return;
+
+    const navRect = navItem.getBoundingClientRect();
+    const headerRect = header.getBoundingClientRect();
+
+    // Calculate positioning relative to the sticky header, not whole page
+    const offsetTop = navRect.bottom - headerRect.top;
+
+    megaMenu.style.position = 'absolute';
+    megaMenu.style.top = `${offsetTop}px`;
+    megaMenu.style.left = `${navRect.left}px`;
+    megaMenu.style.width = `${navRect.width}px`;
+    megaMenu.style.zIndex = '100';
+  }
+
+  function setupMegaMenuHover() {
+    const navItem = document.querySelector('.nav-item--shop');
+    const megaMenu = document.querySelector('#mega-menu-list-v2-container');
 
     if (!navItem || !megaMenu) return;
 
-    const navRect = navItem.getBoundingClientRect();
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    navItem.addEventListener('mouseenter', () => {
+      megaMenu.classList.remove('hidden');
+    });
 
-    megaMenu.style.position = 'absolute';
-    megaMenu.style.top = `${navRect.bottom + scrollTop}px`;
-    megaMenu.style.left = `${navRect.left}px`;
-    megaMenu.style.width = `${navRect.width}px`;
+    navItem.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!megaMenu.matches(':hover')) {
+          megaMenu.classList.add('hidden');
+        }
+      }, 150);
+    });
+
+    megaMenu.addEventListener('mouseleave', () => {
+      megaMenu.classList.add('hidden');
+    });
+
+    megaMenu.addEventListener('mouseenter', () => {
+      megaMenu.classList.remove('hidden');
+    });
   }
 
-  window.addEventListener('load', positionMegaMenu);
-  window.addEventListener('resize', positionMegaMenu);
+  window.addEventListener('load', () => {
+    positionMegaMenu();
+    setupMegaMenuHover();
+  });
+
+  window.addEventListener('resize', () => {
+    positionMegaMenu();
+  });
+
+  window.addEventListener('scroll', () => {
+    positionMegaMenu(); // Optional: if scroll affects header layout
+  });
 </script>
 
-{% endcomment %}
+{% comment %} End Custom Javascript for Shop Menu {% endcomment %}
+
 
 
 </html>
