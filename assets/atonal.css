@@ -639,10 +639,23 @@ div.mega-menu-list-v2__grid {
   display: block !important;
 }
 
+/* test remove 
 .nav-item-wrapper {
  position: fixed;
 z-index: 10;
 top: 61.5px; 
+}
+*/
+
+
+.nav-item-wrapper{
+  position: fixed;
+z-index: 10;
+top: 101.5px; 
+}
+
+.header--scrolled ~ .nav-item-wrapper {
+  top: 61.5px; /* just header height */
 }
 
 
