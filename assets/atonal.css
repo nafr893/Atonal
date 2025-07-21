@@ -623,7 +623,10 @@ display: none;
 
 
 .nav-item-wrapper {
-  position: relative;
+ position: absolute;
+z-index: 10;
+top: 61px;
+left: 40px;
 }
 
 .mega-menu-list-v2 {
