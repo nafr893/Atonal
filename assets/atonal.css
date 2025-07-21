@@ -686,4 +686,13 @@ p.nav-item.nav-item--shop
     padding-right: 20px; 
     display: none !important;
 }
+
+li.nav-item.nav-item--shop {
+margin-bottom: 0px; 
+padding-right: 20px; 
+align-content: center; 
+text-transform: uppercase;
+font-weight: bold; 
+}
+
 /* end mega menu styles css */
