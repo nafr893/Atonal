@@ -621,7 +621,7 @@ div.mega-menu-list-v2 {
   z-index: 50;
 }
 
-.nav-item--shop:hover ~ div.mega-menu-list-v2,
+a.menu-list__link:hover ~ div.mega-menu-list-v2,
 div.mega-menu-list-v2:hover {
   display: block;
 }
