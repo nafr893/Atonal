@@ -642,7 +642,7 @@ div.mega-menu-list-v2__grid {
 .nav-item-wrapper {
  position: fixed;
 z-index: 10;
-top: 100%; 
+top: 40px; 
 }
 
 
