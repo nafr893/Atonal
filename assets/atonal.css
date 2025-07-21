@@ -613,7 +613,7 @@ color: var(--color-primary-hover) ;
 /* header mega menu styles css */
 
 div.mega-menu-list-v2 {
-  display: block;
+  display: block !important;
   position: absolute;
   top: 100%; left: 0;
   width: 100%;
