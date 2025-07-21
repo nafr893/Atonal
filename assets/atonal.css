@@ -656,7 +656,7 @@ body.scrolled .nav-item-wrapper {
 body:not(.scrolled) .nav-item-wrapper {
   top: 101.5px;
   position: fixed; 
-
+}
 
 
 
