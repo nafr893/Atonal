@@ -623,22 +623,20 @@ display: none;
   position: relative;
 }
 
-.mega-menu-v2 {
+.mega-menu-list-v2 {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
   background: white;
-  z-index: 50;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 
-
-.nav-item-wrapper:hover .mega-menu-v2,
-.mega-menu-v2:hover {
+.nav-item-wrapper:hover .mega-menu-list-v2 {
   display: block;
 }
+
 
 
 
