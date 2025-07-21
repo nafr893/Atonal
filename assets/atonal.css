@@ -655,6 +655,7 @@ div.nav-item.nav-item--shop {
     align-items: middle; 
     position: absolute;
     left: 40px; 
+    opacity: 0; 
 }
 
 div.mega-menu-list-v2 {
