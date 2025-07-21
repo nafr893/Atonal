@@ -634,7 +634,7 @@ left: 40px;
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 100dvw;
   background: white;
   z-index: 100;
 }
