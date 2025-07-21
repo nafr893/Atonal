@@ -698,8 +698,8 @@ font-weight: bold;
 }
 
 div.mega-menu-list-v2-container {
-    top: calc(100% +40px);
-    
+    top: 100%;
+
 }
 
 /* end mega menu styles css */
