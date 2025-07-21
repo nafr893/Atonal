@@ -15,7 +15,7 @@
           <li class="mega-menu-list-v2__product">
             <a href="{{ product.url }}" class="menu-product-link">
               <img src="{{ product.featured_image | image_url: width: 80 }}" alt="{{ product.title }}">
-              <span>{{ product.title }}</span>
+              <span class="menu-product-title">{{ product.title }}</span>
             </a>
           </li>
         {% endfor %}
@@ -128,12 +128,16 @@
 }
 
 
+.menu-product-title {
+  width: 100%; 
+}
+
 .menu-product-link {
   display: flex; 
   flex-direction: row;
   align-items: center;
   height: 5rem; 
-  width: 18rem; 
+  width: 8rem; 
   padding-left: 2rem; 
 }
 
