@@ -92,7 +92,11 @@
       "type": "mega-menu-list-v2",
       "name": "Mega Menu List V2",
       "settings": {
-        "hat_products": [],
+        "hat_products": [
+          "a500c",
+          "a500",
+          "a500p-printed-pattern-material"
+        ],
         "left_text": "LATEST DROPS",
         "left_link": "",
         "right_image": "shopify://shop_images/casual_coffee_shop_-_female___male_img_0256.webp",
