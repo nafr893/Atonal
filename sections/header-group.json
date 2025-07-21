@@ -78,9 +78,9 @@
           "static": true,
           "settings": {
             "menu": "header-menu",
-            "menu_style": "featured_collections",
+            "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
-            "featured_collections_aspect_ratio": "16 / 9",
+            "featured_collections_aspect_ratio": "1 / 1",
             "image_border_radius": 0,
             "product_title_case": "default",
             "collection_title_case": "default",
