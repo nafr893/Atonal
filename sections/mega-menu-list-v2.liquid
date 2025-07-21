@@ -1,0 +1,160 @@
+{% comment %}
+  Mega Menu List V2
+  - Fixed layout, editable content (product list + promo images)
+  - Designed for Horizon or OS2.0 themes
+{% endcomment %}
+
+<div class="mega-menu-list-v2">
+  <div class="mega-menu-list-v2__grid">
+    
+    <!-- Left Column: Shop by Hat -->
+    <div class="mega-menu-list-v2__hats">
+      <h2 class="mega-menu-list-v2__heading">{{ section.settings.product_menu_title }}</h2>
+      <ul class="mega-menu-list-v2__products">
+        {% for product in section.settings.hat_products %}
+          <li class="mega-menu-list-v2__product">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: width: 80 }}" alt="{{ product.title }}">
+              <span>{{ product.title }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Right Column: Promo Banners -->
+    <div class="mega-menu-list-v2__promos">
+      <div class="mega-menu-list-v2__promo">
+        {% if section.settings.left_image %}
+          <a href="{{ section.settings.left_link }}">
+            <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Promo Left">
+            <span class="mega-menu-list-v2__promo-text">{{ section.settings.left_text }}</span>
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="mega-menu-list-v2__promo">
+        {% if section.settings.right_image %}
+          <a href="{{ section.settings.right_link }}">
+            <img src="{{ section.settings.right_image | image_url: width: 600 }}" alt="Promo Right">
+            <span class="mega-menu-list-v2__promo-text">{{ section.settings.right_text }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mega Menu List V2",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "hat_products",
+      "label": "Select hats to display",
+      "limit": 12
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Promo Image"
+    },
+    {
+      "type": "text",
+      "id": "left_text",
+      "label": "Left Promo Text",
+      "default": "LATEST DROPS"
+    },
+    {
+      "type": "url",
+      "id": "left_link",
+      "label": "Left Promo Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Promo Image"
+    },
+    {
+      "type": "text",
+      "id": "right_text",
+      "label": "Right Promo Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "right_link",
+      "label": "Right Promo Link"
+    },
+    {
+    "type": "text", 
+    "id": "product_menu_title",
+    "label": "Product Menu Title",
+    "default": "Shop By Hat"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Mega Menu List V2",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.mega-menu-list-v2 {
+  padding: 20px;
+}
+
+.mega-menu-list-v2__grid {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.mega-menu-list-v2__hats {
+  flex: 1;
+}
+
+.mega-menu-list-v2__products {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-menu-list-v2__product {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mega-menu-list-v2__product img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.mega-menu-list-v2__promos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.mega-menu-list-v2__promo img {
+  width: 100%;
+  display: block;
+}
+
+.mega-menu-list-v2__promo-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+{% endstyle %}
