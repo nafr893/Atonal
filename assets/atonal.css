@@ -665,7 +665,8 @@ div.nav-item.nav-item--shop {
 }
 
 div.mega-menu-list-v2 {
-top: 46px;     
+
+    background: rgba(0, 0, 0, 0);
 }
 
 
