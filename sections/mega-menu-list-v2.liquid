@@ -30,7 +30,8 @@
            
               <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Promo Left">
               <span class="mega-menu-list-v2__promo-text">{{ section.settings.left_text }}</span>
-           
+                        <div class="menu-image-overlay"></div>
+
           </a>
         {% endif %}
       </div>
@@ -41,7 +42,8 @@
 
               <img src="{{ section.settings.right_image | image_url: width: 600 }}" alt="Promo Right">
               <span class="mega-menu-list-v2__promo-text">{{ section.settings.right_text }}</span>
-          
+                       <div class="menu-image-overlay"></div>
+
           </a>
         {% endif %}
       </div>
@@ -193,6 +195,16 @@ box-sizing: border-box;
 
 .mega-menu-list-v2__promo img:hover {
 
+}
+
+div.menu-image-overlay {
+  width: 100%; 
+  height: 100%; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
 }
 
 .mega-menu-list-v2__promo-text {
