@@ -631,7 +631,7 @@ display: none;
   left: 0;
   width: 100dvw;
   background: white;
-  z-index: 100;
+  z-index: 20;
 }
 
 .nav-item-wrapper:hover .mega-menu-list-v2 {
@@ -666,7 +666,7 @@ div.nav-item.nav-item--shop {
 
 div.mega-menu-list-v2 {
 
-    background: rgba(0, 0, 0, 0);
+    background: white; 
 }
 
 
