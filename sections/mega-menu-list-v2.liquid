@@ -26,12 +26,13 @@
     <div class="mega-menu-list-v2__promos">
       <div class="mega-menu-list-v2__promo">
         {% if section.settings.left_image %}
+          
           <a href="{{ section.settings.left_link }}">
-           
+           <div class="menu-image-wrapper">
               <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Promo Left">
               <span class="mega-menu-list-v2__promo-text">{{ section.settings.left_text }}</span>
                         <div class="menu-image-overlay"></div>
-
+</div>
           </a>
         {% endif %}
       </div>
@@ -39,11 +40,12 @@
       <div class="mega-menu-list-v2__promo">
         {% if section.settings.right_image %}
           <a href="{{ section.settings.right_link }}">
+           <div class="menu-image-wrapper">
 
               <img src="{{ section.settings.right_image | image_url: width: 600 }}" alt="Promo Right">
               <span class="mega-menu-list-v2__promo-text">{{ section.settings.right_text }}</span>
                        <div class="menu-image-overlay"></div>
-
+</div>
           </a>
         {% endif %}
       </div>
@@ -204,7 +206,7 @@ div.menu-image-overlay {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 20;
+  z-index: 3;
 }
 
 .mega-menu-list-v2__promo-text {
