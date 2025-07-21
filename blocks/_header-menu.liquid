@@ -64,13 +64,6 @@
     {% endif %}
   {% else %}
 
-     <div class="nav-item-wrapper relative">
-  <div class="nav-item nav-item--shop">Shop</div> <!-- The hover trigger -->
-  
-  <div id="mega-menu-list-v2" class="mega-menu-list-v2 hidden">
-    {% section 'mega-menu-list-v2' %}
-  </div>
-</div>
 
     <header-menu
       ref="headerMenu"
@@ -79,6 +72,15 @@
       {{ block.shopify_attributes }}
       style="--submenu-animation-speed: {{ animation_speed }}ms;{{ title_case_style }}"
     >
+
+       <div class="nav-item-wrapper relative">
+  <div class="nav-item nav-item--shop">Shop</div> <!-- The hover trigger -->
+  
+  <div id="mega-menu-list-v2" class="mega-menu-list-v2 hidden">
+    {% section 'mega-menu-list-v2' %}
+  </div>
+</div>
+
       <div class="header-menu__inner">
         {%- render 'header-menu' %}
       </div>
