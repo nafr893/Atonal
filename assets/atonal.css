@@ -630,6 +630,11 @@ display: none;
   z-index: 20;
 }
 
+div.mega-menu-list-v2__grid {
+    top: calc(100% +40px);
+}
+
+
 .nav-item-wrapper:hover .mega-menu-list-v2 {
   display: block !important;
 }
