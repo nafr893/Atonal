@@ -613,7 +613,7 @@ color: var(--color-primary-hover) ;
 /* header mega menu styles css */
 
  @media (max-width: 480px) {
-div.mega-menu-list-v2 {
+div.mega-menu-list-v2, div.nav-item.nav-item--shop  {
 display: none; 
 
 }
@@ -640,5 +640,10 @@ display: none;
   display: block;
 }
 
+
+div.nav-item.nav-item--shop {
+    padding-right: 20px; 
+
+}
 
 /* end mega menu styles css */
