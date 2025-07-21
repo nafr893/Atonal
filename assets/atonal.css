@@ -621,7 +621,7 @@ display: none;
 
  /* end mobile mega menu styles css */
 
- 
+
 .nav-item-wrapper {
   position: relative;
 }
@@ -637,7 +637,7 @@ display: none;
 }
 
 .nav-item-wrapper:hover .mega-menu-list-v2 {
-  display: block;
+  display: block !important;
 }
 
 
@@ -659,7 +659,6 @@ div.nav-item-wrapper.relative {
     align-content: center; 
     font-weight: bold; 
 }
-
  }
 
 
