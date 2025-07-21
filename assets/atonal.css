@@ -680,8 +680,8 @@ div.nav-item.nav-item--shop {
     opacity: 0; 
     z-index: 12;
     width: 40px; 
-    height: 40px; 
-top: -65x; 
+    height: 30px !important;
+top: -45px !important;
 }
 
 div.mega-menu-list-v2 {
