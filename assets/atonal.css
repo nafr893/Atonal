@@ -655,7 +655,7 @@ top: 101.5px;
 }
 
 .header--scrolled ~ .nav-item-wrapper {
-  top: 61.5px; /* just header height */
+  top: 41.5px; /* just header height */
 }
 
 
