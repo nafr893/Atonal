@@ -656,6 +656,7 @@ div.nav-item.nav-item--shop {
 }
 div.nav-item-wrapper.relative {
     align-content: center; 
+    font-weight: bold; 
 }
 
  }
