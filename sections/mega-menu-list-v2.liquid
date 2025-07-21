@@ -26,7 +26,7 @@
     <div class="mega-menu-list-v2__promos">
       <div class="mega-menu-list-v2__promo">
         {% if section.settings.left_image %}
-          <a href="{{ section.settings.left_link }}">
+          <a href="{{ section.settings.left_link }}" class="menu-promo-item">
             <img src="{{ section.settings.left_image | image_url: width: 600 }}" alt="Promo Left">
             <span class="mega-menu-list-v2__promo-text">{{ section.settings.left_text }}</span>
           </a>
@@ -35,7 +35,7 @@
 
       <div class="mega-menu-list-v2__promo">
         {% if section.settings.right_image %}
-          <a href="{{ section.settings.right_link }}">
+          <a href="{{ section.settings.right_link }}" class="menu-promo-item">
             <img src="{{ section.settings.right_image | image_url: width: 600 }}" alt="Promo Right">
             <span class="mega-menu-list-v2__promo-text">{{ section.settings.right_text }}</span>
           </a>
@@ -178,6 +178,11 @@ box-sizing: border-box;
   flex: 1;
 }
 
+a.menu-promo-item {
+  position: relative; 
+  justify-content: center; 
+  align-items: center; 
+}
 
 .mega-menu-list-v2__promo img {
   width: 20rem;
