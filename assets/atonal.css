@@ -639,12 +639,19 @@ div.mega-menu-list-v2__grid {
   display: block !important;
 }
 
-.nav-item-wrapper {
- position: sticky;
-z-index: 10;
-top: 61.5px; 
+
+body:not(.scrolled) .mega-menu-list-v2-container {
+  top: 101.5px;
+  position: absolute;
+  z-index: 10;
 }
 
+/* After scroll — banner gone, move menu up */
+body.scrolled .mega-menu-list-v2-container {
+  top: 61.5px;
+  position: absolute;
+  z-index: 10;
+}
 
 
 
