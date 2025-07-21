@@ -656,6 +656,9 @@ div.nav-item.nav-item--shop {
     position: absolute;
     left: 40px; 
     opacity: 0; 
+    z-index: 12;
+    width: 40px; 
+    height: 40px; 
 }
 
 div.mega-menu-list-v2 {
