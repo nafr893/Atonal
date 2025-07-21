@@ -642,9 +642,16 @@ div.mega-menu-list-v2__grid {
 .nav-item-wrapper {
  position: fixed;
 z-index: 10;
-top: 60px; 
+top: 61.5px; 
 }
 
+body:not(.scrolled) .nav-item-wrapper {
+  top: 101.5px;
+}
+
+body.scrolled .nav-item-wrapper {
+  top: 61.5px;
+}
 
 
 /* desktop mega menu styles css */
