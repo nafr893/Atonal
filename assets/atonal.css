@@ -622,11 +622,7 @@ display: none;
  /* end mobile mega menu styles css */
 
 
-.nav-item-wrapper {
- position: absolute;
-z-index: 10;
-top: 61px;
-}
+
 
 .mega-menu-list-v2 {
   display: none;
@@ -673,6 +669,13 @@ div.nav-item-wrapper.relative {
     font-weight: bold; 
 }
  }
+
+
+.nav-item-wrapper {
+ position: absolute;
+z-index: 10;
+top: 62px;
+}
 
 p.nav-item.nav-item--shop
 {
