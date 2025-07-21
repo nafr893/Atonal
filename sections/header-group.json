@@ -105,7 +105,7 @@
           "type": "_mega-menu-list-v2",
           "static": true,
           "settings": {
-            "menu": "header-menu",
+            "menu": "mega-menu-list",
             "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "1 / 1",
