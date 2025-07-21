@@ -635,7 +635,7 @@ display: none;
 }
 
 .nav-item-wrapper {
- position: sticky;
+ position: fixed;
 z-index: 10;
 top: 61.5px;
 }
@@ -656,7 +656,7 @@ div.header-menu__inner {
 div.nav-item.nav-item--shop {
     padding-right: 20px; 
     align-items: middle; 
-    position: relative;
+    position: absolute;
     left: 40px; 
 }
 
