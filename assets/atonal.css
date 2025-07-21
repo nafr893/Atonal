@@ -648,10 +648,7 @@ top: 61.5px;
 div.header-menu__inner {
     display: flex; 
 }
-div.header-menu__inner {
-    position: relative; 
-    left: 60px; 
-}
+
 
 div.nav-item.nav-item--shop {
     padding-right: 20px; 
