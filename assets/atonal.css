@@ -622,7 +622,7 @@ display: none;
 .mega-menu-list-v2 {
   display: none;
   position: absolute;
- top: calc(100% + 20px);
+ top: 100%;
   left: 0;
   width: 100dvw;
   
@@ -698,7 +698,7 @@ font-weight: bold;
 }
 
 div.mega-menu-list-v2-container {
-    top: 100%;
+
 
 }
 
