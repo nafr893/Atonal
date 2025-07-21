@@ -651,10 +651,16 @@ top: 61px;
 div.header-menu__inner {
     display: flex; 
 }
+div.header-menu__inner {
+    position: relative; 
+    left: 60px; 
+}
 
 div.nav-item.nav-item--shop {
     padding-right: 20px; 
     align-items: middle; 
+    position: relative;
+    left: 40px; 
 
 }
 div.nav-item-wrapper.relative {
