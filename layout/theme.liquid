@@ -191,6 +191,12 @@
 
 {% comment %} End Custom Javascript for Shop Menu {% endcomment %}
 
+<script>
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    document.body.classList.toggle('scrolled', scrollTop > 10);
+  });
+</script>
 
 
 </html>

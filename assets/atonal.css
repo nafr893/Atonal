@@ -648,15 +648,14 @@ top: 61.5px;
 */
 
 
-.nav-item-wrapper{
-  position: fixed;
-z-index: 10;
-top: 61.5px; 
+body.scrolled .nav-item-wrapper {
+  top: 61.5px;
 }
 
-.header--scrolled ~ .nav-item-wrapper {
-  top: 41.5px; /* just header height */
+body:not(.scrolled) .nav-item-wrapper {
+  top: 101.5px;
 }
+
 
 
 
