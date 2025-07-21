@@ -642,14 +642,14 @@ div.mega-menu-list-v2__grid {
 
 body:not(.scrolled) .mega-menu-list-v2-container {
   top: 101.5px;
-  position: absolute;
+  position: fixed;
   z-index: 10;
 }
 
 /* After scroll — banner gone, move menu up */
 body.scrolled .mega-menu-list-v2-container {
   top: 61.5px;
-  position: absolute;
+  position: fixed;
   z-index: 10;
 }
 
