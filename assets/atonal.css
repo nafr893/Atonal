@@ -665,9 +665,7 @@ div.nav-item.nav-item--shop {
 }
 
 div.mega-menu-list-v2 {
-
-    background-color: white; 
-
+    background: linear-gradient(to bottom, transparent 20px, white 20px);
 }
 
 
