@@ -631,7 +631,7 @@ div.mega-menu-list-v2 {
 
 a.menu-list__link:hover ~ div.mega-menu-list-v2,
 div.mega-menu-list-v2:hover {
-  display: block !important;
+  display: block;
 }
 
 /* end mega menu styles css */
