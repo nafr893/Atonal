@@ -639,19 +639,13 @@ div.mega-menu-list-v2__grid {
   display: block !important;
 }
 
-
-
-body:not(.scrolled) .nav-item-wrapper {
-  top: 101.5px;
-   position: fixed;
+.nav-item-wrapper {
+ position: absolute;
 z-index: 10;
+top: 61.5px; 
 }
 
-body.scrolled .nav-item-wrapper {
-  top: 61.5px;
-   position: fixed;
-z-index: 10;
-}
+
 
 
 /* desktop mega menu styles css */
