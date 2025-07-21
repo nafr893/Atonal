@@ -635,7 +635,7 @@ display: none;
 }
 
 .nav-item-wrapper {
- position: absolute;
+ position: sticky;
 z-index: 10;
 top: 61.5px;
 }
