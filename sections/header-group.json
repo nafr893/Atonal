@@ -101,7 +101,6 @@
           },
           "blocks": {}
         },
-         "type": "_mega-menu-list-v2",
       "blocks": {
         "header-logo": {
           "type": "mega-menu",
@@ -130,9 +129,7 @@
             "drawer_dividers": false
           },
           "blocks": {}
-        },
-
-
+        }
       },
       "settings": {
         "logo_position": "center",
