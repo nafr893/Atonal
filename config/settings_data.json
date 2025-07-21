@@ -91,11 +91,16 @@
             "a500",
             "a500c",
             "a500p-printed-pattern-material",
-            "a500gb"
+            "a500gb",
+            "a500r",
+            "a501",
+            "a601",
+            "a601p-printed-unstructured-dad-hat"
           ],
           "left_image": "shopify://shop_images/beach_-_female_img_8090.webp",
           "left_text": "LATEST DROPS",
           "left_link": "",
+          "right_image": "shopify://shop_images/casual_coffee_shop_-_female___male_img_0256.webp",
           "right_text": "SHOP NOW",
           "right_link": "",
           "product_menu_title": "Shop By Hat"
