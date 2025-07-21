@@ -117,33 +117,10 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
-    },
-    "mega_menu_list_v2_PPbdX6": {
-      "type": "mega-menu-list-v2",
-      "name": "Mega Menu List V2",
-      "settings": {
-        "hat_products": [
-          "a500c",
-          "a500",
-          "a500p-printed-pattern-material",
-          "a500gb",
-          "a500r",
-          "a501",
-          "a601",
-          "a611"
-        ],
-        "left_text": "LATEST DROPS",
-        "left_link": "",
-        "right_image": "shopify://shop_images/casual_coffee_shop_-_female___male_img_0256.webp",
-        "right_text": "SHOP NOW",
-        "right_link": "",
-        "product_menu_title": "Shop By Hat"
-      }
     }
   },
   "order": [
     "header_announcements_XrgKwi",
-    "header_section",
-    "mega_menu_list_v2_PPbdX6"
+    "header_section"
   ]
 }
