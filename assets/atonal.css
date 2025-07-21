@@ -609,3 +609,21 @@ color: var(--color-primary-hover) ;
 }
 }
 }
+
+/* header mega menu styles css */
+
+.mega-menu-v2 {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0;
+  width: 100%;
+  background: white;
+  z-index: 50;
+}
+
+.nav-item--shop:hover ~ .mega-menu-v2,
+.mega-menu-v2:hover {
+  display: block;
+}
+
+/* end mega menu styles css */
