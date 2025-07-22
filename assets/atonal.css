@@ -117,8 +117,8 @@ a.size-style.spacing-style.header-logo {
 footer#shopify-section-sections--19068398534814__footer {
 div.group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column
     {
-padding-left: .0rem;
-padding-right: .0rem; 
+padding-left: .1rem !important;
+padding-right: .1rem !important; 
 padding-top: 1.5rem ;
     }
 
