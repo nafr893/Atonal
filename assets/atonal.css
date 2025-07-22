@@ -722,7 +722,7 @@ text-transform: uppercase;
 font-weight: bold; 
 }
 
-div.nav-item.nav-item--shop {
+div.nav-item.nav-item--shop:hover {
 li.nav-item.nav-item--shop {
 color: #1E00A5;
 }
