@@ -724,7 +724,7 @@ font-weight: bold;
 
 
 
-li.nav-item.nav-item--shop {
+li.nav-item.nav-item--shop:hover {
 color: #1E00A5 !important;
 
 }
