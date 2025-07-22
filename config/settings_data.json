@@ -78,7 +78,7 @@
     "show_second_image_on_hover": true,
     "product_card_carousel": false,
     "product_corner_radius": 0,
-    "card_corner_radius": 4,
+    "card_corner_radius": 0,
     "show_variant_image": true,
     "variant_swatch_width": 70,
     "variant_swatch_height": 70,
