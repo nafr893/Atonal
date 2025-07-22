@@ -6,8 +6,9 @@
 {%- liquid
   assign first_five_collections = collections | where: 'published_at'
 -%}
-<p class="search-categories-title">POPULAR SEARCHES</p>
+
 <div class="search-categories">
+    <p class="search-categories-title">POPULAR SEARCHES</p>
   <div class="search-categories__buttons">
     {% for collection in first_five_collections %}
       {% if forloop.index <= 5 %}
