@@ -206,7 +206,7 @@
                     </ul>
                   {% endif %}
 
-                  <div>
+                  <div class="cart-item__price">
                     {% if item.original_price != item.final_price %}
                       <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
                       <span>{{ item.final_price | money }}</span>
@@ -409,6 +409,7 @@
 
   .cart-items__variant {
     display: inline-block;
+    font-size: 10px;
   }
 
   .cart-items__quantity {
@@ -720,4 +721,9 @@
   .cart-items__properties dd {
     display: inline;
   }
+
+.cart-item__price {
+  font-size: 10px;
+}
+
 {% endstylesheet %}
