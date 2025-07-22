@@ -688,6 +688,7 @@ div.nav-item.nav-item--shop {
     width: 40px; 
     height: 46px !important;
 top: -45px !important;
+
 }
 
 div.mega-menu-list-v2 {
@@ -721,6 +722,9 @@ text-transform: uppercase;
 font-weight: bold; 
 }
 
+li.nav-item.nav-item--shop:hover {
+color: #1E00A5;
+}
 
 
 /* end mega menu styles css */
