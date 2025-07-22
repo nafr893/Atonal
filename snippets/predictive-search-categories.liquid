@@ -6,7 +6,7 @@
 {%- liquid
   assign first_five_collections = collections | where: 'published_at'
 -%}
-
+<p class="search-categories-title">POPULAR SEARCHES</p>
 <div class="search-categories">
   <div class="search-categories__buttons">
     {% for collection in first_five_collections %}
@@ -52,7 +52,6 @@
   font-weight: var(--font-weight-medium);
   transition: all 0.05s ease;
   white-space: nowrap;
-  flex: 1;
   min-width: 0;
 }
 
