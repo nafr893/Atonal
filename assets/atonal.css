@@ -669,8 +669,14 @@ body:not(.scrolled) .nav-item-wrapper {
 
 div.header-menu__inner {
     display: flex; 
+   
 }
 
+div.menu-list {
+     li:first-child {
+  display: none;
+}
+}
 
 div.nav-item.nav-item--shop {
     padding-right: 20px; 
