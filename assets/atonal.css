@@ -722,9 +722,10 @@ text-transform: uppercase;
 font-weight: bold; 
 }
 
-li.nav-item.nav-item--shop:hover {
+div.nav-item.nav-item--shop {
+li.nav-item.nav-item--shop {
 color: #1E00A5;
 }
-
+}
 
 /* end mega menu styles css */
