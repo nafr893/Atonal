@@ -119,6 +119,9 @@ div.group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-colum
     {
 
 padding-top: 1.5rem ;
+width: 100%; 
+padding-left: 0px; 
+padding-right: 0px; 
     }
 
     div.group-block-content.layout-panel-flex.layout-panel-flex--row.mobile-column
@@ -131,10 +134,7 @@ div.group-block.group-block--height-fit.group-block--width-fill.border-style.spa
     padding-left: 1rem !important;
     padding-right: 1rem !important;
 }
-div.group-block.group-block--height-fit.group-block--width-fill.border-style.spacing-style.size-style {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-}
+  
      }
 
 
