@@ -123,7 +123,7 @@
 
           comment
             Searching for recently viewed products by id doesn't preserve the order of the products.
-            To work around this, we get the product ids into an array then use that to reorder them.
+            To work around this, we get the product ids into an array then use that to reorder them. (limit products change)
           endcomment
           if search.terms contains 'id:'
             assign new_products_ids = search.terms | replace: 'id:', '' | split: ' OR '
