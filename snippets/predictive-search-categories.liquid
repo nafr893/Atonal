@@ -1,0 +1,83 @@
+{% comment %}
+  Predictive Search Categories
+  Renders the first 5 collections as buttons in a flex row
+{% endcomment %}
+
+{%- liquid
+  assign first_five_collections = collections | where: 'published_at'
+-%}
+
+<div class="search-categories">
+  <div class="search-categories__buttons">
+    {% for collection in first_five_collections %}
+      {% if forloop.index <= 5 %}
+        <a 
+          href="{{ collection.url }}" 
+          class="search-categories__button"
+          aria-label="Browse {{ collection.title }} collection"
+        >
+          {{ collection.title }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+.search-categories {
+  width: 100%;
+  padding: var(--padding-sm) 0;
+}
+
+.search-categories__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-xs);
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-categories__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-xs) var(--padding-sm);
+  background-color: var(--color-background-secondary, #f5f5f5);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border, #d9d9d9);
+  border-radius: var(--style-border-radius-buttons-secondary, 4px);
+  text-decoration: none;
+  font-size: var(--font-size--sm);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-categories__button:hover,
+.search-categories__button:focus {
+  background-color: var(--color-primary, #1E00A5);
+  color: var(--color-background);
+  border-color: var(--color-primary, #1E00A5);
+  text-decoration: none;
+}
+
+.search-categories__button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 749px) {
+  .search-categories__buttons {
+    gap: var(--gap-2xs);
+  }
+  
+  .search-categories__button {
+    padding: var(--padding-2xs) var(--padding-xs);
+    font-size: var(--font-size--xs);
+  }
+}
+{% endstylesheet %}
