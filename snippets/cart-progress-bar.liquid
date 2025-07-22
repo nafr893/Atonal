@@ -28,7 +28,7 @@
     <p class="cart-progress__message">You’ve unlocked free shipping!</p>
   {% else %}
     <p class="cart-progress__message">
-      Spend {{ remaining_amount | money_without_trailing_zeros }} more to unlock free shipping!
+      You're {{ remaining_amount | money_without_trailing_zeros }} away from FREE SHIPPING
     </p>
   {% endif %}
 
