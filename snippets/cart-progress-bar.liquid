@@ -1,13 +1,27 @@
 {% comment %}
-  Cart Progress Bar Snippet
+  Ca  {% if cart_total >= free_shipping_threshold %}
+    <p class="cart-progress__message">
+      🎉 {{ 'cart.free_shipping.qualified' | t | default: "You've qualified for free shipping!" }}
+    </p>
+  {% else %}
+    <p class="cart-progress__message">
+      🚚 Spend {{ remaining_amount | money }} more for free shipping!
+    </p>
+  {% endif %}ress Bar Snippet
   Displays a bar that fills based on cart total toward free shipping.
   Customize `free_shipping_threshold` as needed.
 {% endcomment %}
 
-{% assign free_shipping_threshold = 50.00 %}
-{% assign cart_total = cart.total_price | divided_by: 100.0 %}
-{% assign progress_percent = cart_total | times: 100.0 | divided_by: free_shipping_threshold | round %}
-{% assign remaining_amount = free_shipping_threshold | minus: cart_total %}
+{%- liquid
+  assign free_shipping_threshold = settings.free_shipping_amount | default: 5000
+  assign cart_total = cart.total_price
+  assign progress_percent = cart_total | times: 100 | divided_by: free_shipping_threshold
+  assign remaining_amount = free_shipping_threshold | minus: cart_total
+  
+  if progress_percent > 100
+    assign progress_percent = 100
+  endif
+-%}
 
 <div class="cart-progress">
   {% if cart_total >= free_shipping_threshold %}
@@ -21,7 +35,7 @@
   <div class="cart-progress__bar">
     <div
       class="cart-progress__fill"
-      style="width: {{ [progress_percent, 100] | min }}%;">
+      style="width: {{ progress_percent }}%;">
     </div>
   </div>
 </div>
