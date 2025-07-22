@@ -1,17 +1,17 @@
 {% comment %}
   Predictive Search Categories
-  Renders the first 5 collections as buttons in a flex row
+  Renders the first 6 collections as buttons in a flex row
 {% endcomment %}
 
 {%- liquid
-  assign first_five_collections = collections | where: 'published_at'
+  assign first_six_collections = collections | where: 'published_at'
 -%}
 
 <div class="search-categories">
     <p class="search-categories-title">POPULAR SEARCHES</p>
   <div class="search-categories__buttons">
-    {% for collection in first_five_collections %}
-      {% if forloop.index <= 5 %}
+    {% for collection in first_six_collections %}
+      {% if forloop.index <= 6 %}
         <a 
           href="{{ collection.url }}" 
           class="search-categories__button"
