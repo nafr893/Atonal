@@ -1,0 +1,52 @@
+{% comment %}
+  Cart Progress Bar Snippet
+  Displays a bar that fills based on cart total toward free shipping.
+  Customize `free_shipping_threshold` as needed.
+{% endcomment %}
+
+{% assign free_shipping_threshold = 50.00 %}
+{% assign cart_total = cart.total_price | divided_by: 100.0 %}
+{% assign progress_percent = cart_total | times: 100.0 | divided_by: free_shipping_threshold | round %}
+{% assign remaining_amount = free_shipping_threshold | minus: cart_total %}
+
+<div class="cart-progress">
+  {% if cart_total >= free_shipping_threshold %}
+    <p class="cart-progress__message">🎉 You’ve unlocked free shipping!</p>
+  {% else %}
+    <p class="cart-progress__message">
+      🛒 Spend ${{ remaining_amount | money_without_trailing_zeros }} more to unlock free shipping!
+    </p>
+  {% endif %}
+
+  <div class="cart-progress__bar">
+    <div
+      class="cart-progress__fill"
+      style="width: {{ [progress_percent, 100] | min }}%;">
+    </div>
+  </div>
+</div>
+
+<style>
+.cart-progress {
+  margin: 16px 0;
+}
+
+.cart-progress__message {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.cart-progress__bar {
+  background: #eee;
+  height: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cart-progress__fill {
+  height: 100%;
+  background: linear-gradient(to right, #00c851, #007e33);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+</style>
