@@ -28,7 +28,7 @@
     <p class="cart-progress__message">You’ve unlocked free shipping!</p>
   {% else %}
     <p class="cart-progress__message">
-      You're {{ remaining_amount | money_without_trailing_zeros }} away from FREE SHIPPING
+      You're <span class="highlight" >{{ remaining_amount | money_without_trailing_zeros }} </span> away from <span class="highlight">FREE SHIPPING</span>
     </p>
   {% endif %}
 
@@ -58,6 +58,10 @@
   margin-bottom: 6px;
   text-align: center; 
   padding-bottom: 5px; 
+
+  .highloight {
+    font-weight: bold;
+  }
 }
 
 
