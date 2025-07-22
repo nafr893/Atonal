@@ -60,6 +60,7 @@
     "cart_type": "drawer",
     "product_title_case": "default",
     "cart_price_font": "secondary",
+    "auto_open_cart_drawer": true,
     "show_cart_note": false,
     "show_add_discount_code": true,
     "drawer_drop_shadow": true,
@@ -98,11 +99,11 @@
             "a601p-printed-unstructured-dad-hat"
           ],
           "left_image": "shopify://shop_images/flexible_fit_png_a501_-min.webp",
-          "left_text": "LATEST DROPS",
-          "left_link": "",
+          "left_text": "BEST SELLERS",
+          "left_link": "shopify://collections/best-sellers",
           "right_image": "shopify://shop_images/audrey_hertel_photo_atonal_headwear__web_size__highlights_atonalheadwear_02_25__86.webp",
-          "right_text": "SHOP NOW",
-          "right_link": "",
+          "right_text": "SHOP ALL",
+          "right_link": "shopify://collections/all",
           "product_menu_title": "Shop By Hat"
         }
       }
