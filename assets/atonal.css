@@ -31,6 +31,11 @@ div.header__column.header__column--center {
   /* footer styles */ 
   /* footer menu width */ 
 footer#shopify-section-sections--19068398534814__footer {
+div.group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column  {
+    --vertical-alignment: top;
+}
+
+
     .menu {
         width: 25% !important; 
     }
