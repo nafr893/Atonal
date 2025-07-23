@@ -120,6 +120,11 @@
           "show_preview_data": true
         }
       },
+      "4015264832934714879": {
+        "type": "shopify://apps/ecomsend-popups/blocks/app/a5670cf8-5705-4b01-ad9e-447033feae26",
+        "disabled": false,
+        "settings": {}
+      },
       "1606158967485095091": {
         "type": "shopify://apps/wholesale-gorilla/blocks/wsg-header/c48d0487-dff9-41a4-94c8-ec6173fe8b8d",
         "disabled": false,
@@ -127,11 +132,6 @@
           "embed_bg_color": "#000000",
           "embed_text_color": "#000000"
         }
-      },
-      "4015264832934714879": {
-        "type": "shopify://apps/ecomsend-popups/blocks/app/a5670cf8-5705-4b01-ad9e-447033feae26",
-        "disabled": false,
-        "settings": {}
       }
     },
     "color_schemes": {
