@@ -134,7 +134,6 @@
   data-presentation="{{ block.settings.media_presentation }}"
   {{ block.shopify_attributes }}
 >
-  
   {% capture slides %}
       {%- assign variant_images = product.selected_or_first_available_variant.metafields.custom.variant_images.value -%}
       {%- if variant_images != blank -%}
@@ -148,38 +147,65 @@
           {%- render 'product-media', media: media_item -%}
         {% endcapture %}
       
-
-      {% capture class %}
-        product-media-container product-media-container--{{ media.media_type }}{% if block.settings.constrain_to_viewport %} constrain-height{% endif %}{% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}{% if block.settings.zoom %} product-media-container--zoomable{% endif %}
-      {% endcapture %}
-      {% if block.settings.aspect_ratio == 'adapt' %}
-        {% capture style %}
-          --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
+        {% capture class %}
+          product-media-container product-media-container--{{ media_item.media_type }}
+          {% if block.settings.constrain_to_viewport %} constrain-height{% endif %}
+          {% if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
+          {% if block.settings.zoom %} product-media-container--zoomable{% endif %}
         {% endcapture %}
-      {% endif %}
-      {% if block.settings.zoom and media.media_type == 'model' %}
-        {%- capture attributes -%}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-      {% elsif block.settings.zoom %}
-        {%- capture attributes -%}on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"{% if settings.transition_to_main_product and forloop.first %} data-view-transition-type="product-image-transition"{% endif %}{% endcapture -%}
-      {% endif %}
+      
+        {% capture style %}{% endcapture %}
+        {% if block.settings.aspect_ratio == 'adapt' %}
+          {% capture style %}
+            --media-preview-ratio: {{ media_item.preview_image.aspect_ratio | default: 1.0 }};
+          {% endcapture %}
+        {% endif %}
+      
+        {% capture attributes %}{% endcapture %}
+        {% if block.settings.zoom %}
+          {% if media_item.media_type == 'model' %}
+            {% capture attributes %}
+              {% if settings.transition_to_main_product and forloop.first %}
+                data-view-transition-type="product-image-transition"
+              {% endif %}
+            {% endcapture %}
+          {% else %}
+            {% capture attributes %}
+              on:click="#zoom-dialog-{{ block.id }}/open/{{ forloop.index0 }}"
+              {% if settings.transition_to_main_product and forloop.first %}
+                data-view-transition-type="product-image-transition"
+              {% endif %}
+            {% endcapture %}
+          {% endif %}
+        {% endif %}
+      
+        {% render 'slideshow-slide',
+          index: forloop.index,
+          children: children,
+          class: class | strip,
+          style: style,
+          attributes: attributes | strip
+        %}
+      {% endfor %}
 
-      {% render 'slideshow-slide',
-        index: forloop.index,
-        children: children,
-        class: class,
-        style: style,
-        attributes: attributes,
-      %}
-    {% endfor %}
   {% endcapture %}
+  {%- assign variant_images = product.selected_or_first_available_variant.metafields.custom.variant_images.value -%}
 
+  {%- assign item_count = 0 -%}
+
+  {%- if variant_images != blank -%}
+    {%- for image in variant_images -%}
+      {%- assign item_count = item_count | plus: 1 -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign item_count = sorted_media.size -%}
+  {%- endif -%}
   {% if sorted_media.size > 1 %}
     {% capture controls %}
       {% if render_slideshow_controls %}
         {%- render 'slideshow-controls',
-          class: slideshow_controls_class,
           style: slideshow_controls_style,
-          item_count: sorted_media.size,
+          item_count: item_count,
           thumbnails: sorted_media,
           controls_on_media: controls_on_media,
           pagination_position: pagination_position,
@@ -191,7 +217,7 @@
         {%- render 'slideshow-controls',
           class: 'desktop:hidden media-gallery__mobile-controls',
           style: block.settings.slideshow_mobile_controls_style,
-          item_count: sorted_media.size,
+          item_count: item_count,
           controls_on_media: true,
           pagination_position: 'center',
         -%}
@@ -220,65 +246,40 @@
       class="media-gallery__grid list-unstyled"
       data-testid="media-gallery-grid"
     >
-      {%- assign variant_images = product.selected_or_first_available_variant.metafields.custom.variant_images -%}
-      {% assign image_counter = 0 %}
-      {% if variant_images %}
-        {% for variant_image in variant_images.value -%}
-          <li
-            ref="media[]"
-            class="
-              product-media-container
-              product-media-container--{{ variant_image.media_type }}
-              {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
-              {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
-            "
-            style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ variant_image.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
-            {% if settings.transition_to_main_product and forloop.first %}
-              data-view-transition-type="product-image-transition"
-            {% endif %}
-          >
-            {%- if block.settings.zoom and variant_image.media_type == 'image' -%}
-              <button
-                type="button"
-                class="button button-unstyled product-media-container__zoom-button"
-                aria-label="{{ 'actions.zoom' | t }}"
-                on:click="/zoom/{{ forloop.index0 }}"
-              >
-                <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
-              </button>
-            {%- endif -%}
-            {%- render 'product-media', media: variant_image -%}
-          </li>
-        {% endfor %}
-      {% else %}
-        {% for media in sorted_media %}
-          <li
-            ref="media[]"
-            class="
-              product-media-container
-              product-media-container--{{ media.media_type }}
-              {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
-              {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
-            "
-            style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
-            {% if settings.transition_to_main_product and forloop.first %}
-              data-view-transition-type="product-image-transition"
-            {% endif %}
-          >
-            {%- if block.settings.zoom and media.media_type == 'image' -%}
-              <button
-                type="button"
-                class="button button-unstyled product-media-container__zoom-button"
-                aria-label="{{ 'actions.zoom' | t }}"
-                on:click="/zoom/{{ forloop.index0 }}"
-              >
-                <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
-              </button>
-            {%- endif -%}
-            {%- render 'product-media', media: media -%}
-          </li>
-        {% endfor %}
-      {% endif %}
+      {%- assign variant_images = product.selected_or_first_available_variant.metafields.custom.variant_images.value -%}
+
+      {%- if variant_images != blank -%}
+        {%- assign combined_media = variant_images -%}
+      {%- else -%}
+        {%- assign combined_media = sorted_media -%}
+      {%- endif -%}
+      {% for media in combined_media %}
+        <li
+          ref="media[]"
+          class="
+            product-media-container
+            product-media-container--{{ media.media_type }}
+            {%- if block.settings.constrain_to_viewport %} constrain-height{% endif %}
+            {%- if block.settings.aspect_ratio != 'adapt' %} media-fit{% endif %}
+          "
+          style="{% if block.settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %}"
+          {% if settings.transition_to_main_product and forloop.first %}
+            data-view-transition-type="product-image-transition"
+          {% endif %}
+        >
+          {%- if block.settings.zoom and media.media_type == 'image' -%}
+            <button
+              type="button"
+              class="button button-unstyled product-media-container__zoom-button"
+              aria-label="{{ 'actions.zoom' | t }}"
+              on:click="/zoom/{{ forloop.index0 }}"
+            >
+              <span class="visually-hidden">{{ 'actions.open_image_in_full_screen' | t }}</span>
+            </button>
+          {%- endif -%}
+          {%- render 'product-media', media: media -%}
+        </li>
+      {% endfor %}
     </ul>
   {% endif %}
 
