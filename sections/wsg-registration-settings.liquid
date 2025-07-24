@@ -5,7 +5,7 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
 ===============================
 {% endcomment %}
 <div class="wsg-one-half wsg-center">
-    <h1 data-translation-selector="applyH1" style="font-size: 2.5rem;">{{ section.settings.page-title }}</h1>
+    <h1 data-translation-selector="applyH1" class="wholesale-title">{{ section.settings.page-title }}</h1>
     <div data-translation-selector="applyForWholesaleAccount">{{ section.settings.description }}</div>
     {% if section.settings.image != blank %}
     <div class="registration-form-img-container">
@@ -45,8 +45,13 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
   color: #d9d9d9; 
   border: 1px solid #DDDDDD;
   background: rgba(0,0,0,0); 
-  
+
 }
+
+.wholesale-title {
+  font-size: 2.5rem !important; 
+}
+
 
 </style>
 
