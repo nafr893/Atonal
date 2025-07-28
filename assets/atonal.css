@@ -762,6 +762,12 @@ div#wsg-account-create.wsg-proxy-container, div#wsg-login.wsg-proxy-container {
     color: #c6c6c6;
 
   }
+
+.button:hover {
+    background-color: #1C009C;
+    color: #ffffff;
+  }
+
 }
 
 button.button.wsg-button-fix.wsg-btn.wsg-button.btn.wsg-btn-primary.Button.wsg-loading-btn {
