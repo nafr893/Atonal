@@ -767,4 +767,12 @@ div#wsg-account-create.wsg-proxy-container, div#wsg-login.wsg-proxy-container {
 button.button.wsg-button-fix.wsg-btn.wsg-button.btn.wsg-btn-primary.Button.wsg-loading-btn {
   display: flex;
 }
+
+form#wsg-signup {
+  h2, h3 {
+    font-size: 1.5rem; 
+    text-transform: uppercase;
+
+  }
+}
 /* end wholesale registration styles css */
