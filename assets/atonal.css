@@ -759,9 +759,12 @@ div#wsg-account-create.wsg-proxy-container, div#wsg-login.wsg-proxy-container {
   padding-top: 4rem;
   padding-bottom: 4rem;
   ::placeholder {
-    color: #d9d9d9;
+    color: #c6c6c6;
 
   }
 }
 
+button.button.wsg-button-fix.wsg-btn.wsg-button.btn.wsg-btn-primary.Button.wsg-loading-btn {
+  display: flex;
+}
 /* end wholesale registration styles css */
