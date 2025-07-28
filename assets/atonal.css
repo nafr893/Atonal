@@ -747,10 +747,10 @@ h1#wsg-title {
   font-size: 2.5rem !important;
 }
 
-input#wsg-input-full.wsg-login-input, input#wsg-input-full.wsg-login-input, input#first_name, input#last_name, input#email, input#company, input#wsg-tax-id, input#wsg-phone-number, textarea#wsg-notes.wsg-full.wsg-input, input#wsg-form-address1.wsg-input, input#wsg-form-address2.wsg-input, input#wsg-form-city.wsg-input, input#wsg-form-zip.wsg-input-small-full {
+input#wsg-input-full.wsg-login-input, input#wsg-input-full.wsg-login-input, input#first_name, input#last_name, input#email, input#company, input#wsg-tax-id, input#wsg-phone-number, textarea#wsg-notes.wsg-full.wsg-input, input#wsg-form-address1.wsg-input, input#wsg-form-address2.wsg-input, input#wsg-form-city.wsg-input, input#wsg-form-zip.wsg-input-small-full, input#wsg-website, select#wsg-form-province.wsg-input-small-full.noreplace, select#wsg-form-country.wsg-input-small-full.noreplace, input#customer_email.wsg-input-full.wsg-login-input, input#customer_password.wsg-input-full.wsg-login-input  {
 
   border: 1px solid #d9d9d9;
-  color: #d9d9d9; 
+  color: #f5f5f5; 
   background: rgba(0,0,0,0);
 
   
