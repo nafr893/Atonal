@@ -743,7 +743,7 @@ font-weight: bold;
 
 /* wholesale registration styles css */
 
-h1.wsg-title {
+h1#wsg-title {
   font-size: 2.5rem !important;
 }
 
