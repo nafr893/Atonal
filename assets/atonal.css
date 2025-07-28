@@ -751,10 +751,17 @@ input#wsg-input-full.wsg-login-input, input#wsg-input-full.wsg-login-input, inpu
 
   border: 1px solid #d9d9d9;
   background: rgba(0,0,0,0);
-::placeholder {
-color: #f5f5f5; 
-}
+
   
+}
+
+div#wsg-account-create.wsg-proxy-container, div#wsg-login.wsg-proxy-container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  ::placeholder {
+    color: #d9d9d9;
+
+  }
 }
 
 /* end wholesale registration styles css */
