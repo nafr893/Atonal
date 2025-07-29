@@ -644,14 +644,13 @@ display: none;
 
 .mega-menu-list-v2 {
   display: none;
-  position: absolute;
- top: calc(100% +40px);
+  top: 0;
   left: 0;
-  width: 100dvw;
-  
+  width: auto;
   background: white;
   z-index: 20;
 }
+
 
 div.mega-menu-list-v2__grid {
     top: calc(100% +40px);

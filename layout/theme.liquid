@@ -94,6 +94,39 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
+
+
+
+  </body>
+
+
+  {% comment %} Custom js {% endcomment %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function(){
+      jQuery('.blogs-fade-slider').slick({
+        dots: true,
+        slidesToScroll: 1,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+        pauseOnHover: false
+      });
+    });
+  </script>
+  <script>
+    window.addEventListener('load', function() {
+      document.querySelector('.news-blogs.our').style.visibility = 'visible';
+    });
+  </script>
+  {% comment %} Custom Js end {% endcomment %}
+
+
 <script>
   // Add or remove 'scrolled' class on body
   window.addEventListener('scroll', function () {
@@ -162,35 +195,5 @@
   window.addEventListener('scroll', positionMegaMenu);
 </script>
 
-
-
-  </body>
-
-
-  {% comment %} Custom js {% endcomment %}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer="defer"></script>
-  <script type="text/javascript">
-    jQuery(document).ready(function(){
-      jQuery('.blogs-fade-slider').slick({
-        dots: true,
-        slidesToScroll: 1,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: 'linear',
-        autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: false,
-        pauseOnHover: false
-      });
-    });
-  </script>
-  <script>
-    window.addEventListener('load', function() {
-      document.querySelector('.news-blogs.our').style.visibility = 'visible';
-    });
-  </script>
-  {% comment %} Custom Js end {% endcomment %}
 
 </html>
