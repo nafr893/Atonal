@@ -671,7 +671,7 @@ top: 61.5px;
 
 
 body.scrolled .nav-item-wrapper {
-  top: calc(var(--header-height) -2px);
+  top: var(--header-group-height);
   position: fixed;
   z-index: 10;
   height: 300px
