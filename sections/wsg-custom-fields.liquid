@@ -133,7 +133,7 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
                       color: {{ block.settings.button_text_color }}"/>
           <input
             hidden
-            accept="text/plain,.csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/*,.pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,image/jpeg,image/png,image/webp,.pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             id="file"
             name="files"
             type="file"
@@ -287,6 +287,11 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
   document.querySelector('#wsg-signup').addEventListener('change', (e) => {
     if (e.target.closest('#wsg-signup #file')) {
       const label = document.getElementById("file_label");
+
+      // Remove error styles from file label and upload button
+      label.classList.remove('wsg-label-error');
+      document.getElementById('file-upload-button').classList.remove('error-border');
+
       const defaultLabelText = (
         wsgData.translations.language !== 'english'
         && wsgData.translations.enable
