@@ -94,9 +94,8 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-
 <script>
-  // 📌 Utility: Add 'scrolled' class to body when user scrolls past header
+  // Add or remove 'scrolled' class on body
   window.addEventListener('scroll', function () {
     if (window.scrollY > 10) {
       document.body.classList.add('scrolled');
@@ -105,41 +104,36 @@
     }
   });
 
-  // 📌 Function: Dynamically position mega menu under nav item
+  // Position the mega menu under the nav item using FIXED positioning
   function positionMegaMenu() {
     const navItem = document.querySelector('.nav-item--shop');
     const megaMenu = document.querySelector('#mega-menu-list-v2-container');
 
     if (!navItem || !megaMenu) return;
 
-    // Get position of nav item in viewport
+    // Get bounding box relative to the viewport
     const navRect = navItem.getBoundingClientRect();
 
-    // Calculate the full document Y offset of nav item
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const offsetTop = navRect.bottom + scrollTop;
-
-    // Apply calculated position to the mega menu
-    megaMenu.style.position = 'absolute';
-    megaMenu.style.top = `${offsetTop}px`;
+    // Use fixed positioning: navRect.top gives us viewport-based Y position
+    megaMenu.style.position = 'fixed';
+    megaMenu.style.top = `${navRect.bottom}px`;
     megaMenu.style.left = `${navRect.left}px`;
     megaMenu.style.width = `${navRect.width}px`;
     megaMenu.style.zIndex = '100';
   }
 
-  // 📌 Function: Show/hide menu on hover
+  // Hover logic to show/hide the menu
   function setupMegaMenuHover() {
     const navItem = document.querySelector('.nav-item--shop');
     const megaMenu = document.querySelector('#mega-menu-list-v2-container');
 
     if (!navItem || !megaMenu) return;
 
-    // Show menu on hover
     navItem.addEventListener('mouseenter', () => {
+      positionMegaMenu(); // Recalculate on open
       megaMenu.classList.remove('hidden');
     });
 
-    // Hide menu when not hovered
     navItem.addEventListener('mouseleave', () => {
       setTimeout(() => {
         if (!megaMenu.matches(':hover')) {
@@ -148,28 +142,25 @@
       }, 150);
     });
 
-    // Allow menu to stay open when hovered
     megaMenu.addEventListener('mouseenter', () => {
       megaMenu.classList.remove('hidden');
     });
 
-    // Hide when leaving menu
     megaMenu.addEventListener('mouseleave', () => {
       megaMenu.classList.add('hidden');
     });
   }
 
-  // 📌 Setup on page load
+  // Initialize on page load
   window.addEventListener('load', () => {
-    positionMegaMenu();
     setupMegaMenuHover();
+    positionMegaMenu();
   });
 
-  // 📌 Reposition on window resize or scroll
+  // Recalculate on resize or scroll
   window.addEventListener('resize', positionMegaMenu);
   window.addEventListener('scroll', positionMegaMenu);
 </script>
-
 
 
 
