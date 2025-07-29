@@ -781,4 +781,11 @@ form#wsg-signup {
 
   }
 }
+
+
 /* end wholesale registration styles css */
+
+div.nav-item.nav-item--shop:hover {
+color: var(--color-primary-hover)
+}
+
