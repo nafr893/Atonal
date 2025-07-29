@@ -95,7 +95,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "shopify://products/a501",
+            "link": "shopify://products/a500p-printed-pattern-material",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
