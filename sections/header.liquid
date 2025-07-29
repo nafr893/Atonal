@@ -526,11 +526,8 @@
   }
 
   .header__columns {
-    --padding-block-start: 16px
-    /* old header padding 
-    var(--header-padding) */;
-    --padding-block-end: 16px /* old header padding 
-    var(--header-padding) */;
+    --padding-block-start: var(--header-padding);
+    --padding-block-end: var(--header-padding);
   }
 
   .header:not(.header--compact) .header__row--bottom {
