@@ -556,7 +556,7 @@ div.news-blogs.our.container-width {
 }
 .news-blogs .slick-list .slick-slide .content-wrapper .read-btn:hover {
   color: #fff;
-  background-color: #1C009C !important;
+  background-color: #2f5cac !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -764,7 +764,7 @@ div#wsg-account-create.wsg-proxy-container, div#wsg-login.wsg-proxy-container {
   }
 
 .button:hover {
-    background-color: #1C009C;
+    background-color: #2f5cac;
     color: #ffffff;
   }
 
