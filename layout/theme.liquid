@@ -93,6 +93,86 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+
+<script>
+  // 📌 Utility: Add 'scrolled' class to body when user scrolls past header
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  });
+
+  // 📌 Function: Dynamically position mega menu under nav item
+  function positionMegaMenu() {
+    const navItem = document.querySelector('.nav-item--shop');
+    const megaMenu = document.querySelector('#mega-menu-list-v2-container');
+
+    if (!navItem || !megaMenu) return;
+
+    // Get position of nav item in viewport
+    const navRect = navItem.getBoundingClientRect();
+
+    // Calculate the full document Y offset of nav item
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const offsetTop = navRect.bottom + scrollTop;
+
+    // Apply calculated position to the mega menu
+    megaMenu.style.position = 'absolute';
+    megaMenu.style.top = `${offsetTop}px`;
+    megaMenu.style.left = `${navRect.left}px`;
+    megaMenu.style.width = `${navRect.width}px`;
+    megaMenu.style.zIndex = '100';
+  }
+
+  // 📌 Function: Show/hide menu on hover
+  function setupMegaMenuHover() {
+    const navItem = document.querySelector('.nav-item--shop');
+    const megaMenu = document.querySelector('#mega-menu-list-v2-container');
+
+    if (!navItem || !megaMenu) return;
+
+    // Show menu on hover
+    navItem.addEventListener('mouseenter', () => {
+      megaMenu.classList.remove('hidden');
+    });
+
+    // Hide menu when not hovered
+    navItem.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        if (!megaMenu.matches(':hover')) {
+          megaMenu.classList.add('hidden');
+        }
+      }, 150);
+    });
+
+    // Allow menu to stay open when hovered
+    megaMenu.addEventListener('mouseenter', () => {
+      megaMenu.classList.remove('hidden');
+    });
+
+    // Hide when leaving menu
+    megaMenu.addEventListener('mouseleave', () => {
+      megaMenu.classList.add('hidden');
+    });
+  }
+
+  // 📌 Setup on page load
+  window.addEventListener('load', () => {
+    positionMegaMenu();
+    setupMegaMenuHover();
+  });
+
+  // 📌 Reposition on window resize or scroll
+  window.addEventListener('resize', positionMegaMenu);
+  window.addEventListener('scroll', positionMegaMenu);
+</script>
+
+
+
+
   </body>
 
 
@@ -121,115 +201,5 @@
     });
   </script>
   {% comment %} Custom Js end {% endcomment %}
-
-{% comment %} Custom Javascript for Shop Menu {% endcomment %}
-<script>
- function positionMegaMenu() {
-  const navItem = document.querySelector('.nav-item--shop');
-  const megaMenu = document.querySelector('#mega-menu-list-v2-container');
-  const header = document.querySelector('#header-group');
-  const banner = document.querySelector('.announcement-bar'); // Adjust selector as needed
-
-  if (!navItem || !megaMenu || !header) return;
-
-  const navRect = navItem.getBoundingClientRect();
-  const headerRect = header.getBoundingClientRect();
-  const bannerHeight = banner ? banner.offsetHeight : 0;
-
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-  // Adjust offset to account for sticky header + banner
-  const offsetTop = navRect.bottom + scrollTop - headerRect.top - bannerHeight;
-
-  megaMenu.style.position = 'absolute';
-  megaMenu.style.top = `${offsetTop}px`;
-  megaMenu.style.left = `${navRect.left}px`;
-  megaMenu.style.width = `${navRect.width}px`;
-  megaMenu.style.zIndex = '100';
-}
-
-
-  function setupMegaMenuHover() {
-    const navItem = document.querySelector('.nav-item--shop');
-    const megaMenu = document.querySelector('#mega-menu-list-v2-container');
-
-    if (!navItem || !megaMenu) return;
-
-    navItem.addEventListener('mouseenter', () => {
-      megaMenu.classList.remove('hidden');
-    });
-
-    navItem.addEventListener('mouseleave', () => {
-      setTimeout(() => {
-        if (!megaMenu.matches(':hover')) {
-          megaMenu.classList.add('hidden');
-        }
-      }, 150);
-    });
-
-    megaMenu.addEventListener('mouseleave', () => {
-      megaMenu.classList.add('hidden');
-    });
-
-    megaMenu.addEventListener('mouseenter', () => {
-      megaMenu.classList.remove('hidden');
-    });
-  }
-
-  window.addEventListener('load', () => {
-    positionMegaMenu();
-    setupMegaMenuHover();
-  });
-
-  window.addEventListener('resize', () => {
-    positionMegaMenu();
-  });
-
-  window.addEventListener('scroll', () => {
-    positionMegaMenu(); // Optional: if scroll affects header layout
-  });
-</script>
-
-{% comment %} End Custom Javascript for Shop Menu {% endcomment %}
-
-<script>
-  // Cross-browser mega menu positioning fix
-  function updateMegaMenuPosition() {
-    const headerGroup = document.getElementById('header-group');
-    const navItemWrapper = document.querySelector('.nav-item-wrapper');
-    
-    if (!headerGroup || !navItemWrapper) return;
-    
-    const headerGroupHeight = headerGroup.offsetHeight;
-    const isScrolled = document.body.classList.contains('scrolled');
-    
-    // Get the actual header height when scrolled (usually smaller due to sticky behavior)
-    const header = headerGroup.querySelector('header, [data-header]');
-    const scrolledHeaderHeight = header ? header.offsetHeight : headerGroupHeight;
-    
-    if (isScrolled) {
-      navItemWrapper.style.setProperty('top', `${scrolledHeaderHeight}px`, 'important');
-    } else {
-      navItemWrapper.style.setProperty('top', `${headerGroupHeight}px`, 'important');
-    }
-  }
-
-  window.addEventListener('scroll', function () {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    document.body.classList.toggle('scrolled', scrollTop > 10);
-    updateMegaMenuPosition();
-  });
-
-  // Update position on load and resize
-  window.addEventListener('load', updateMegaMenuPosition);
-  window.addEventListener('resize', updateMegaMenuPosition);
-  
-  // Update when DOM changes (for theme editor)
-  if (window.Shopify && window.Shopify.designMode) {
-    document.addEventListener('shopify:section:load', updateMegaMenuPosition);
-    document.addEventListener('shopify:section:reorder', updateMegaMenuPosition);
-  }
-</script>
-
 
 </html>
