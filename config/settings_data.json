@@ -9,8 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/atonal_headwear_black_logo.png",
-    "logo_inverse": "shopify://shop_images/atonal_headwear_white_logo.png",
+    "logo": "shopify://shop_images/ATONAL_NOTEXT.png",
+    "logo_inverse": "shopify://shop_images/ATONAL_NOTEXT_copy.png",
+    "favicon": "shopify://shop_images/ATONAL_NOTEXT.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
@@ -104,7 +105,7 @@
           "left_image": "shopify://shop_images/best_sellers_1.1.webp",
           "left_text": "BEST SELLERS",
           "left_link": "shopify://collections/best-sellers",
-          "right_image": "shopify://shop_images/audrey_hertel_photo_atonal_headwear__web_size__highlights_atonalheadwear_02_25__86.webp",
+          "right_image": "shopify://shop_images/Shop_all_1.3-min.webp",
           "right_text": "SHOP ALL",
           "right_link": "shopify://collections/all",
           "product_menu_title": "Shop By Hat"
@@ -156,7 +157,7 @@
           "primary_hover": "#101010",
           "border": "#d9d9d9",
           "shadow": "#000000",
-          "primary_button_background": "#1e00a5",
+          "primary_button_background": "#2f5cac",
           "primary_button_text": "#ffffff",
           "primary_button_border": "#000000",
           "primary_button_hover_background": "#2f5cac",
@@ -198,7 +199,7 @@
           "primary_button_background": "#181818",
           "primary_button_text": "#ffffff",
           "primary_button_border": "#000000",
-          "primary_button_hover_background": "#1e00a5",
+          "primary_button_hover_background": "#2f5cac",
           "primary_button_hover_text": "#ffffff",
           "primary_button_hover_border": "#333333",
           "secondary_button_background": "#ffffffb0",
@@ -266,7 +267,7 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#1e00a5",
+          "background": "#2f5cac",
           "foreground_heading": "#ffffff",
           "foreground": "#ffffff",
           "primary": "#ffffffcf",
@@ -275,7 +276,7 @@
           "shadow": "#000000",
           "primary_button_background": "#000000",
           "primary_button_text": "#ffffff",
-          "primary_button_border": "#1d3686",
+          "primary_button_border": "#2f5cac",
           "primary_button_hover_background": "#333333",
           "primary_button_hover_text": "#ffffff",
           "primary_button_hover_border": "#000000",
@@ -312,7 +313,7 @@
           "primary_hover": "#d9d9d9",
           "border": "#ffffffb0",
           "shadow": "#000000",
-          "primary_button_background": "#1e00a5",
+          "primary_button_background": "#2f5cac",
           "primary_button_text": "#ffffff",
           "primary_button_border": "rgba(0,0,0,0)",
           "primary_button_hover_background": "#2f5cac",
