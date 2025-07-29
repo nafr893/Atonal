@@ -672,15 +672,15 @@ top: 61.5px;
 
 
 body.scrolled .nav-item-wrapper {
-  top: 60px; 
-  
+  top: var(--header-height, 61.5px);
+
   position: fixed;
   z-index: 10;
   height: 300px
 }
 
 body:not(.scrolled) .nav-item-wrapper {
-  top: 101.5px;
+  top: var(--header-height, 61.5px);
   position: fixed; 
   z-index: 10;
 }
