@@ -679,7 +679,7 @@ body.scrolled .nav-item-wrapper {
 }
 
 body:not(.scrolled) .nav-item-wrapper {
-  top: 61.5px;
+  top: 100%;
   position: fixed; 
   z-index: 10;
 }
