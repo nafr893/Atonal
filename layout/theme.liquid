@@ -193,10 +193,42 @@
 {% comment %} End Custom Javascript for Shop Menu {% endcomment %}
 
 <script>
+  // Cross-browser mega menu positioning fix
+  function updateMegaMenuPosition() {
+    const headerGroup = document.getElementById('header-group');
+    const navItemWrapper = document.querySelector('.nav-item-wrapper');
+    
+    if (!headerGroup || !navItemWrapper) return;
+    
+    const headerGroupHeight = headerGroup.offsetHeight;
+    const isScrolled = document.body.classList.contains('scrolled');
+    
+    // Get the actual header height when scrolled (usually smaller due to sticky behavior)
+    const header = headerGroup.querySelector('header, [data-header]');
+    const scrolledHeaderHeight = header ? header.offsetHeight : headerGroupHeight;
+    
+    if (isScrolled) {
+      navItemWrapper.style.setProperty('top', `${scrolledHeaderHeight}px`, 'important');
+    } else {
+      navItemWrapper.style.setProperty('top', `${headerGroupHeight}px`, 'important');
+    }
+  }
+
   window.addEventListener('scroll', function () {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     document.body.classList.toggle('scrolled', scrollTop > 10);
+    updateMegaMenuPosition();
   });
+
+  // Update position on load and resize
+  window.addEventListener('load', updateMegaMenuPosition);
+  window.addEventListener('resize', updateMegaMenuPosition);
+  
+  // Update when DOM changes (for theme editor)
+  if (window.Shopify && window.Shopify.designMode) {
+    document.addEventListener('shopify:section:load', updateMegaMenuPosition);
+    document.addEventListener('shopify:section:reorder', updateMegaMenuPosition);
+  }
 </script>
 
 

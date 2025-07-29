@@ -673,7 +673,8 @@ top: 61.5px;
 
 body.scrolled .nav-item-wrapper {
   top: var(--header-height);
-
+  /* Fallback for Chrome - will be overridden by JS */
+  top: 61.5px;
   position: fixed;
   z-index: 10;
   height: 300px
@@ -681,6 +682,8 @@ body.scrolled .nav-item-wrapper {
 
 body:not(.scrolled) .nav-item-wrapper {
   top: var(--header-group-height);
+  /* Fallback for Chrome - will be overridden by JS */
+  top: 101.5px;
   position: fixed; 
   z-index: 10;
 }
