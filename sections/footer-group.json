@@ -394,7 +394,7 @@
                 "pixel_height": 48,
                 "custom_mobile_size": true,
                 "unit_mobile": "percent",
-                "percent_width_mobile": 60,
+                "percent_width_mobile": 40,
                 "pixel_height_mobile": 120,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
