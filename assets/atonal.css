@@ -650,8 +650,8 @@ display: none;
   width: auto;
   background: white;
   z-index: 20;
-  padding-left: 0;
-  padding-right: 0; 
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 
