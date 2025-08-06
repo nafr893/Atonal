@@ -282,6 +282,10 @@ div#shopify-section-template--19068398928030__section_rNtbwe {
 div#shopify-section-template--19068398993566__section_jrUxLB {
   div.group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column {
     --horizontal-alignment: center !important; 
+div.contact-form.spacing-style.size-style  {
+  width: 100%; 
+}
+
   }
 }
 
