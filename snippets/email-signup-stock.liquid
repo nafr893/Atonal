@@ -1,58 +1,68 @@
+{% form 'customer', data-disable-recaptcha: 'true' %}
+  <!-- form fields here -->
+{% endform %}
+
+
 <!-- Email Signup Button & Hidden Form -->
 <div class="email-signup-toggle">
-  <button class="restock-toggle-btn" data-target="form-{{ section.id }}">
-    Restock Alert
-  </button>
+  <button
+    class="restock-toggle-btn"
+    data-target="form-{{ section.id }}"
+  >Restock Alert</button>
 
-  <div id="form-{{ section.id }}" style="display:none;">
-    <form id="restock-form-{{ section.id }}" method="POST" action="/contact">
+  <div
+    id="form-{{ section.id }}"
+    style="display:none;"
+  >
+    {% form 'customer', data-disable-recaptcha: 'true' %}
+            <input class="email-stock-signup" type="hidden" name="contact[tags]" value="{{ product.id }}-{{ variant.id }}, restock-{{ product.title | handleize }}-{{ variant.title | handleize }}" >
+
+      <label>Email address</label>
       <input
-        type="hidden"
-        name="contact[tags]"
-        value="{{ product.id }}-{{ variant.id }}, restock-{{ product.title | handleize }}-{{ variant.title | handleize }}"
-      >
-      <label for="restock-email-{{ section.id }}">Email address</label>
-      <input
-        id="restock-email-{{ section.id }}"
-        class="email-stock-signup"
         type="email"
         name="contact[email]"
         placeholder="Enter your email"
         required
       >
-      <button type="submit" class="email-stock-submit">Notify Me</button>
-    </form>
-    <div class="restock-success-message" style="display:none;">Thanks! We'll let you know.</div>
+      <button type="submit" class="email-stock-submit" >Notify Me</button>
+    {% endform %}
   </div>
+<style>
+.restock-toggle-btn {
+  background: #2F5CAC;
+  color: #ffffff;
+  padding: 4px 6px; 
+  border: none; 
+  font-weight: bold; 
+}
 
-  <style>
-  .restock-toggle-btn {
-    background: #2F5CAC;
-    color: #ffffff;
-    padding: 4px 6px;
-    border: none;
-    font-weight: bold;
-  }
+.email-stock-submit {
+  background: #2F5CAC;
+  color: #ffffff;
+  padding: 4px 6px; 
+  border: none; 
+  font-weight: bold; 
+}
 
-  .email-stock-submit {
-    background: #2F5CAC;
-    color: #ffffff;
-    padding: 4px 6px;
-    border: none;
-    font-weight: bold;
-  }
+.email-stock-signup {
+border: 1px solid #d9d9d9 !important; 
+   
+}
 
-  .email-stock-signup {
-    border: 1px solid #d9d9d9 !important;
-  }
+input {
+border: 1px solid #d9d9d9 !important; 
 
-  input {
-    border: 1px solid #d9d9d9 !important;
-  }
+}
 
-  .email-signup-toggle {
-    padding-top: 5px;
-  }
+.email-signup-toggle {
+padding-top: 5px; 
+
+}
+
+
 </style>
+
+
+
 
 </div>

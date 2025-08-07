@@ -108,35 +108,20 @@
 
 <!-- Email Signup Stock Script --> 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('restock-form-{{ section.id }}');
-    const successMsg = form.nextElementSibling;
+    <script>
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.restock-toggle-btn');
+    if (!btn) return;
 
+    const targetId = btn.getAttribute('data-target');
+    const form = document.getElementById(targetId);
+    
     if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        fetch('/contact', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => {
-          if (response.ok) {
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
-          } else {
-            alert('Submission failed. Please try again.');
-          }
-        })
-        .catch(() => alert('Error submitting form.'));
-      });
+      form.style.display = 'block';
+      btn.style.display = 'none';
     }
   });
 </script>
-
 
 <!-- End Email Signup Stock Script --> 
 
