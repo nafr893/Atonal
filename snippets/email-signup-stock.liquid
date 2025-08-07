@@ -4,7 +4,8 @@
 
   <div id="email-signup-form-{{ section.id }}" style="display:none;">
     {% form 'customer' %}
-      <input type="hidden" name="contact[tags]" value="newsletter,from-{{ product.name }}">
+      <input type="hidden" name="contact[tags]" value="restock-{{ product.title | handleize }}">
+
       <label for="NewsletterEmail-{{ section.id }}">Email address</label>
       <input
         type="email"
