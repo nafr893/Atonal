@@ -61,6 +61,8 @@
   {% render 'wsg-custom' %}
 </head>
 
+
+
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
    
@@ -104,7 +106,24 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
+<!-- Email Signup Stock Script --> 
 
+    <script>
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.restock-toggle-btn');
+    if (!btn) return;
+
+    const targetId = btn.getAttribute('data-target');
+    const form = document.getElementById(targetId);
+    
+    if (form) {
+      form.style.display = 'block';
+      btn.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- End Email Signup Stock Script --> 
 
 
   </body>
