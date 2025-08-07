@@ -1,3 +1,8 @@
+{% form 'customer', data-disable-recaptcha: 'true' %}
+  <!-- form fields here -->
+{% endform %}
+
+
 <!-- Email Signup Button & Hidden Form -->
 <div class="email-signup-toggle">
   <button
@@ -9,7 +14,7 @@
     id="form-{{ section.id }}"
     style="display:none;"
   >
-    {% form 'customer' %}
+    {% form 'customer', data-disable-recaptcha: 'true' %}
             <input class="email-stock-signup" type="hidden" name="contact[tags]" value="{{ product.id }}-{{ variant.id }}, restock-{{ product.title | handleize }}-{{ variant.title | handleize }}" >
 
       <label>Email address</label>
