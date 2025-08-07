@@ -10,7 +10,7 @@
     style="display:none;"
   >
     {% form 'customer' %}
-      <input class="email-stock-signup" type="hidden" name="contact[tags]" value="restock-{{ product.variant.title | handleize }}">
+      <input class="email-stock-signup" type="hidden" name="contact[tags]" value="restock-{{ variant.title | handleize }}">
       <label>Email address</label>
       <input
         type="email"
