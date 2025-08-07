@@ -21,7 +21,7 @@
 </div>
 
 <script>
-  setTimeout(function () {
+  window.addEventListener('load', function () {
     var showBtn = document.getElementById('show-signup-form-{{ section.id }}');
     var form = document.getElementById('email-signup-form-{{ section.id }}');
 
@@ -31,11 +31,11 @@
         showBtn.style.display = 'none';
       });
     }
-  }, 50); // Short delay ensures it's called after rendering
+  });
 </script>
 
 
 {% comment %}
   This snippet renders an email signup form hidden by default, revealed upon button click.
-  Use: {% render 'email-signup-toggle' %}
+  Use: {% render 'email-signup-stock' %}
 {% endcomment %}
