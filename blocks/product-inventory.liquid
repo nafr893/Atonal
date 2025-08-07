@@ -74,6 +74,7 @@
   {%- endif -%}
 {%- else -%}
   {{ translation_key | t }} | Restock ETA: {{ variant.metafields.custom.variant_stock_eta }}
+   {% render 'email-signup-stock' %}
 {%- endif -%}
 
 

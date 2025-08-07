@@ -1,0 +1,40 @@
+<!-- Email Signup Button & Hidden Form -->
+<div class="email-signup-toggle">
+  <button id="show-signup-form-{{ section.id }}" class="btn">Subscribe to Newsletter</button>
+
+  <div id="email-signup-form-{{ section.id }}" style="display:none;">
+    {% form 'customer' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      
+      <label for="NewsletterEmail-{{ section.id }}">Email address</label>
+      <input
+        type="email"
+        name="contact[email]"
+        id="NewsletterEmail-{{ section.id }}"
+        placeholder="Enter your email"
+        required
+      >
+      
+      <button type="submit">Sign Up</button>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var showBtn = document.getElementById('show-signup-form-{{ section.id }}');
+    var form = document.getElementById('email-signup-form-{{ section.id }}');
+
+    if (showBtn && form) {
+      showBtn.addEventListener('click', function () {
+        form.style.display = 'block';
+        showBtn.style.display = 'none';
+      });
+    }
+  });
+</script>
+
+{% comment %}
+  This snippet renders an email signup form hidden by default, revealed upon button click.
+  Use: {% render 'email-signup-toggle' %}
+{% endcomment %}
