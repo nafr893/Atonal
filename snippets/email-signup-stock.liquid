@@ -1,10 +1,10 @@
 <!-- Email Signup Button & Hidden Form -->
 <div class="email-signup-toggle">
-  <button id="show-signup-form-{{ section.id }}" class="btn">Restock Notification</button>
+  <button id="show-signup-form-{{ section.id }}" class="btn">Restock Alert</button>
 
   <div id="email-signup-form-{{ section.id }}" style="display:none;">
     {% form 'customer' %}
-      <input type="hidden" name="contact[tags]" value="newsletter,from-{{ closest.product.name }}">
+      <input type="hidden" name="contact[tags]" value="newsletter,from-{{ product.name }}">
       <label for="NewsletterEmail-{{ section.id }}">Email address</label>
       <input
         type="email"
