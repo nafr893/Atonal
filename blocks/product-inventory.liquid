@@ -73,7 +73,7 @@
     {{ 'content.inventory_in_stock_show_count' | t: count: inventory_quantity }}
   {%- endif -%}
 {%- else -%}
-  {{ translation_key | t }} | ETA: {{ variant.metafields.custom.variant_stock_eta }}
+  {{ translation_key | t }} | Restock ETA: {{ variant.metafields.custom.variant_stock_eta }}
 {%- endif -%}
 
 
