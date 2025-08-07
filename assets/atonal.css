@@ -666,6 +666,7 @@ display: none;
 div#mega-menu-list-v2 {
    padding-left: 0px;
   padding-right: 0px;
+  width: 100dvw; 
 }
 
 div.mega-menu-list-v2__grid {
