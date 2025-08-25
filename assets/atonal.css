@@ -817,3 +817,7 @@ color: var(--color-primary-hover)
 details.account-popover.mobile:hidden {
   display: none; 
 }
+
+dialog-component.account-drawer {
+display: none !important; 
+}
