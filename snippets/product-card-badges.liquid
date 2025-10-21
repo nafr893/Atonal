@@ -35,6 +35,14 @@
       {{ 'content.product_badge_best_seller' | t }}
     </div>
   {%- endif -%}
+  
+  {%- comment -%} New badge {%- endcomment -%}
+  {%- if product.metafields.custom.is_new == true or product.metafields.custom.is_new == 'true' or product.tags contains 'New' or product.tags contains 'new' -%}
+    <div class="product-badges__badge product-badges__badge--rectangle color-{{ settings.badge_new_color_scheme | default: settings.badge_best_seller_color_scheme }}">
+      {{ 'content.product_badge_new' | t }}
+    </div>
+  {%- endif -%}
+
 </div>
 
 {% stylesheet %}

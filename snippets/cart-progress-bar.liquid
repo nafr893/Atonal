@@ -1,16 +1,4 @@
-{% comment %}
-  Ca  {% if cart_total >= free_shipping_threshold %}
-    <p class="cart-progress__message">
-      🎉 {{ 'cart.free_shipping.qualified' | t | default: "You've qualified for free shipping!" }}
-    </p>
-  {% else %}
-    <p class="cart-progress__message">
-      🚚 Spend {{ remaining_amount | money }} more for free shipping!
-    </p>
-  {% endif %}ress Bar Snippet
-  Displays a bar that fills based on cart total toward free shipping.
-  Customize `free_shipping_threshold` as needed.
-{% endcomment %}
+
 
 {%- liquid
   assign free_shipping_threshold = settings.free_shipping_amount | default: 20000
