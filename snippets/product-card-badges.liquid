@@ -38,7 +38,7 @@
   
   {%- comment -%} New badge {%- endcomment -%}
   {%- if product.metafields.custom.is_new == true or product.metafields.custom.is_new == 'true' -%}
-    <div class="product-badges__badge product-badges__badge--rectangle color-{{ #f30505 }}">
+    <div class="product-badges__badge product-badges__badge--rectangle color-{{ settings.badge_new_color_scheme }}">
       {{ 'content.product_badge_new' | t }}
     </div>
   {%- endif -%}
