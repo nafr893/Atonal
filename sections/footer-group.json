@@ -294,7 +294,7 @@
                       "settings": {
                         "icon": "instagram",
                         "width": 24,
-                        "link": "",
+                        "link": "https://www.instagram.com/atonalheadwear/?hl=en",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
@@ -305,7 +305,7 @@
                       "settings": {
                         "icon": "facebook",
                         "width": 24,
-                        "link": "",
+                        "link": "https://www.facebook.com/p/Atonal-headwear-61566376916553/",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
@@ -316,7 +316,7 @@
                       "settings": {
                         "icon": "tiktok",
                         "width": 24,
-                        "link": "",
+                        "link": "https://www.tiktok.com/@atonalheadwear",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
