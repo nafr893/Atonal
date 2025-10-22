@@ -854,17 +854,23 @@ display: none !important;
 #wsg-quick-order-form button.wsg-align-right-span[icon-status="hide"]::after {
   content: "Hide colors −";
   background: black;
-  padding: 5px; 
+  padding-top: 5px; 
+  padding-bottom: 5px; 
+  padding-right: 10px; 
+  padding-left: 10px;
   color: white; 
-  border-radius: 1px; 
+  border-radius: 2px; 
 }
 
 #wsg-quick-order-form button.wsg-align-right-span[aria-expanded="false"]::after,
 #wsg-quick-order-form button.wsg-align-right-span[icon-status="show"]::after {
   content: "Show colors +";
     background: black;
-  padding: 5px; 
+  padding-top: 5px; 
+  padding-bottom: 5px; 
+  padding-right: 10px; 
+  padding-left: 10px;
   color: white; 
-  border-radius: 1px; 
+  border-radius: 2px; 
 }
 
