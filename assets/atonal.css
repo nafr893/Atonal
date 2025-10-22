@@ -826,8 +826,8 @@ display: none !important;
 
 button.wsg-align-right-span {
   position: relative;
-  color: transparent;        
-  display: none;
+  color: transparent;  
+  opacity: 0;      
 }
 button.wsg-align-right-span::after {
   content: "Show colors +";     
