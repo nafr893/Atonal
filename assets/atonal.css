@@ -824,16 +824,38 @@ display: none !important;
 
 
 
-button.wsg-align-right-span::before {
+
+/* Target the Wholesale Gorilla toggle button */
+#wsg-quick-order-form button.wsg-align-right-span {
   position: relative;
-  color: transparent;  
-  opacity: 0;      
-  display: inline; 
+  font-size: 0;              /* hides original text without affecting children */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-button.wsg-align-right-span::after {
-  content: "Show Colors" !important;     
-  color: inherit;
-  position: relative;
-  opacity: 1;
-  left: 0; top: 0;
+
+/* Hide the original SVG icon */
+#wsg-quick-order-form button.wsg-align-right-span svg {
+  display: none;
+}
+
+/* Inject your replacement text */
+#wsg-quick-order-form button.wsg-align-right-span::after {
+  content: "Show colors +";     /* 👈 your new label */
+  font-size: 14px;              /* restore font size */
+  font-weight: 600;
+  color: #111;                  /* or your brand color */
+  position: relative;           /* no need for absolute since SVG is hidden */
+  white-space: nowrap;
+}
+
+/* Optional: toggle label when expanded (if WG uses aria-expanded or icon-status) */
+#wsg-quick-order-form button.wsg-align-right-span[aria-expanded="true"]::after,
+#wsg-quick-order-form button.wsg-align-right-span[icon-status="hide"]::after {
+  content: "Hide colors −";
+}
+
+#wsg-quick-order-form button.wsg-align-right-span[aria-expanded="false"]::after,
+#wsg-quick-order-form button.wsg-align-right-span[icon-status="show"]::after {
+  content: "Show colors +";
 }
