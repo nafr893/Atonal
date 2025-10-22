@@ -827,6 +827,7 @@ display: none !important;
 button.wsg-align-right-span {
   position: relative;
   color: transparent;        
+  display: none;
 }
 button.wsg-align-right-span::after {
   content: "Show colors +";     
