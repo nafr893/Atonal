@@ -824,32 +824,34 @@ display: none !important;
 
 
 
+/* Atonal Wholesale Gorilla Quick Order Form Styles */ 
 
-/* Target the Wholesale Gorilla toggle button */
+
+
 #wsg-quick-order-form button.wsg-align-right-span {
   position: relative;
-  font-size: 0;              /* hides original text without affecting children */
+  font-size: 0;            
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hide the original SVG icon */
+
 #wsg-quick-order-form button.wsg-align-right-span svg {
   display: none;
 }
 
-/* Inject your replacement text */
+
 #wsg-quick-order-form button.wsg-align-right-span::after {
-  content: "Show colors +";     /* 👈 your new label */
-  font-size: 14px;              /* restore font size */
+  content: "Show colors +";     
+  font-size: 14px;             
   font-weight: 600;
-  color: #111;                  /* or your brand color */
-  position: relative;           /* no need for absolute since SVG is hidden */
+  color: #111;                  
+  position: relative;           
   white-space: nowrap;
 }
 
-/* Optional: toggle label when expanded (if WG uses aria-expanded or icon-status) */
+
 #wsg-quick-order-form button.wsg-align-right-span[aria-expanded="true"]::after,
 #wsg-quick-order-form button.wsg-align-right-span[icon-status="hide"]::after {
   content: "Hide colors −";
@@ -874,3 +876,8 @@ display: none !important;
   border-radius: 2px; 
 }
 
+div#spof-contents.hide-spof.wsg-spof-container-main
+{
+padding-top: 50px ; 
+padding-bottom: 50px ; 
+}
