@@ -831,7 +831,7 @@ button.wsg-align-right-span::before {
   display: inline; 
 }
 button.wsg-align-right-span::after {
-  content: "Show Colors";     
+  content: "Show Colors" !important;     
   color: inherit;
   position: absolute;
   opacity: 1;
