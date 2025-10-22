@@ -821,3 +821,16 @@ details.account-popover.mobile:hidden {
 dialog-component.account-drawer {
 display: none !important; 
 }
+
+
+
+button.wsg-align-right-span {
+  position: relative;
+  color: transparent;        
+}
+button.wsg-align-right-span::after {
+  content: "Show colors +";     
+  color: inherit;
+  position: absolute;
+  left: 0; top: 0;
+}
