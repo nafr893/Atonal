@@ -827,12 +827,13 @@ display: none !important;
 button.wsg-align-right-span::before {
   position: relative;
   color: transparent;  
-  opacity: 1;      
+  opacity: 0;      
   display: inline; 
 }
 button.wsg-align-right-span::after {
-  content: "Show colors +";     
+  content: "Show Colors";     
   color: inherit;
   position: absolute;
+  opacity: 1;
   left: 0; top: 0;
 }
