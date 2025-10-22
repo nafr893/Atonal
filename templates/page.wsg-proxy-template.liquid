@@ -130,22 +130,45 @@
       }
     </script>
 
-  {% when 'ws-quick-order-form' %}
-    <div id="wsg-quick-order-form" class='wsg-proxy-container'></div>
+<!-- adjusting the quick order form -->
+
+
+
+
+
+
+
+
+{% when 'ws-quick-order-form' %}
+  {%- comment -%}
+    Access control: allow only logged-in customers with one of the required tags.
+    Edit the list below to match your shop (e.g., wholesale, dealer).
+  {%- endcomment -%}
+  {% assign required_tags = "wwg_wholesale,wholesale" | split: "," %}
+
+  {% assign has_access = false %}
+  {% if customer %}
+    {% for t in customer.tags %}
+      {% if required_tags contains t %}
+        {% assign has_access = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {%- capture return_url -%}{{ request.path }}{% if request.query_string != blank %}?{{ request.query_string }}{% endif %}{%- endcapture -%}
+
+  {% if has_access %}
+    <div id="wsg-quick-order-form" class="wsg-proxy-container"></div>
+
     <script>
-      //includes polyfill
+      // includes polyfill
       if (!String.prototype.includes) {
         String.prototype.includes = function(search, start) {
           'use strict';
-          if (typeof start !== 'number') {
-            start = 0;
-          }
-
-          if (start + search.length > this.length) {
-            return false;
-          } else {
-            return this.indexOf(search, start) !== -1;
-          }
+          if (typeof start !== 'number') start = 0;
+          if (start + search.length > this.length) return false;
+          return this.indexOf(search, start) !== -1;
         };
       }
 
@@ -154,31 +177,62 @@
       var wsgProdArraySP = [];
       var wsgProdIndex = 0;
       var wsgDataSPTemp;
-      var wsgCartItems = {{ cart.items | json}}
+      var wsgCartItems = {{ cart.items | json }};
 
       const wsgUrlSearchParams = new URLSearchParams(window.location.search);
       const wsgUrlParams = Object.fromEntries(wsgUrlSearchParams.entries());
       const wsgQs = new URLSearchParams(wsgUrlParams).toString();
       let wsgReqUrl = makeRelativeUrlMarketAware('/a/wsg/proxy/ws-quick-order-form');
-      if(wsgQs) wsgReqUrl += '?' + wsgQs;
+      if (wsgQs) wsgReqUrl += '?' + wsgQs;
 
-      var wsgCollectionId = wsgUrlParams.id || 0 //current collection id
-      var wsgPage = wsgUrlParams.page || 1; //index of current page in product loop pagination
+      var wsgCollectionId = wsgUrlParams.id || 0; // current collection id
+      var wsgPage = wsgUrlParams.page || 1;      // current page index
 
       document.addEventListener('DOMContentLoaded', async function () {
         await appendContent('GET', wsgReqUrl, 'wsg-quick-order-form');
         setTexts();
-      }, { once: true })
+      }, { once: true });
 
       function setTexts() {
         document.getElementById('wsg-title').innerHTML = `{{ page.title }}`;
-
         const wsgDefaultPageContent = 'Wholesale Gorilla';
         if (`{{ page.content }}`.indexOf(wsgDefaultPageContent) === -1) {
           document.getElementById('wsg-quick-order-message').innerHTML = `{{ page.content }}`;
         }
       }
     </script>
+  {% else %}
+    {%- comment -%} Not authorized: show a friendly lock screen and/or redirect {%- endcomment -%}
+    <div class="wsg-locked" style="max-width:680px;margin:2rem auto;text-align:center">
+      <h1>Wholesale Portal</h1>
+      {% if customer %}
+        <p>You’re logged in as <strong>{{ customer.email }}</strong>, but your account
+        doesn’t have wholesale access yet.</p>
+        <p><a href="/pages/wholesale-apply" class="button">Request Access</a></p>
+        <p><a href="/account/logout?return_url={{ routes.account_login_url | url_encode }}" class="link">Switch account</a></p>
+      {% else %}
+        <p>Please log in to view the wholesale quick order page.</p>
+        <a class="button" href="{{ routes.account_login_url }}?return_url={{ return_url | url_encode }}">Log in</a>
+      {% endif %}
+    </div>
+
+    {%- comment -%}
+      Optional hard redirect for non-logged users (keeps HTML fallback for no-JS):
+    {%- endcomment -%}
+    {% unless customer %}
+      <script>
+        window.location.replace('{{ routes.account_login_url }}?return_url={{ return_url | url_encode }}');
+      </script>
+    {% endunless %}
+  {% endif %}
+
+
+
+
+
+
+<!-- adjusting the quick order form -->
+
 
   {% when 'ws-cart' %}
     <!-- WSG CUSTOM create json of stock data -->
