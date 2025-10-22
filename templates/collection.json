@@ -141,37 +141,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_7n3bUk": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<h4>Ordering in Bulk? </h4>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "button_9qtU3P": {
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Quick Order Form",
+                "label": "Bulk Order Form",
                 "link": "https://atonal.co/pages/ws-quick-order-form",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -184,7 +158,6 @@
             }
           },
           "block_order": [
-            "text_7n3bUk",
             "button_9qtU3P"
           ]
         }
