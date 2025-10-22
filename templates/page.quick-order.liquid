@@ -1,0 +1,237 @@
+{% liquid
+  assign source = section.settings.source
+  assign products = nil
+
+  if source == 'collection' and section.settings.collection != blank
+    assign products = section.settings.collection.products
+  elsif source == 'manual' and section.blocks.size > 0
+    assign products = section.blocks | map: 'settings' | map: 'product'
+  else
+    assign products = empty
+  endif
+
+  assign is_wholesale = false
+  if customer and customer.tags contains 'wholesale'
+    assign is_wholesale = true
+  endif
+%}
+
+<div class="qo-wrap">
+  {% if is_wholesale %}
+    <div class="qo-grid" data-section-id="{{ section.id }}">
+      {% for p in products %}
+        {% assign product = p %}
+        {% if product == blank %}{% continue %}{% endif %}
+
+        <div class="qo-item" data-product-id="{{ product.id }}">
+          <div class="qo-head">
+            <img src="{{ product.featured_image | image_url: width: 160 }}" alt="{{ product.title | escape }}" loading="lazy">
+            <div class="qo-title">
+              <a href="{{ product.url }}" target="_blank">{{ product.title }}</a>
+              {% comment %} product-level wholesale fallback (rare) {% endcomment %}
+              {% assign product_wh_price = product.metafields.wholesale.price | default: blank %}
+            </div>
+            <button class="qo-toggle" type="button" aria-expanded="false">Show colors +</button>
+          </div>
+
+          <div class="qo-variants hidden">
+            {% for v in product.variants %}
+              {% comment %}
+                Resolve wholesale price in this order:
+                1) metaobject by variant id
+                2) metaobject by SKU
+                3) variant metafield wholesale.price
+                4) retail price
+              {% endcomment %}
+              {% assign wholesale_price = blank %}
+              {% assign pack_size = blank %}
+              {% assign min_qty = blank %}
+
+              {%- assign found = false -%}
+
+              {%- for entry in shop.metaobjects.wholesale_pricebook.values -%}
+                {%- if entry.variant_ref and entry.variant_ref.id == v.id -%}
+                  {%- assign wholesale_price = entry.price -%}
+                  {%- assign pack_size = entry.pack_size -%}
+                  {%- assign min_qty = entry.min_qty -%}
+                  {%- assign found = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- if found == false and v.sku != blank -%}
+                {%- for entry in shop.metaobjects.wholesale_pricebook.values -%}
+                  {%- if entry.sku == v.sku -%}
+                    {%- assign wholesale_price = entry.price -%}
+                    {%- assign pack_size = entry.pack_size -%}
+                    {%- assign min_qty = entry.min_qty -%}
+                    {%- assign found = true -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if wholesale_price == blank and v.metafields.wholesale.price -%}
+                {%- assign wholesale_price = v.metafields.wholesale.price -%}
+              {%- endif -%}
+
+              {% assign unit_price = wholesale_price | default: v.price %}
+              {% assign step = pack_size | default: 1 %}
+              {% assign min = min_qty | default: 0 %}
+
+              <div class="qo-variant" data-variant-id="{{ v.id }}" data-unit-price="{{ unit_price }}">
+                <div class="qo-variant-meta">
+                  <span class="qo-swatch" style="--swatch: {{ v.option1 | escape }};"></span>
+                  <span class="qo-label">{{ v.title }}</span>
+                  <span class="qo-sku">{{ v.sku }}</span>
+                </div>
+                <div class="qo-price">
+                  {% if wholesale_price %}
+                    <span class="price wholesale">{{ wholesale_price | money }}</span>
+                    <span class="price-retail">Retail {{ v.price | money }}</span>
+                  {% else %}
+                    <span class="price retail">{{ v.price | money }}</span>
+                  {% endif %}
+                </div>
+                <div class="qo-qty">
+                  <input class="qo-input" type="number" inputmode="numeric"
+                         step="{{ step }}" min="{{ min }}" value="0" />
+                </div>
+                <div class="qo-subtotal"><span class="money" data-subtotal>—</span></div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="qo-footer">
+      <button class="qo-add" type="button">Add selected to cart</button>
+      <div class="qo-total">Order Total: <strong class="money" data-order-total>{{ 0 | money }}</strong></div>
+    </div>
+  {% else %}
+    <div class="qo-locked">
+      <p>This page is for wholesale customers. Please <a href="/account/login">log in</a> or contact us.</p>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.querySelector('[data-section-id="{{ section.id }}"]');
+  if (!wrap) return;
+
+  // Toggle variants
+  wrap.querySelectorAll('.qo-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.qo-item');
+      const panel = item.querySelector('.qo-variants');
+      const open = panel.classList.toggle('hidden');
+      btn.textContent = panel.classList.contains('hidden') ? 'Show colors +' : 'Hide colors −';
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  });
+
+  const moneyFormat = '{{ shop.money_format | escape }}';
+
+  function formatMoney(cents) {
+    const v = (cents / 100).toFixed(2);
+    // basic, matches $X.YY — replace with your theme’s formatter if available
+    return moneyFormat.replace('{{amount}}', v).replace('{{ amount }}', v);
+  }
+
+  function recalc() {
+    let totalCents = 0;
+    wrap.querySelectorAll('.qo-variant').forEach(row => {
+      const unit = parseInt(row.dataset.unitPrice, 10);
+      const input = row.querySelector('.qo-input');
+      const qty = parseInt(input.value || '0', 10);
+      const sub = row.querySelector('[data-subtotal]');
+      const line = unit * qty;
+      if (qty > 0) {
+        sub.textContent = formatMoney(line);
+      } else {
+        sub.textContent = '—';
+      }
+      totalCents += line;
+    });
+    const ot = document.querySelector('[data-order-total]');
+    if (ot) ot.textContent = formatMoney(totalCents);
+  }
+
+  wrap.addEventListener('input', (e) => {
+    if (e.target.classList.contains('qo-input')) recalc();
+  });
+
+  document.querySelector('.qo-add')?.addEventListener('click', async () => {
+    const items = [];
+    wrap.querySelectorAll('.qo-variant').forEach(row => {
+      const vid = row.dataset.variantId;
+      const unit = parseInt(row.dataset.unitPrice, 10);
+      const qty = parseInt(row.querySelector('.qo-input').value || '0', 10);
+      if (qty > 0) {
+        items.push({
+          id: vid,
+          quantity: qty,
+          properties: {
+            _price_override_cents: String(unit), // helps confirm on server
+            _wholesale: 'true'
+          }
+        });
+      }
+    });
+
+    if (!items.length) return;
+
+    try {
+      const r = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify({ items })
+      });
+      if (!r.ok) throw new Error('Add to cart failed');
+      // optional: open cart drawer
+      window.location.href = '/cart';
+    } catch (err) {
+      alert('There was an issue adding your items. Please try again.');
+      console.error(err);
+    }
+  });
+});
+</script>
+
+<style>
+.qo-wrap{display:grid;gap:1rem}
+.qo-grid{display:grid;gap:1rem}
+.qo-item{border:1px solid #e5e7eb;border-radius:12px;padding:12px}
+.qo-head{display:grid;grid-template-columns:100px 1fr auto;gap:12px;align-items:center}
+.qo-variants{margin-top:8px;display:grid;gap:6px}
+.qo-variant{display:grid;grid-template-columns:1.2fr .6fr .6fr .6fr;gap:8px;align-items:center;padding:8px;border-radius:8px;background:#fafafa}
+.qo-variant .qo-swatch{display:inline-block;width:14px;height:14px;border-radius:50%;background:#ddd;margin-right:6px}
+.qo-subtotal{text-align:right}
+.qo-footer{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;background:white;border-top:1px solid #e5e7eb;padding:12px;margin-top:8px}
+.qo-toggle{font-size:14px}
+.qo-add{padding:10px 14px;border-radius:10px;border:1px solid #111}
+.hidden{display:none}
+.price-retail{opacity:.6;margin-left:6px;font-size:.9em}
+</style>
+
+{% schema %}
+{
+  "name": "Quick Order Grid",
+  "settings": [
+    { "type": "radio", "id": "source", "label": "Source", "default": "collection", "options": [
+      { "value": "collection", "label": "Collection" },
+      { "value": "manual", "label": "Manual list" }
+    ]},
+    { "type": "collection", "id": "collection", "label": "Collection (if Source=Collection)" }
+  ],
+  "blocks": [
+    { "type": "product", "name": "Product", "settings": [
+      { "type": "product", "id": "product", "label": "Product" }
+    ]}
+  ],
+  "max_blocks": 100,
+  "presets": [{ "name": "Quick Order Grid" }]
+}
+{% endschema %}
