@@ -824,10 +824,10 @@ display: none !important;
 
 
 
-button.wsg-align-right-span {
+button.wsg-align-right-span::before {
   position: relative;
   color: transparent;  
-  opacity: 0;      
+  opacity: 1;      
   display: inline; 
 }
 button.wsg-align-right-span::after {
