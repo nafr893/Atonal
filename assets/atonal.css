@@ -289,6 +289,14 @@ div.contact-form.spacing-style.size-style  {
   }
 }
 
+/* hide bulk order button mobile */ 
+
+div#shopify-section-template--19068398862494__section_gXfEeM {
+  display: none; 
+}
+
+
+
 
 
 /* end mobile styles */
