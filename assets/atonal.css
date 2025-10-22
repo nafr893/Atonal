@@ -331,6 +331,12 @@ font-weight: bold;
     }
 }
 
+button.quick-order-button-mobile {
+  background: rbga(0,0,0,0);
+  font-weight: bold;
+  text-decoration: underline; 
+  
+}
 
 
 
