@@ -921,7 +921,7 @@ section#shopify-section-template--19068398928030__hero_jVaWmY {
 }
 
 /* On mobile (max-width: 768px) */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   section#shopify-section-template--19068398928030__hero_iUwGjP {
     display: block;
   }
