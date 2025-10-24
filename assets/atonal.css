@@ -910,24 +910,17 @@ padding-bottom: 50px ;
 
 /* homepage visibility settings mobile and desktop */ 
 
-
+/* desktop hide mobile banner */
+ @media (min-width: 480px) {
 section#shopify-section-template--19068398928030__hero_iUwGjP {
-  display: none;
+display: none !important; 
 }
+ }
 
-
-section#shopify-section-template--19068398928030__hero_jVaWmY {
-  display: block;
-}
-
-/* On mobile (max-width: 768px) */
+ /* mobile hide desktop banner */ 
 @media (max-width: 480px) {
-  section#shopify-section-template--19068398928030__hero_iUwGjP {
-    display: block;
+  section#shopify-section-template--19068398928030__hero_jVaWmY {
+    display: none !important;
   }
 
-
-section#shopify-section-template--19068398928030__hero_jVaWmY {
-    display: none;
-  }
 }
