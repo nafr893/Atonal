@@ -112,7 +112,7 @@
         "text_kfL6xY",
         "button_H9gpTf"
       ],
-      "name": "t:names.hero",
+      "name": "Desktop Hero",
       "settings": {
         "link": "",
         "open_in_new_tab": false,
@@ -244,7 +244,7 @@
         "text_KcERXh",
         "button_aeFRhc"
       ],
-      "name": "t:names.hero",
+      "name": "Mobile Hero",
       "settings": {
         "link": "",
         "open_in_new_tab": false,
