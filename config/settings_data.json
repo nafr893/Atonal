@@ -105,7 +105,7 @@
           ],
           "left_image": "shopify://shop_images/Header_Promotion_A500SB-min.webp",
           "left_text": "NEW A500SB",
-          "left_link": "https://atonal.co/pages/ws-quick-order-form",
+          "left_link": "shopify://products/a500sb",
           "right_image": "shopify://shop_images/Shop_all_1.3-min.webp",
           "right_text": "SHOP ALL",
           "right_link": "shopify://collections/all",
