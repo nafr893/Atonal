@@ -70,6 +70,8 @@ div.details-content {
 
 /* end footer info styles */ 
 
+
+
 /* homepage height settings */ 
 section#shopify-section-template--19068398928030__hero_jVaWmY {
   div#Hero-template--19068398928030__hero_jVaWmY {
@@ -898,4 +900,34 @@ div#spof-contents.hide-spof.wsg-spof-container-main
 {
 padding-top: 50px ; 
 padding-bottom: 50px ; 
+}
+
+
+
+
+
+
+
+/* homepage visibility settings mobile and desktop */ 
+
+
+section#shopify-section-template--19068398928030__hero_iUwGjP {
+  display: none;
+}
+
+
+section#shopify-section-template--19068398928030__hero_jVaWmY {
+  display: block;
+}
+
+/* On mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  section#shopify-section-template--19068398928030__hero_iUwGjP {
+    display: block;
+  }
+
+
+section#shopify-section-template--19068398928030__hero_jVaWmY {
+    display: none;
+  }
 }
