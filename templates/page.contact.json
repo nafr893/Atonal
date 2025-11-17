@@ -217,7 +217,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>support@atonalheadwear.com</p>",
+                    "text": "<p>nathan@atonalheadwear.com</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
