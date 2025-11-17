@@ -380,7 +380,7 @@
                         "text_9LcLQP": {
                           "type": "text",
                           "settings": {
-                            "text": "<p>We offer free shipping on all orders over $200.<br/><br/>Estimated delivery timeline is 4-15 business days. Wholesale orders may vary in delivery time depending on quantity. </p>",
+                            "text": "<p>We offer free shipping on all orders over $200 for U.S. shipments.<br/><br/>Estimated delivery timeline is 4-15 business days. Wholesale orders may vary in delivery time depending on quantity. </p>",
                             "width": "100%",
                             "max_width": "none",
                             "alignment": "left",
