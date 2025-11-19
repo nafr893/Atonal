@@ -22,15 +22,12 @@
     {% unless customer %}
       <div class="account-actions__sign-ins">
         <a
-          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}/account{% endif %}"
+          href="/account"
           class="account-actions__link button"
           {% if autofocus_enabled %}
             autofocus
           {% endif %}
         >
-          <span class="account-actions__sign-in-text">
-            {{ 'actions.sign_in_options' | t }}
-          </span>
           <span class="account-actions__fallback-text">
             {{ 'actions.log_in' | t }}
           </span>
@@ -48,10 +45,7 @@
               autofocus
             {% endif %}
           >
-            <span
-              class="account-actions__icon"
-              aria-hidden="true"
-            >
+            <span class="account-actions__icon" aria-hidden="true">
               {{- 'icon-orders.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_orders' | t }}
@@ -63,10 +57,7 @@
             href="/account/addresses"
             class="account-actions__link button-secondary"
           >
-            <span
-              class="account-actions__icon"
-              aria-hidden="true"
-            >
+            <span class="account-actions__icon" aria-hidden="true">
               {{- 'icon-account.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_profile' | t }}
@@ -84,10 +75,6 @@
     flex-direction: column;
     position: relative;
     transition: height var(--animation-values);
-
-    &:has([data-active]) .account-actions__main-menu {
-      visibility: hidden;
-    }
   }
 
   .account-actions__header {
@@ -98,7 +85,6 @@
   }
 
   .account-actions__title {
-    /* Ideally we set the font-size here, but specificity issues make this necessary */
     --font-h5--size: var(--font-size--lg);
     margin: 0;
     overflow: hidden;
@@ -124,30 +110,8 @@
     gap: var(--gap-sm);
   }
 
-  .account-actions__sign-in-text {
-    display: inline;
-  }
-
   .account-actions__fallback-text {
-    display: none;
-  }
-
-  /* Since we no longer use <shop-login-button>, this selector
-     will always match and show the fallback "Log in" text */
-  .account-actions__sign-ins:not(:has(shop-login-button)) {
-    gap: 0;
-
-    .account-actions__sign-in-text {
-      display: none;
-    }
-
-    .account-actions__fallback-text {
-      display: block;
-    }
-  }
-
-  .account-actions__shop-login {
-    --buttons-radius: var(--style-border-radius-buttons-primary);
+    display: block;
   }
 
   .account-actions__nav {
