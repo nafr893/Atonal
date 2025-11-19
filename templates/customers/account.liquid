@@ -1,18 +1,20 @@
 {% layout 'theme' %}
-{% if customer %}
-  <h1>{{ customer.first_name | default: customer.email }}</h1>
+<div class="page-width">
+  {% if customer %}
+    <h1 class="page-title">{{ customer.first_name | default: customer.email }}</h1>
 
-  <p>{{ 'customer.account.greeting' | t: name: customer.first_name }}</p>
+    <p>{{ 'customer.account.greeting' | t: name: customer.first_name }}</p>
 
-  <ul>
-    <li><a href="{{ routes.account_addresses_url }}">{{ 'customer.account.addresses' | t }}</a></li>
-    <li><a href="{{ routes.orders_url }}">{{ 'customer.account.orders' | t }}</a></li>
-  </ul>
+    <ul>
+      <li><a href="{{ routes.account_addresses_url }}">{{ 'customer.account.addresses' | t }}</a></li>
+      <li><a href="{{ routes.orders_url }}">{{ 'customer.account.orders' | t }}</a></li>
+    </ul>
 
-  {% form 'customer_logout' %}
-    <button type="submit">{{ 'customer.account.logout' | t }}</button>
-  {% endform %}
-{% else %}
-  <p>{{ 'customer.account.not_logged_in' | t }}</p>
-  <a href="{{ routes.login_url }}">{{ 'customer.login.title' | t }}</a>
-{% endif %}
+    <form method="post" action="{{ routes.account_logout_url }}">
+      <button type="submit" class="button">{{ 'customer.account.logout' | t }}</button>
+    </form>
+  {% else %}
+    <p>{{ 'customer.account.not_logged_in' | t }}</p>
+    <a href="{{ routes.login_url }}" class="button">{{ 'customer.login.title' | t }}</a>
+  {% endif %}
+</div>

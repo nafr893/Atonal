@@ -224,5 +224,7 @@
   window.addEventListener('scroll', positionMegaMenu);
 </script>
 
+{%- comment -%} Include legacy account CSS overrides {%- endcomment -%}
+<link rel="stylesheet" href="{{ 'customers.css' | asset_url }}" />
 
 </html>
