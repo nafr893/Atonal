@@ -19,36 +19,25 @@
       {% endif %}
     </header>
 
-    {% unless customer %}
-      <div class="account-actions__sign-ins">
 
-        {%- comment -%}
-        Disabled: New customer accounts / Shop Login popup (passwordless verification).
-        <script
-          src="{{ 'account-login-actions.js' | asset_url }}"
-          type="module"
-        ></script>
-        <account-login-actions class="account-actions__shop-login">
-          {{ shop | _button }}
-        </account-login-actions>
-        {%- endcomment -%}
+   {% unless customer %}
+  <a
+    href="/account"
+    class="account-actions__link button"
+    {% if autofocus_enabled %}
+      autofocus
+    {% endif %}
+  >
+    <span class="account-actions__sign-in-text">
+      {{ 'actions.sign_in_options' | t }}
+    </span>
+    <span class="account-actions__fallback-text">
+      {{ 'actions.log_in' | t }}
+    </span>
+  </a>
+{% endunless %}
 
-        <a
-          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}/account/login{% endif %}"
-          class="account-actions__link button"
-          {% if autofocus_enabled %}
-            autofocus
-          {% endif %}
-        >
-          <span class="account-actions__sign-in-text">
-            {{ 'actions.sign_in_options' | t }}
-          </span>
-          <span class="account-actions__fallback-text">
-            {{ 'actions.log_in' | t }}
-          </span>
-        </a>
-      </div>
-    {% endunless %}
+
 
     <nav class="account-actions__nav">
       <ul class="account-actions__list">
