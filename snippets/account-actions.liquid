@@ -19,25 +19,24 @@
       {% endif %}
     </header>
 
-
-   {% unless customer %}
-  <a
-    href="/account"
-    class="account-actions__link button"
-    {% if autofocus_enabled %}
-      autofocus
-    {% endif %}
-  >
-    <span class="account-actions__sign-in-text">
-      {{ 'actions.sign_in_options' | t }}
-    </span>
-    <span class="account-actions__fallback-text">
-      {{ 'actions.log_in' | t }}
-    </span>
-  </a>
-{% endunless %}
-
-
+    {% unless customer %}
+      <div class="account-actions__sign-ins">
+        <a
+          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}/account{% endif %}"
+          class="account-actions__link button"
+          {% if autofocus_enabled %}
+            autofocus
+          {% endif %}
+        >
+          <span class="account-actions__sign-in-text">
+            {{ 'actions.sign_in_options' | t }}
+          </span>
+          <span class="account-actions__fallback-text">
+            {{ 'actions.log_in' | t }}
+          </span>
+        </a>
+      </div>
+    {% endunless %}
 
     <nav class="account-actions__nav">
       <ul class="account-actions__list">
@@ -99,6 +98,7 @@
   }
 
   .account-actions__title {
+    /* Ideally we set the font-size here, but specificity issues make this necessary */
     --font-h5--size: var(--font-size--lg);
     margin: 0;
     overflow: hidden;
@@ -132,6 +132,8 @@
     display: none;
   }
 
+  /* Since we no longer use <shop-login-button>, this selector
+     will always match and show the fallback "Log in" text */
   .account-actions__sign-ins:not(:has(shop-login-button)) {
     gap: 0;
 
