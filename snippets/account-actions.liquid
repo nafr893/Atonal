@@ -3,7 +3,7 @@
     <header class="account-actions__header">
       <span class="account-actions__title h5">
         {% if customer and customer.first_name != blank %}
-          {{ 'content.account_title_personalized' | t: first_name: customer.first_name }}
+          {{ 'content.account_title_personalized' | t: first_name: customer.first.first_name }}
         {% else %}
           {{ 'content.account_title' | t }}
         {% endif %}
@@ -21,27 +21,14 @@
 
     {% unless customer %}
       <div class="account-actions__sign-ins">
-        <script
-          src="{{ 'account-login-actions.js' | asset_url }}"
-          type="module"
-        ></script>
-        <account-login-actions class="account-actions__shop-login">
-          {{ shop | login_button }}
-        </account-login-actions>
-
         <a
-          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}"
+          href="/account/login"
           class="account-actions__link button"
           {% if autofocus_enabled %}
             autofocus
           {% endif %}
         >
-          <span class="account-actions__sign-in-text">
-            {{ 'actions.sign_in_options' | t }}
-          </span>
-          <span class="account-actions__fallback-text">
-            {{ 'actions.log_in' | t }}
-          </span>
+          {{ 'actions.log_in' | t }}
         </a>
       </div>
     {% endunless %}
@@ -50,16 +37,13 @@
       <ul class="account-actions__list">
         <li class="account-actions__list-item">
           <a
-            href="{{ routes.account_url }}"
+            href="/account"
             class="account-actions__link button-secondary"
             {% if autofocus_enabled and customer %}
               autofocus
             {% endif %}
           >
-            <span
-              class="account-actions__icon"
-              aria-hidden="true"
-            >
+            <span class="account-actions__icon" aria-hidden="true">
               {{- 'icon-orders.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_orders' | t }}
@@ -67,13 +51,10 @@
         </li>
         <li class="account-actions__list-item">
           <a
-            href="{{ routes.account_addresses_url }}"
+            href="/account/addresses"
             class="account-actions__link button-secondary"
           >
-            <span
-              class="account-actions__icon"
-              aria-hidden="true"
-            >
+            <span class="account-actions__icon" aria-hidden="true">
               {{- 'icon-account.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_profile' | t }}
@@ -100,12 +81,11 @@
   .account-actions__header {
     padding: var(--padding-xl);
     display: flex;
-    flex-direction: column;
+    flex-flex-direction: column;
     gap: var(--gap-2xs);
   }
 
   .account-actions__title {
-    /* Ideally we set the font-size here, but specificity issues make this necessary */
     --font-h5--size: var(--font-size--lg);
     margin: 0;
     overflow: hidden;
@@ -137,23 +117,6 @@
 
   .account-actions__fallback-text {
     display: none;
-  }
-
-  .account-actions__sign-ins:not(:has(shop-login-button)) {
-    gap: 0;
-
-    .account-actions__sign-in-text {
-      display: none;
-    }
-
-    .account-actions__fallback-text {
-      display: block;
-    }
-  }
-
-  /* Makes the shop login button radius match the theme settings */
-  .account-actions__shop-login {
-    --buttons-radius: var(--style-border-radius-buttons-primary);
   }
 
   .account-actions__nav {
