@@ -1,0 +1,23 @@
+{% layout 'theme' %}
+<h1>{{ 'customer.login.title' | t }}</h1>
+
+{% if customer %}
+  <p>{{ 'customer.login.already_logged_in' | t }}</p>
+  <a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a>
+{% else %}
+  {% form 'customer_login' %}
+    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+    <input id="CustomerEmail" name="customer[email]" type="email" autocorrect="off" autocapitalize="off" required>
+
+    <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+    <input id="CustomerPassword" name="customer[password]" type="password" required>
+
+    <button type="submit">{{ 'customer.login.submit' | t }}</button>
+
+    <p>
+      <a href="{{ routes.password_recovery_url }}">{{ 'customer.login.forgot_password' | t }}</a>
+      &nbsp;•&nbsp;
+      <a href="{{ routes.register_url }}">{{ 'customer.login.create_account' | t }}</a>
+    </p>
+  {% endform %}
+{% endif %}
