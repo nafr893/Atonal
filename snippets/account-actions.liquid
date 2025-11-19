@@ -21,13 +21,24 @@
 
     {% unless customer %}
       <div class="account-actions__sign-ins">
+        <script
+          src="{{ 'account-login-actions.js' | asset_url }}"
+          type="module"
+        ></script>
+        <account-login-actions class="account-actions__shop-login">
+          {{ shop | login_button }}
+        </account-login-actions>
+
         <a
-          href="/account"
+          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}"
           class="account-actions__link button"
           {% if autofocus_enabled %}
             autofocus
           {% endif %}
         >
+          <span class="account-actions__sign-in-text">
+            {{ 'actions.sign_in_options' | t }}
+          </span>
           <span class="account-actions__fallback-text">
             {{ 'actions.log_in' | t }}
           </span>
@@ -39,25 +50,30 @@
       <ul class="account-actions__list">
         <li class="account-actions__list-item">
           <a
-            href="/account"
+            href="{{ routes.account_url }}"
             class="account-actions__link button-secondary"
             {% if autofocus_enabled and customer %}
               autofocus
             {% endif %}
           >
-            <span class="account-actions__icon" aria-hidden="true">
+            <span
+              class="account-actions__icon"
+              aria-hidden="true"
+            >
               {{- 'icon-orders.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_orders' | t }}
           </a>
         </li>
-
         <li class="account-actions__list-item">
           <a
-            href="/account/addresses"
+            href="{{ routes.account_addresses_url }}"
             class="account-actions__link button-secondary"
           >
-            <span class="account-actions__icon" aria-hidden="true">
+            <span
+              class="account-actions__icon"
+              aria-hidden="true"
+            >
               {{- 'icon-account.svg' | inline_asset_content -}}
             </span>
             {{ 'content.account_profile' | t }}
@@ -75,6 +91,10 @@
     flex-direction: column;
     position: relative;
     transition: height var(--animation-values);
+
+    &:has([data-active]) .account-actions__main-menu {
+      visibility: hidden;
+    }
   }
 
   .account-actions__header {
@@ -85,6 +105,7 @@
   }
 
   .account-actions__title {
+    /* Ideally we set the font-size here, but specificity issues make this necessary */
     --font-h5--size: var(--font-size--lg);
     margin: 0;
     overflow: hidden;
@@ -110,8 +131,29 @@
     gap: var(--gap-sm);
   }
 
+  .account-actions__sign-in-text {
+    display: inline;
+  }
+
   .account-actions__fallback-text {
-    display: block;
+    display: none;
+  }
+
+  .account-actions__sign-ins:not(:has(shop-login-button)) {
+    gap: 0;
+
+    .account-actions__sign-in-text {
+      display: none;
+    }
+
+    .account-actions__fallback-text {
+      display: block;
+    }
+  }
+
+  /* Makes the shop login button radius match the theme settings */
+  .account-actions__shop-login {
+    --buttons-radius: var(--style-border-radius-buttons-primary);
   }
 
   .account-actions__nav {

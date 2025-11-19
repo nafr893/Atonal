@@ -282,43 +282,5 @@
       "sold_out": "Sold out",
       "unavailable": "Unavailable"
     }
-  },
-  "customer": {
-    "login": {
-      "title": "Log in",
-      "email": "Email",
-      "password": "Password",
-      "submit": "Log in",
-      "forgot_password": "Forgot your password?",
-      "create_account": "Create account"
-    },
-    "register": {
-      "title": "Create account",
-      "first_name": "First name",
-      "last_name": "Last name",
-      "email": "Email",
-      "password": "Password",
-      "submit": "Create account",
-      "login": "Log in"
-    },
-    "reset_password": {
-      "title": "Reset your password",
-      "email": "Email",
-      "submit": "Send reset instructions",
-      "back_to_login": "Back to login"
-    },
-    "activate_account": {
-      "title": "Set your password",
-      "password": "Password",
-      "submit": "Set password",
-      "missing_token": "Invalid activation token"
-    },
-    "account": {
-      "greeting": "Welcome, {{ name }}",
-      "addresses": "Addresses",
-      "orders": "Orders",
-      "logout": "Log out",
-      "not_logged_in": "You are not logged in"
-    }
   }
 }
