@@ -21,6 +21,9 @@
 
     {% unless customer %}
       <div class="account-actions__sign-ins">
+
+        {%- comment -%}
+        Disabled: New customer accounts / Shop Login popup (passwordless verification).
         <script
           src="{{ 'account-login-actions.js' | asset_url }}"
           type="module"
@@ -28,9 +31,10 @@
         <account-login-actions class="account-actions__shop-login">
           {{ shop | login_button }}
         </account-login-actions>
+        {%- endcomment -%}
 
         <a
-          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}"
+          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}/account/login{% endif %}"
           class="account-actions__link button"
           {% if autofocus_enabled %}
             autofocus
@@ -50,7 +54,7 @@
       <ul class="account-actions__list">
         <li class="account-actions__list-item">
           <a
-            href="{{ routes.account_url }}"
+            href="/account"
             class="account-actions__link button-secondary"
             {% if autofocus_enabled and customer %}
               autofocus
@@ -65,9 +69,10 @@
             {{ 'content.account_orders' | t }}
           </a>
         </li>
+
         <li class="account-actions__list-item">
           <a
-            href="{{ routes.account_addresses_url }}"
+            href="/account/addresses"
             class="account-actions__link button-secondary"
           >
             <span
@@ -105,7 +110,6 @@
   }
 
   .account-actions__title {
-    /* Ideally we set the font-size here, but specificity issues make this necessary */
     --font-h5--size: var(--font-size--lg);
     margin: 0;
     overflow: hidden;
@@ -151,7 +155,6 @@
     }
   }
 
-  /* Makes the shop login button radius match the theme settings */
   .account-actions__shop-login {
     --buttons-radius: var(--style-border-radius-buttons-primary);
   }
