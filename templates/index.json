@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>A500SB SHORTBILL</h1>",
+            "text": "<h1>DIGITAL CAMO</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -95,7 +95,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "shopify://products/a500p-printed-pattern-material",
+            "link": "shopify://products/a500sb",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
@@ -117,7 +117,7 @@
         "link": "",
         "open_in_new_tab": false,
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Atonal_Homepage_Shortbill_V3.png",
+        "image_1": "shopify://shop_images/Digital_Camo_Homepage_Desktop_Atonal.png",
         "media_type_2": "image",
         "content_direction": "column",
         "vertical_on_mobile": true,
