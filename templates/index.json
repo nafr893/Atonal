@@ -95,7 +95,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "shopify://products/a500p-printed-pattern-material",
+            "link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
@@ -227,7 +227,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "shopify://products/a500p-printed-pattern-material",
+            "link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
