@@ -51,8 +51,7 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
           id="phone"
           name="customField_{{ block.settings.phone_text_input }}"
           value=""
-          type="text"
-          pattern="[0-9\-]*"
+          type="tel"
           placeholder="{{ block.settings.phone_text_input }}"
           data-translation-selector="placePhone"
           class="full-width"
@@ -189,6 +188,32 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
           {% if block.settings.dropdown_option_7 != blank %}<option value="{{ block.settings.dropdown_option_7 }}">{{ block.settings.dropdown_option_7 }}</option>{% endif %}
         </select>
       </div>
+    {% comment %} VAT Number field block {% endcomment %}
+    {% when 'vat_number_block' %}
+      <div class="grid__item medium-up--one-half" {{ block.shopify_attributes }}>
+        <label id="vatNumber_label" for="vatNumber" data-translation-selector="labelTaxId">
+          {{ block.settings.vat_number_label }}
+        </label>
+        <label
+          id="vatNumber_label_error"
+          for="vatNumber"
+          class='wsg-hidden-label wsg-label-error'
+          data-translation-selector="labelRequired"
+        >
+          Required
+        </label>
+        <input
+          id="vatNumber"
+          name="vatNumber"
+          type="text"
+          value=""
+          placeholder="{{ block.settings.vat_number_label }}"
+          data-translation-selector="placeTaxId"
+          class="full-width"
+          {% if block.settings.isRequired == true %}
+            required
+          {% endif %} />
+        </div>
   {% endcase %}
 
   {% endfor %}
@@ -343,6 +368,7 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
   const companyNameElement = document.querySelector('[data-translation-selector="companyName"]');
   const selectOptionElement = document.querySelector('[data-translation-selector="selectOption"]');
   const phoneElement = document.querySelector('[data-translation-selector="labelPhone"]');
+  const vatNumberElement = document.querySelector('[data-translation-selector="labelTaxId"]');
 
   const websiteElement = document.querySelector('[name="customField_Website"]');
   const taxElement = document.querySelector('[name="customField_Tax ID/ABN/VAT Number"]');
@@ -372,6 +398,16 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
 
   if (phoneElement && phoneElement.textContent.trim() !== 'Phone Number') {
     phoneElement.removeAttribute('data-translation-selector');
+  }
+
+  if (vatNumberElement && vatNumberElement.textContent.trim() !== 'Tax ID/ABN/VAT Number') {
+    vatNumberElement.removeAttribute('data-translation-selector');
+
+    // Remove translation selector from placeholder if label is customized
+    const vatNumberInput = document.querySelector('#vatNumber[data-translation-selector="placeTaxId"]');
+    if (vatNumberInput) {
+      vatNumberInput.removeAttribute('data-translation-selector');
+    }
   }
 
   if (websiteElement) {
@@ -579,6 +615,30 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
           "label": "Required",
           "default": false,
           "info" : "Checking this box will require users to enter text into this input in order to submit the registration form."
+        }
+      ]
+    },
+    {
+      "type": "vat_number_block",
+      "limit": 1,
+      "name": "Tax ID/ABN/VAT Number",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Add a Tax ID/ABN/VAT Number field to the registration form."
+        },
+        {
+          "type": "text",
+          "id": "vat_number_label",
+          "label": "Field Label",
+          "default": "Tax ID/ABN/VAT Number"
+        },
+        {
+          "type": "checkbox",
+          "id": "isRequired",
+          "label": "Required",
+          "default": false,
+          "info" : "Checking this box will require users to enter a VAT number in order to submit the registration form."
         }
       ]
     },
