@@ -55,9 +55,15 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "giveaway_status_C6xpNb": {
+      "type": "giveaway-status",
+      "name": "Giveaway status",
+      "settings": {}
     }
   },
   "order": [
+    "giveaway_status_C6xpNb",
     "main"
   ]
 }
