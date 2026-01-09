@@ -135,7 +135,7 @@
                   "settings": {
                     "text": "<p>In 2026, we're giving away a custom Atonal golf cart to one lucky customer. Every $100 spent earns you one entry ticket to win. Log in above to review your current status and see how many tickets you’ve earned. Good Luck!</p><p>- The Atonal Team</p>",
                     "width": "fit-content",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
