@@ -1,6 +1,6 @@
 {% assign ticket_unit_cents = 10000 %}
 
-<section style="padding: 24px; border: 1px solid rgba(0,0,0,.12); border-radius: 16px;">
+<section style="padding: 24px; border: 1px solid rgba(0,0,0,.12); border-radius: 0px;">
   {% if customer %}
     {% assign promo_spend_cents = customer.metafields.loyalty.promo_spend_cents.value | default: 0 %}
     {% assign tickets = customer.metafields.loyalty.tickets_balance.value | default: 0 %}
@@ -14,7 +14,7 @@
     <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
       <h2 style="margin:0; font-size: 22px;">Giveaway Status</h2>
       <div style="font-size: 14px; opacity:.75;">
-        Promo spend since Jan 10: {{ promo_spend_cents | money }}
+       Amount Spent: {{ promo_spend_cents | money }}
       </div>
     </div>
 
