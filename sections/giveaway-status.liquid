@@ -1,56 +1,67 @@
 {% comment %}
-  Giveaway Status (Storefront)
-  - Uses customer.total_spent (in cents/subunits) to compute:
-    tickets = floor(total_spent / 10000)
-    remainder_cents = total_spent % 10000
-    progress_percent = (remainder_cents / 10000) * 100
+  Giveaway Status (Storefront, Horizon)
+  Reads customer metafields set by Flow:
+  - loyalty.promo_spend_cents (Integer cents)
+  - loyalty.tickets_balance (Integer)
+  - loyalty.tickets_remainder_cents (Integer, 0-9999)
 {% endcomment %}
 
-<section class="giveaway-status" style="padding: 24px; border: 1px solid rgba(0,0,0,.12); border-radius: 16px;">
+{% assign ticket_unit_cents = 10000 %}
+
+<section style="padding: 24px; border: 1px solid rgba(0,0,0,.12); border-radius: 0px;">
   {% if customer %}
-    {% assign total_spent_cents = customer.total_spent | default: 0 %}
-    {% assign ticket_unit_cents = 10000 %}
+    {% assign promo_spend_cents = customer.metafields.loyalty.promo_spend_cents.value | default: 0 %}
+    {% assign tickets = customer.metafields.loyalty.tickets_balance.value | default: 0 %}
+    {% assign remainder_cents = customer.metafields.loyalty.tickets_remainder_cents.value | default: 0 %}
 
-    {% assign tickets = total_spent_cents | divided_by: ticket_unit_cents %}
-    {% assign remainder_cents = total_spent_cents | modulo: ticket_unit_cents %}
-
-    {%- comment -%}
-      Liquid math is mostly integer-based. This yields an integer percent 0–99.
-    {%- endcomment -%}
     {% assign progress_percent = remainder_cents | times: 100 | divided_by: ticket_unit_cents %}
 
     {% assign cents_to_next = ticket_unit_cents | minus: remainder_cents %}
+    {% if remainder_cents == 0 %}
+      {% assign cents_to_next = 0 %}
+    {% endif %}
+
     {% assign dollars_to_next = cents_to_next | divided_by: 100 %}
 
-    <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
-      <h2 style="margin:0; font-size: 22px;">Giveaway Status</h2>
-      <div style="font-size: 14px; opacity:.75;">
-        Total spent: {{ total_spent_cents | money }}
-      </div>
-    </div>
+    {% for block in section.blocks %}
+      {% case block.type %}
 
-    <div style="margin-top: 14px;">
-      <div style="font-size: 36px; font-weight: 700; line-height: 1;">
-        {{ tickets }} <span style="font-size: 16px; font-weight: 600; opacity:.8;">ticket{% if tickets != 1 %}s{% endif %}</span>
-      </div>
-      <div style="margin-top: 10px; font-size: 14px; opacity:.85;">
-        Spend <strong>${{ dollars_to_next }}</strong> more to earn your next ticket.
-      </div>
-    </div>
+        {% when 'summary' %}
+          <div {{ block.shopify_attributes }}>
+            <h2 style="margin:0 0 10px; font-size: 22px;">Giveaway Status</h2>
 
-    <div style="margin-top: 14px;">
-      <div style="height: 10px; background: rgba(0,0,0,.10); border-radius: 999px; overflow:hidden;">
-        <div style="height: 100%; width: {{ progress_percent }}%; background: rgba(0,0,0,.85);"></div>
-      </div>
-      <div style="margin-top: 8px; display:flex; justify-content:space-between; font-size: 12px; opacity:.75;">
-        <span>{{ progress_percent }}% to next ticket</span>
-        <span>$100 = 1 ticket</span>
-      </div>
-    </div>
+            <div style="display:flex; gap:16px; align-items:baseline; justify-content:space-between;">
+              <div style="font-size: 36px; font-weight: 700; line-height: 1;">
+                {{ tickets }} <span style="font-size: 16px; font-weight: 600; opacity:.8;">ticket{% if tickets != 1 %}s{% endif %}</span>
+              </div>
+              <div style="font-size: 14px; opacity:.75;">
+                Promo spend since Jan 10: {{ promo_spend_cents | money }}
+              </div>
+            </div>
+          </div>
+
+        {% when 'progress' %}
+          <div style="margin-top: 16px;" {{ block.shopify_attributes }}>
+            <div style="font-size: 14px; opacity:.85; margin-bottom: 8px;">
+              Spend <strong>${{ dollars_to_next }}</strong> more to earn your next ticket.
+            </div>
+
+            <div style="height: 10px; background: rgba(0,0,0,.10); border-radius: 999px; overflow:hidden;">
+              <div style="height: 100%; width: {{ progress_percent }}%; background: rgba(0,0,0,.85);"></div>
+            </div>
+
+            <div style="margin-top: 8px; display:flex; justify-content:space-between; font-size: 12px; opacity:.75;">
+              <span>{{ progress_percent }}% to next ticket</span>
+              <span>$100 = 1 ticket</span>
+            </div>
+          </div>
+
+      {% endcase %}
+    {% endfor %}
 
   {% else %}
     <h2 style="margin:0 0 10px; font-size: 22px;">Giveaway Status</h2>
-    <p style="margin:0 0 12px; opacity:.85;">Log in to see your tickets and progress toward the next one.</p>
+    <p style="margin:0 0 12px; opacity:.85;">Log in to see your tickets and progress.</p>
     <a href="{{ routes.account_login_url }}" style="display:inline-block; padding:10px 14px; border:1px solid rgba(0,0,0,.2); border-radius: 10px; text-decoration:none;">
       Log in
     </a>
@@ -60,9 +71,18 @@
 {% schema %}
 {
   "name": "Giveaway status",
-  "settings": [],
+  "blocks": [
+    { "type": "summary", "name": "Summary", "settings": [] },
+    { "type": "progress", "name": "Progress", "settings": [] }
+  ],
   "presets": [
-    { "name": "Giveaway status" }
+    {
+      "name": "Giveaway status",
+      "blocks": [
+        { "type": "summary" },
+        { "type": "progress" }
+      ]
+    }
   ]
 }
 {% endschema %}
