@@ -44,7 +44,7 @@
               "type": "text",
               "name": "t:names.caption",
               "settings": {
-                "text": "<p>GIVEAWAY</p>",
+                "text": "<p>NEWS</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
