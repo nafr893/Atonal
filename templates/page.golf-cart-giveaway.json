@@ -503,7 +503,7 @@
                   "settings": {
                     "text": "<p>Yes. Entries are calculated based on your subtotal before shipping and taxes. To earn one ticket, your subtotal must be $100 or more.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -542,7 +542,7 @@
                   "settings": {
                     "text": "<p>If you win, we will send you an email notifying you of your new golf cart!</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -624,7 +624,7 @@
                   "settings": {
                     "text": "<p>Unlimited! You can earn as many entries as you like. </p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
