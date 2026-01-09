@@ -1,22 +1,49 @@
-
-
 {%- liquid
-  assign free_shipping_threshold = settings.free_shipping_amount | default: 10000
-  assign cart_total = cart.total_price
-  assign progress_percent = cart_total | times: 100 | divided_by: free_shipping_threshold
-  assign remaining_amount = free_shipping_threshold | minus: cart_total
-  
+  assign ticket_threshold = 10000  # $100 in cents
+  assign cart_total = cart.total_price | default: 0
+
+  # How many full tickets have been unlocked
+  assign tickets_unlocked = cart_total | divided_by: ticket_threshold
+
+  # Remainder toward the next ticket
+  assign remainder_amount = cart_total | modulo: ticket_threshold
+
+  # Progress to next ticket (0–99)
+  assign progress_percent = remainder_amount | times: 100 | divided_by: ticket_threshold
+
+  # Dollars remaining to next ticket
+  assign remaining_amount = ticket_threshold | minus: remainder_amount
+
+  # If you're exactly on a threshold (remainder 0), you're 0 away (and progress should be 0)
+  if remainder_amount == 0
+    assign remaining_amount = 0
+    assign progress_percent = 0
+  endif
+
+  # Safety clamp
   if progress_percent > 100
     assign progress_percent = 100
   endif
 -%}
 
 <div class="cart-progress">
-  {% if cart_total >= free_shipping_threshold %}
-    <p class="cart-progress__message">You’ve unlocked an entry!</p>
+  {% if tickets_unlocked >= 1 %}
+    <p class="cart-progress__message">
+      You’ve unlocked <span class="highlight">{{ tickets_unlocked }}</span> ticket{% if tickets_unlocked != 1 %}s{% endif %}!
+    </p>
+
+    {% if remaining_amount > 0 %}
+      <p class="cart-progress__message">
+        You're <span class="highlight">{{ remaining_amount | money_without_trailing_zeros }}</span> away from your next <span class="highlight">GIVEAWAY ENTRY</span>
+      </p>
+    {% else %}
+      <p class="cart-progress__message">
+        Add more to start earning your next ticket.
+      </p>
+    {% endif %}
   {% else %}
     <p class="cart-progress__message">
-      You're <span class="highlight" >{{ remaining_amount | money_without_trailing_zeros }} </span> away from <span class="highlight">A GIVEAWAY ENTRY</span>
+      You're <span class="highlight">{{ remaining_amount | money_without_trailing_zeros }}</span> away from <span class="highlight">A GIVEAWAY ENTRY</span>
     </p>
   {% endif %}
 
@@ -31,29 +58,27 @@
 <style>
 .cart-progress {
   margin: 16px 0;
-  padding-left: 20px; 
-  padding-right: 20px; 
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    border-top: 1px solid #d9d9d9;
-    padding-top: 10px; 
-    padding-bottom: 10px; 
-    margin: 0;    
-
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #d9d9d9;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
 }
 
 .cart-progress__message {
   font-size: 14px;
   margin-bottom: 6px;
-  text-align: center; 
-  padding-bottom: 5px; 
-
-  .highlight {
-    font-weight: bold;
-  }
+  text-align: center;
+  padding-bottom: 5px;
 }
 
+.cart-progress__message .highlight {
+  font-weight: bold;
+}
 
 .cart-progress__bar {
   background: #eee;
