@@ -927,6 +927,6 @@ display: none !important;
 
 /* giveaway banner css */
 
-a.menu-list__link.is-giveaway {
+a.menu-list__link.is-giveaway, a#HeaderDrawer-giveaway.menu-drawer__menu-item, a.menu-drawer__menu-item--mainlist, a.menu-drawer__animated-element, a.focus-inset {
 color: #2F5CAC;
 }
