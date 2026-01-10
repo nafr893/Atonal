@@ -34,7 +34,7 @@
     >
       <a
         href="{{ link.url }}"
-        class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
+        class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}{% if link.url contains '/pages/giveaway-status' %} is-giveaway{% endif %}"
         {%- if link.links != blank -%}
           aria-controls="submenu-{{ forloop.index }}"
           aria-haspopup="true"
@@ -44,6 +44,7 @@
       >
         <span class="menu-list__link-title">{{- link.title -}}</span>
       </a>
+
       {%- if link.links != blank -%}
         <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
           <div
@@ -64,6 +65,7 @@
       {%- endif -%}
     </li>
   {% endfor %}
+
   <li
     class="menu-list__list-item"
     role="presentation"
@@ -85,6 +87,11 @@
     style="{% render 'menu-font-styles', settings: block.settings %}"
   >
     {% assign class = 'overflow-menu' | append: color_scheme_classes %}
-    {% render 'overflow-list', class: class, ref: 'overflowMenu', children: children, minimum-items: 2 %}
+    {% render 'overflow-list',
+      class: class,
+      ref: 'overflowMenu',
+      children: children,
+      minimum-items: 2
+    %}
   </div>
 </nav>
