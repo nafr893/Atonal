@@ -925,3 +925,8 @@ display: none !important;
 
 }
 
+/* giveaway banner css */
+
+a.menu-list__link.is-giveaway {
+color: #2F5CAC;
+}
