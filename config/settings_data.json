@@ -103,9 +103,9 @@
             "a601",
             "a601p-printed-unstructured-dad-hat"
           ],
-          "left_image": "shopify://shop_images/Golf_Cart_Atona.webp",
+          "left_image": "shopify://shop_images/Giveaway_Image.webp",
           "left_text": "ENTER TO WIN",
-          "left_link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
+          "left_link": "shopify://pages/golf-cart-giveaway",
           "right_image": "shopify://shop_images/Shop_all_1.3-min.webp",
           "right_text": "SHOP ALL",
           "right_link": "shopify://collections/all",
@@ -141,7 +141,7 @@
             "type": "text_block",
             "settings": {
               "text_input": "Tax ID/ABN/VAT Number",
-              "isRequired": false
+              "isRequired": true
             }
           },
           "7e3c653e-b2ef-4189-a5fd-6641fd6563d3": {
