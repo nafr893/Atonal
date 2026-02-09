@@ -838,7 +838,7 @@
                     "text_mwnd6T": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>{{ closest.product.metafields.custom.product_specs | metafield_tag }}</p>",
+                        "text": "{{ closest.product.description }}",
                         "width": "100%",
                         "max_width": "none",
                         "alignment": "left",
