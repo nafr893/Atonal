@@ -383,6 +383,7 @@
                 "group_CT43t7": {
                   "type": "group",
                   "name": "Icon Row 1",
+                  "disabled": true,
                   "settings": {
                     "link": "",
                     "open_in_new_tab": false,
@@ -593,6 +594,7 @@
                 "group_RKi3EU": {
                   "type": "group",
                   "name": "Icon Row 2",
+                  "disabled": true,
                   "settings": {
                     "link": "",
                     "open_in_new_tab": false,
@@ -1316,6 +1318,7 @@
         "group_GLkTX9",
         "group_RYctpT"
       ],
+      "disabled": true,
       "name": "Supporting Images (Hats)",
       "settings": {
         "content_direction": "row",
