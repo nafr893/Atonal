@@ -17,11 +17,6 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
   }
 </script>
 
-{% assign GOOGLE_RECAPTCHA_SITE_KEY = '6LdGUcIUAAAAAPQWiZiIv3yxc3-na0ruvSWo1ing' %}
-
-<!-- reCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js?render={{ GOOGLE_RECAPTCHA_SITE_KEY }}"></script>
-
 <div id="wsg-signup-container" class='wsg-proxy-container'>
   <!-- REGISTRATION SETTINGS -->
   {% section 'wsg-registration-settings' %}
@@ -31,7 +26,7 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
     <a id="loginLinkA" href="/a/wsg/proxy/login" data-translation-selector="loginLinkA">Login here.</a>
   </p>
   <div class='wsg-one-half'>
-    <form id="wsg-signup" tabindex="0">
+    <form id="wsg-signup" tabindex="0"> 
       <!-- CUSTOMER (required) -->
       <div class='wsg-section-header'>
         <h2 data-translation-selector="customerInfo">Customer Information</h2>
@@ -51,13 +46,6 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
             data-translation-selector="placeLastName">
         </div>
       </div>
-   <div class="wsg-input-small">
-          <label id="customer_last_label" for="last_name" data-translation-selector="labelLastName">Tax ID, ABN, or VAT Number</label>
-          <label id="customer_last_label_error" for="last_name" class='wsg-hidden-label wsg-label-error' data-translation-selector="labelRequired">Required</label>
-          <input type="text" value="" name="customer_last" id="last_name" placeholder="Last Name" required
-            data-translation-selector="placeLastName">
-        </div>
-
       <!-- EMAIL (required) -->
       <div style="margin-bottom: 15px;">
         <div>
@@ -116,6 +104,11 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
       <div class="wsg-one-half wsg-center">
         <hr class='wsg-one-third wsg-element-margin wsg-element-margin-top' />
       </div>
+      <!-- SessionInfo (required) -->
+      <div class="wsg-input-small-session-ref">
+        <label for="session_ref">Session</label>
+        <input type="text" value="" name="session_ref" id="session_ref" autocomplete="off" tabindex="-1">
+      </div>
       <!-- CUSTOM FIELDS -->
       {% section 'wsg-custom-fields' %}
       <p class='wsg-center required-fields-label' data-translation-selector="labelRequiredFields">Missing Required Fields</p>
@@ -171,6 +164,15 @@ Do not delete unless Wholesale Gorilla has been uninstalled.
   .wsg-input-small input{
     width: 100%;
     margin: 0px;
+  }
+
+  .wsg-input-small-session-ref {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 
   #wsg-signup select,
