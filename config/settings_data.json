@@ -95,15 +95,12 @@
         "settings": {
           "hat_products": [
             "a500",
-            "a500c",
             "a500p-printed-pattern-material",
-            "a500gb",
-            "a500r",
-            "a501",
             "a601",
-            "a601p-printed-unstructured-dad-hat",
             "atonal-short-sleeve-t-shirt",
-            "a500sb"
+            "a500r",
+            "a500gb",
+            "a501"
           ],
           "left_image": "shopify://shop_images/Giveaway_Image.webp",
           "left_text": "ENTER TO WIN",
