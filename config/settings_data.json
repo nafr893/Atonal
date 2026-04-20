@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/ATONAL_NOTEXT.png",
-    "logo_inverse": "shopify://shop_images/ATONAL_NOTEXT_copy.png",
-    "favicon": "shopify://shop_images/ATONAL_NOTEXT.png",
+    "logo": "shopify://shop_images/ATONAL_LOGO_BLACK.png",
+    "logo_inverse": "shopify://shop_images/ATONAL_LOGO_WHITE.png",
+    "favicon": "shopify://shop_images/ATONAL_LOGO_BLACK.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
