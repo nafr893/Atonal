@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/ATONAL_NOTEXT.png",
-    "logo_inverse": "shopify://shop_images/ATONAL_NOTEXT_copy.png",
-    "favicon": "shopify://shop_images/ATONAL_NOTEXT.png",
+    "logo": "shopify://shop_images/ATONAL_LOGO_BLACK.png",
+    "logo_inverse": "shopify://shop_images/ATONAL_LOGO_WHITE.png",
+    "favicon": "shopify://shop_images/ATONAL_ICON_2d420ad8-bf89-410b-ae08-5499e9972397.png",
     "type_body_font": "inter_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "inter_n7",
@@ -63,7 +63,7 @@
     "product_title_case": "default",
     "cart_price_font": "secondary",
     "auto_open_cart_drawer": true,
-    "show_cart_note": false,
+    "show_cart_note": true,
     "show_add_discount_code": true,
     "show_installments": false,
     "show_accelerated_checkout_buttons": false,
@@ -95,17 +95,17 @@
         "settings": {
           "hat_products": [
             "a500",
-            "a500c",
-            "a500p-printed-pattern-material",
             "a500gb",
+            "a500p-printed-pattern-material",
             "a500r",
-            "a501",
             "a601",
-            "a601p-printed-unstructured-dad-hat"
+            "atonal-short-sleeve-t-shirt",
+            "a501",
+            "a500c"
           ],
-          "left_image": "shopify://shop_images/Golf_Cart_Atona.webp",
+          "left_image": "shopify://shop_images/Giveaway_Image.webp",
           "left_text": "ENTER TO WIN",
-          "left_link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
+          "left_link": "shopify://pages/golf-cart-giveaway",
           "right_image": "shopify://shop_images/Shop_all_1.3-min.webp",
           "right_text": "SHOP ALL",
           "right_link": "shopify://collections/all",
@@ -141,7 +141,7 @@
             "type": "text_block",
             "settings": {
               "text_input": "Tax ID/ABN/VAT Number",
-              "isRequired": false
+              "isRequired": true
             }
           },
           "7e3c653e-b2ef-4189-a5fd-6641fd6563d3": {

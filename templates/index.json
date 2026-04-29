@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>NEW LAUNCH</strong></p>",
+            "text": "<p><strong>BESTSELLER</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>DIGITAL CAMO</h1>",
+            "text": "<h1>A500 SNAPBACK</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -68,7 +68,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h5>Limited quantity available online</h5>",
+            "text": "<p>High-quality 5-panel snapback</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -95,7 +95,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
+            "link": "shopify://products/a500",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
@@ -117,7 +117,7 @@
         "link": "",
         "open_in_new_tab": false,
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Digital_Camo_Homepage_Desktop_v2-min.webp",
+        "image_1": "shopify://shop_images/Flat_Brims_Collection_Picture_-min.webp",
         "media_type_2": "image",
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -148,7 +148,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>NEW LAUNCH</strong></p>",
+            "text": "<p><strong>BESTSELLER</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -165,8 +165,8 @@
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-start": 10,
+            "padding-inline-end": 10
           },
           "blocks": {}
         },
@@ -174,7 +174,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>DIGITAL CAMO</h1>",
+            "text": "<h1>A500 SNAPBACK</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -200,7 +200,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h5>Limited quantity available online</h5>",
+            "text": "<p>High-quality 5-panel snapback</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -227,7 +227,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "SHOP NOW",
-            "link": "https://atonal.co/products/a500p-printed-pattern-material?variant=46246329843870",
+            "link": "shopify://products/a500",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "custom",
@@ -249,7 +249,7 @@
         "link": "",
         "open_in_new_tab": false,
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Mobile_Homepage_Digital_Camo_v4-min.webp",
+        "image_1": "shopify://shop_images/earth_friendly_a500_1.1.webp",
         "media_type_2": "image",
         "content_direction": "column",
         "vertical_on_mobile": true,
