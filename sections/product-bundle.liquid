@@ -7,7 +7,8 @@
   endif
 
   assign bundle_available = true
-  assign bundle_variant_id = product.selected_or_first_available_variant.id
+  assign bundle_ids = ''
+  assign bundle_qtys = ''
 
   if bundle_variants
     for v in bundle_variants
@@ -18,6 +19,12 @@
       if v.inventory_management != blank and v.inventory_quantity < qty
         assign bundle_available = false
       endif
+      assign bundle_ids = bundle_ids | append: v.id
+      assign bundle_qtys = bundle_qtys | append: qty
+      unless forloop.last
+        assign bundle_ids = bundle_ids | append: ','
+        assign bundle_qtys = bundle_qtys | append: ','
+      endunless
     endfor
   endif
 -%}
@@ -102,10 +109,11 @@
         class="button bundle-page__add-btn"
         id="bundle-add-to-cart"
         type="button"
-        data-variant-id="{{ bundle_variant_id }}"
-        {%- unless bundle_available and bundle_variant_id != blank -%}disabled{%- endunless -%}
+        data-ids="{{ bundle_ids }}"
+        data-qtys="{{ bundle_qtys }}"
+        {%- unless bundle_available and bundle_ids != '' -%}disabled{%- endunless -%}
       >
-        {%- if bundle_variant_id == blank -%}
+        {%- if bundle_ids == '' -%}
           Not configured
         {%- elsif bundle_available -%}
           {{ section.settings.button_text }}
@@ -127,9 +135,16 @@
   if (!btn) return;
 
   var defaultLabel = btn.textContent.trim();
-  var variantId = parseInt(btn.dataset.variantId || '', 10);
+  var idsRaw = btn.dataset.ids || '';
+  var qtysRaw = btn.dataset.qtys || '';
 
-  if (!variantId) return;
+  if (!idsRaw) return;
+
+  var ids = idsRaw.split(',').map(function (s) { return parseInt(s.trim(), 10); }).filter(Boolean);
+  var qtys = qtysRaw.split(',').map(function (s) { return parseInt(s.trim(), 10) || 1; });
+  var bundleItems = ids.map(function (id, i) { return { id: id, quantity: qtys[i] || 1 }; });
+
+  if (!bundleItems.length) return;
 
   btn.addEventListener('click', function () {
     btn.disabled = true;
@@ -140,7 +155,7 @@
     fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+      body: JSON.stringify({ items: bundleItems })
     })
       .then(function (r) {
         if (!r.ok) return r.json().then(function (d) { throw new Error(d.description || 'Error adding to cart'); });
