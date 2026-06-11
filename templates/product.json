@@ -12,6 +12,10 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "bundler_bundler_target_element_RbxdiU": {
+          "type": "shopify://apps/bundler/blocks/bundler-target-element/7a6ae1b8-3b16-449b-8429-8bb89a62c664",
+          "settings": {}
+        },
         "media-gallery": {
           "type": "_product-media-gallery",
           "static": true,
@@ -919,6 +923,9 @@
           ]
         }
       },
+      "block_order": [
+        "bundler_bundler_target_element_RbxdiU"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
