@@ -22,7 +22,7 @@
     {% when 'breadcrumbs' %}
       {% render 'breadcrumbs', collection: collection %}
     {% else %}
-      {%- render block.type, block: block -%}
+      {%- render block, block: block -%}
   {% endcase %}
 {% endfor %}
 
@@ -730,3 +730,13 @@
 {% endschema %}
 
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render block.type, block: block -%}"
+  to: "{%- render block, block: block -%}"
+  position: 705..739
+{% endcomment %}

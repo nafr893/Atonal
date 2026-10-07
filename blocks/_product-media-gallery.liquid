@@ -179,13 +179,7 @@
           {% endif %}
         {% endif %}
       
-        {% render 'slideshow-slide',
-          index: forloop.index,
-          children: children,
-          class: class | strip,
-          style: style,
-          attributes: attributes | strip
-        %}
+        {% render 'slideshow-slide', index: forloop.index, children: children, class: class, style: style, attributes: attributes %}
       {% endfor %}
 
   {% endcapture %}
@@ -894,3 +888,21 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'slideshow-slide',
+              index: forloop.index,
+              children: children,
+              class: class | strip,
+              style: style,
+              attributes: attributes | strip
+            %}
+  to: "{% render 'slideshow-slide', index: forloop.index, children: children, class:
+    class, style: style, attributes: attributes %}"
+  position: 6640..6764
+{% endcomment %}
